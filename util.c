@@ -2,7 +2,7 @@
 #include<malloc.h>
 
 unsigned int loadU8(FILE *r){
-    unsigned char *bytes = malloc(1);
+    unsigned char bytes[1];
     
     while(!fread(bytes, 1, 1, r));
     
@@ -10,7 +10,7 @@ unsigned int loadU8(FILE *r){
 }
 
 unsigned int loadU16(FILE *r){
-    unsigned char *bytes = malloc(2);
+    unsigned char bytes[2];
     
     while(!fread(bytes, 2, 1, r));
     
@@ -26,7 +26,7 @@ unsigned int loadU32(FILE *r){
 }
 
 unsigned int loadU64(FILE *r){
-    unsigned char *bytes = malloc(8);
+    unsigned char bytes[8];
     
     while(!fread(bytes, 8, 1, r));
     
