@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "constant_pool.h": "c",
+        "util.h": "c",
+        "malloc.h": "c"
+    }
+}
