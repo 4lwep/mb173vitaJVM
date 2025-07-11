@@ -17,6 +17,24 @@ void parseConstantPool(FILE *r){
   for (int i = 0; i < constantPoolCount; i++){
     unsigned int tag = loadU8(r);
     constantPool[i].tag = tag;
+
+    switch(constantPool[i].tag){
+      case 7:{
+        constantPool[i].info.CONSTANT_class.name_index = loadU16(r);
+        break;
+      }
+      case 9:{
+        constantPool[i].info.CONSTANT_fieldref.class_index = loadU16(r);
+        constantPool[i].info.CONSTANT_fieldref.name_and_type_index = loadU16(r);
+        break;
+      }
+      case 10:{
+        constantPool[i].info.CONSTANT_methodref.class_index = loadU16(r);
+        constantPool[i].info.CONSTANT_methodref.name_and_type_index = loadU16(r);
+        break;
+      }
+      default: break;
+    }
   }
 }
 

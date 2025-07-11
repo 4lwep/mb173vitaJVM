@@ -21,10 +21,8 @@ int main(){
     printf("\n");
 
     printf("Version: ");
-    printf("%d.%d", majorVersion, minorVersion);
+    printf("%d.%d -> Java %d", majorVersion, minorVersion, majorVersion - 44);
     printf("\n");
-    
-    printf("%d\n", constantPool[0].tag);
 
     fclose(r);
 }

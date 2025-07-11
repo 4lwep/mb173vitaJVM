@@ -51,33 +51,6 @@ typedef struct {
             unsigned int length;
             char *text;
         }CONSTANT_utf8;
-        
-        struct{
-            unsigned short reference_kind;
-            unsigned int reference_index;
-        }CONSTANT_methodHendle;
-
-        struct{
-            unsigned int descriptor_index;
-        }CONSTANT_methodType;
-
-        struct{
-            unsigned int bootstrap_method_attr_index;
-            unsigned int name_and_type_index;
-        }CONSTANT_dynamic;
-
-        struct{
-            unsigned int bootstrap_method_attr_index;
-            unsigned int name_and_type_index;
-        }CONSTANT_invokeDynamic;
-
-        struct{
-            unsigned int name_index;
-        }CONSTANT_module;
-
-        struct{
-            unsigned int name_index;
-        }CONSTANT_package;
     } info;
 } ConstantPoolEntry;
 
