@@ -63,9 +63,15 @@ void parseConstantPool(FILE *r){
       case 12:{ //nameAndType
         constantPool[i].info.CONSTANT_nameAndType.name_index = loadU16(r);
         constantPool[i].info.CONSTANT_nameAndType.descriptor_index = loadU16(r);
+        break;
       }
       case 1: { //utf8
-
+        constantPool[i].info.CONSTANT_utf8.length = loadU16(r);
+        constantPool[i].info.CONSTANT_utf8.text = malloc(sizeof(char) * (constantPool[i].info.CONSTANT_utf8.length + 1));
+        for (int j = 0; j<constantPool[i].info.CONSTANT_utf8.length; j++){
+          constantPool[i].info.CONSTANT_utf8.text[j] = loadU8(r);
+        }
+        break;
       }
       default: break;
     }
