@@ -3,81 +3,81 @@ typedef struct {
     union {
         struct {
             unsigned int name_index;
-        }_class;
+        }CONSTANT_class;
 
         struct {
             unsigned int class_index;
             unsigned int name_and_type_index;
-        }fieldref;
+        }CONSTANT_fieldref;
 
         struct {
             unsigned int class_index;
             unsigned int name_and_type_index;
-        } methodref;
+        }CONSTANT_methodref;
 
         struct {
             unsigned int class_index;
             unsigned int name_and_type_index;
-        } interfaceMethodref;
+        }CONSTANT_interfaceMethodref;
 
         struct{
             unsigned int string_index;
-        }string;
+        }CONSTANT_string;
 
         struct{
             unsigned int bytes;
-        }integer;
+        }CONSTANT_integer;
 
         struct{
             unsigned int bytes;
-        }_float;
+        }CONSTANT_float;
 
         struct{
             unsigned int high_bytes;
             unsigned int low_bytes;
-        }_long;
+        }CONSTANT_long;
 
         struct{
             unsigned int high_bytes;
             unsigned int low_bytes;
-        }_double;
+        }CONSTANT_double;
 
         struct {
             unsigned int name_index;
             unsigned int descriptor_index;
-        } nameAndType;
+        }CONSTANT_nameAndType;
 
         struct {
             unsigned int length;
             char *text;
-        } utf8;
+        }CONSTANT_utf8;
         
         struct{
             unsigned short reference_kind;
             unsigned int reference_index;
-        }methodHendle;
+        }CONSTANT_methodHendle;
 
         struct{
             unsigned int descriptor_index;
-        }methodType;
+        }CONSTANT_methodType;
 
         struct{
             unsigned int bootstrap_method_attr_index;
             unsigned int name_and_type_index;
-        }dynamic;
+        }CONSTANT_dynamic;
 
         struct{
             unsigned int bootstrap_method_attr_index;
             unsigned int name_and_type_index;
-        }invokeDynamic;
+        }CONSTANT_invokeDynamic;
 
         struct{
             unsigned int name_index;
-        }module;
+        }CONSTANT_module;
 
         struct{
             unsigned int name_index;
-        }package;
+        }CONSTANT_package;
     } info;
 } ConstantPoolEntry;
 
