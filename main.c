@@ -3,7 +3,7 @@
 
 int main(){
     FILE *r = fopen("/home/alfre/miniJvm/Add.class","rb");
-    loadClass(r);
+    ClassFile *parsedClass = loadClass(r);
 
     printf("Signature: ");
     printf("%08x", parsedClass->magic);

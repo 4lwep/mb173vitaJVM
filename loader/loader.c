@@ -2,9 +2,8 @@
 #include<malloc.h>
 #include<loader.h>
 
-ClassFile *parsedClass;
-
-void loadClass(FILE *r){
+ClassFile *loadClass(FILE *r){
+    ClassFile *parsedClass;
     unsigned int signature = loadU32(r);
     unsigned int minorVersion = loadU16(r);
     unsigned int majorVersion = loadU16(r);
@@ -29,4 +28,6 @@ void loadClass(FILE *r){
     parsedClass->this_class = thisClass;
     parsedClass->super_class = superClass;
     parsedClass->interfaces_count = interfaceCount;
+
+    return parsedClass;
 }

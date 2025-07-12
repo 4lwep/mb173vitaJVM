@@ -27,6 +27,4 @@ typedef struct {
     attribute_info attributes[attributes_count];*/
 }ClassFile;
 
-extern ClassFile *parsedClass;
-
-void loadClass(FILE *r);
+ClassFile *loadClass(FILE *r);
