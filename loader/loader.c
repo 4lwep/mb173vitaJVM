@@ -30,6 +30,7 @@ ClassFile *loadClass(FILE *r){
     parsedClass->super_class = superClass;
     parsedClass->interfaces_count = interfaceCount;
     parsedClass->interfaces = interface;
+    parsedClass->fields_count = fieldsCount;
 
     return parsedClass;
 }

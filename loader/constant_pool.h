@@ -57,6 +57,7 @@ typedef struct {
     } info;
 } ConstantPoolEntry;
 
+//Estas variable to las tengo que liberar si las libero desde la structura
 extern unsigned int constantPoolCount;
 extern ConstantPoolEntry *constantPool;
 

@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<constant_pool.h>
 #include<interfaces.h>
+#include<fields.h>
 #include<util.h>
 
 typedef struct {
@@ -19,8 +20,8 @@ typedef struct {
     unsigned int super_class;
 	unsigned int interfaces_count;
     unsigned int *interfaces;
-	/*unsigned int fields_count;
-    field_info fields[fields_count];
+	unsigned int fields_count;
+    /*field_info fields[fields_count];
 	unsigned int methods_count;
     method_info methods[methods_count];
 	unsigned int attributes_count;

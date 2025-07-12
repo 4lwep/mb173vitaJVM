@@ -25,9 +25,11 @@ int main(){
     printf("Super class: %d\n", parsedClass->super_class);
 
     printf("Number of interfaces: %d\n", parsedClass->interfaces_count);
-    printf("First interface index: %d\n", parsedClass->interfaces[0]);
+    printf("First interface index: %d\n\n", parsedClass->interfaces[0]);
+
+    printf("Number of fields: %d\n", parsedClass->fields_count);
 
     fclose(r);
 }
-//gcc -o ./output/main main.c loader/constant_pool.c util.c loader/interfaces.c loader/loader.c -I. -I./loader && ./output/main
+//gcc -o ./output/main main.c loader/constant_pool.c util.c loader/interfaces.c loader/loader.c loader/fields.c -I. -I./loader && ./output/main
 //Creo que no es mal momento para hacer un makefile
