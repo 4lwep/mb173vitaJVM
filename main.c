@@ -2,6 +2,7 @@
 #include<malloc.h>
 #include<util.h>
 #include<constant_pool.h>
+#include<interfaces.h>
 
 typedef struct {
     FILE r;
@@ -19,6 +20,8 @@ int main(){
     unsigned int accessFlags = loadU16(r);
     unsigned int thisClass = loadU16(r);
     unsigned int superClass = loadU16(r);
+
+    parseInterfaces(r);
 
     //Debug
     printf("Signature: ");
