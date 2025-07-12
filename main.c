@@ -13,16 +13,16 @@ int main(){
     printf("%d.%d -> Java %d", parsedClass->major_version, parsedClass->minor_version, parsedClass->major_version - 44);
     printf("\n\n");
 
-    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[0].tag, parsedClass->constant_pool[0].info.CONSTANT_methodref.class_index - 1);
-    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[1].tag, parsedClass->constant_pool[1].info.CONSTANT_class.name_index - 1);
+    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[0].tag, parsedClass->constant_pool[0].info.CONSTANT_methodref.class_index);
+    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[1].tag, parsedClass->constant_pool[1].info.CONSTANT_class.name_index);
     printf("Tag: %d, text: %s\n\n", parsedClass->constant_pool[3].tag, parsedClass->constant_pool[3].info.CONSTANT_utf8.text);
 
-    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[6].tag, parsedClass->constant_pool[6].info.CONSTANT_class.name_index - 1);
+    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[6].tag, parsedClass->constant_pool[6].info.CONSTANT_class.name_index);
     printf("Tag: %d, text: %s\n\n", parsedClass->constant_pool[7].tag, parsedClass->constant_pool[7].info.CONSTANT_utf8.text);
 
     printf("Access flag: 0x%x\n", parsedClass->access_flags);
-    printf("This class: %d\n", parsedClass->this_class - 1);
-    printf("Super class: %d\n", parsedClass->super_class - 1);
+    printf("This class: %d\n", parsedClass->this_class);
+    printf("Super class: %d\n", parsedClass->super_class);
 
     fclose(r);
 }
