@@ -56,11 +56,13 @@ void parseConstantPool(FILE *r){
       case 5:{ //long
         constantPool[i].info.CONSTANT_long.high_bytes = loadU32(r);
         constantPool[i].info.CONSTANT_long.low_bytes = loadU32(r);
+        i++;
         break;
       }
       case 6:{ //double --- Falta especificar algunos casos como con los float
         constantPool[i].info.CONSTANT_double.high_bytes = loadU32(r);
         constantPool[i].info.CONSTANT_double.low_bytes = loadU32(r);
+        i++;
         break;
       }
       case 12:{ //nameAndType
