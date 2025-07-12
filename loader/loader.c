@@ -18,6 +18,7 @@ ClassFile *loadClass(FILE *r){
 
     parsedClass = malloc(sizeof(ClassFile));
     parsedClass->constant_pool = malloc(sizeof(ConstantPoolEntry) * constantPoolCount);
+    parsedClass->interfaces = malloc(sizeof(unsigned int) * parsedClass->interfaces_count);
 
     parsedClass->magic = signature;
     parsedClass->minor_version = minorVersion;
@@ -28,6 +29,7 @@ ClassFile *loadClass(FILE *r){
     parsedClass->this_class = thisClass;
     parsedClass->super_class = superClass;
     parsedClass->interfaces_count = interfaceCount;
+    parsedClass->interfaces = interface;
 
     return parsedClass;
 }

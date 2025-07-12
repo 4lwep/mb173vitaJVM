@@ -1,10 +1,15 @@
 #include<stdio.h>
+#include<malloc.h>
 #include<interfaces.h>
 
 unsigned int interfaceCount;
+unsigned int *interface;
 
 void parseInterfaces(FILE *r){
-    unsigned int interfacesCount = loadU16(r);
+    interfaceCount = loadU16(r);
+    interface = malloc(sizeof(unsigned int) * interfaceCount);
 
-    printf("Interfaces: %d\n", interfacesCount);
+    for (int i = 0; i<interfaceCount; i++){
+        interface[i] = loadU16(r);
+    }
 }

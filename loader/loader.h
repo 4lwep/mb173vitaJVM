@@ -18,8 +18,8 @@ typedef struct {
 	unsigned int this_class;
     unsigned int super_class;
 	unsigned int interfaces_count;
-    /*unsigned int interfaces[interfaces_count];
-	unsigned int fields_count;
+    unsigned int *interfaces;
+	/*unsigned int fields_count;
     field_info fields[fields_count];
 	unsigned int methods_count;
     method_info methods[methods_count];
