@@ -2,6 +2,9 @@
     "files.associations": {
         "constant_pool.h": "c",
         "util.h": "c",
-        "malloc.h": "c"
+        "malloc.h": "c",
+        "interfaces.h": "c",
+        "stdio.h": "c",
+        "loader.h": "c"
     }
 }

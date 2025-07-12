@@ -1,3 +1,6 @@
+#include<util.h>
+//#include<loader.h>
+
 typedef struct {
     unsigned short tag;
     union {
@@ -54,6 +57,7 @@ typedef struct {
     } info;
 } ConstantPoolEntry;
 
+extern unsigned int constantPoolCount;
 extern ConstantPoolEntry *constantPool;
 
 void parseConstantPool(FILE *r);

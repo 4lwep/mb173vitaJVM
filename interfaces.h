@@ -1,1 +1,0 @@
-void parseInterfaces(FILE *r);

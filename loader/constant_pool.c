@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<malloc.h>
 #include<constant_pool.h>
-#include<util.h>
 
+unsigned int constantPoolCount;
 ConstantPoolEntry *constantPool;
 
 void parseConstantPool(FILE *r){

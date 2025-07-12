@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<interfaces.h>
-#include<util.h>
+
+unsigned int interfaceCount;
 
 void parseInterfaces(FILE *r){
     unsigned int interfacesCount = loadU16(r);
