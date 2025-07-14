@@ -21,8 +21,8 @@ typedef struct {
 	unsigned int interfaces_count;
     unsigned int *interfaces;
 	unsigned int fields_count;
-    /*field_info fields[fields_count];
-	unsigned int methods_count;
+    field_info *fields;
+	/*unsigned int methods_count;
     method_info methods[methods_count];
 	unsigned int attributes_count;
     attribute_info attributes[attributes_count];*/

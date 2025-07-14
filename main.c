@@ -28,6 +28,8 @@ int main(){
     printf("First interface index: %d\n\n", parsedClass->interfaces[0]);
 
     printf("Number of fields: %d\n", parsedClass->fields_count);
+    printf("Number of attr in field 0: %d\n", parsedClass->fields[0].attributes_count);
+    printf("Field 0 attr name index: %d\n", parsedClass->fields[0].attributes[0].attribute_name_index);
 
     fclose(r);
 }
