@@ -1,5 +1,3 @@
-#include<stdio.h>
-#include<malloc.h>
 #include<loader.h>
 
 ClassFile *loadClass(FILE *r){
@@ -16,6 +14,7 @@ ClassFile *loadClass(FILE *r){
 
     parseInterfaces(r);
     parseFields(r);
+    parseMethods(r);
 
     parsedClass = malloc(sizeof(ClassFile));
     parsedClass->constant_pool = malloc(sizeof(ConstantPoolEntry) * constantPoolCount);
@@ -34,6 +33,7 @@ ClassFile *loadClass(FILE *r){
     parsedClass->interfaces = interface;
     parsedClass->fields_count = fieldsCount;
     parsedClass->fields = fields;
+    parsedClass->methods_count = methodCount;
 
     return parsedClass;
 }

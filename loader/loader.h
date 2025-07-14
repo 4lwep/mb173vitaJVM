@@ -2,7 +2,10 @@
 #include<constant_pool.h>
 #include<interfaces.h>
 #include<fields.h>
+#include<method.h>
 #include<util.h>
+#include<method.h>
+#include<malloc.h>
 
 typedef struct {
     FILE r;
@@ -22,8 +25,8 @@ typedef struct {
     unsigned int *interfaces;
 	unsigned int fields_count;
     field_info *fields;
-	/*unsigned int methods_count;
-    method_info methods[methods_count];
+	unsigned int methods_count;
+    /*method_info *methods;
 	unsigned int attributes_count;
     attribute_info attributes[attributes_count];*/
 }ClassFile;

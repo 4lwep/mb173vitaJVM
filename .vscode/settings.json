@@ -5,6 +5,7 @@
         "malloc.h": "c",
         "interfaces.h": "c",
         "stdio.h": "c",
-        "loader.h": "c"
+        "loader.h": "c",
+        "method.h": "c"
     }
 }

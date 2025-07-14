@@ -29,11 +29,13 @@ int main(){
 
     printf("Number of fields: %d\n", parsedClass->fields_count);
     printf("Number of attr in field 0: %d\n", parsedClass->fields[0].attributes_count);
-    printf("Field 0 attr name index: %d\n", parsedClass->fields[0].attributes[0].attribute_name_index);
+    printf("Field 0 attr name index: %d\n\n", parsedClass->fields[0].attributes[0].attribute_name_index);
+
+    printf("Method count: %d\n", parsedClass->methods_count);
 
     fclose(r);
 }
-//gcc -o ./output/main main.c loader/constant_pool.c util.c loader/interfaces.c loader/loader.c loader/fields.c -I. -I./loader && ./output/main
+//gcc -o ./output/main main.c loader/constant_pool.c util.c loader/interfaces.c loader/loader.c loader/fields.c loader/method.c -I. -I./loader && ./output/main
 //Creo que no es mal momento para hacer un makefile
 
 /*
