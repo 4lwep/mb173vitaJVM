@@ -2,7 +2,7 @@
 #include<loader.h>
 
 int main(){
-    FILE *r = fopen("/home/alfre/miniJvm/Add.class","rb");
+    FILE *r = fopen("./test/Add.class","rb");
     ClassFile *parsedClass = loadClass(r);
 
     printf("Signature: ");

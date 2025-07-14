@@ -18,7 +18,7 @@ void parseConstantPool(FILE *r){
     if(!i) continue;
     unsigned int tag = loadU8(r);
     //Debug
-    printf("%d", i);
+    printf("%d ", i);
     printf("Tag: %d\n", tag);
     ///////
     constantPool[i].tag = tag;
