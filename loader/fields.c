@@ -1,6 +1,6 @@
 #include<fields.h>
 
-unsigned int fieldsCount;
+uint16_t fieldsCount;
 field_info *fields;
 
 void parseFields(FILE *r){

@@ -2,12 +2,12 @@
 #include<malloc.h>
 #include<interfaces.h>
 
-unsigned int interfaceCount;
-unsigned int *interface;
+uint16_t interfaceCount;
+uint16_t *interface;
 
 void parseInterfaces(FILE *r){
     interfaceCount = loadU16(r);
-    interface = malloc(sizeof(unsigned int) * interfaceCount);
+    interface = malloc(sizeof(uint16_t) * interfaceCount);
 
     for (int i = 0; i<interfaceCount; i++){
         interface[i] = loadU16(r);

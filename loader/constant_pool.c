@@ -2,19 +2,18 @@
 #include<malloc.h>
 #include<constant_pool.h>
 
-unsigned int constantPoolCount;
+uint16_t constantPoolCount;
 ConstantPoolEntry *constantPool;
 
 void parseConstantPool(FILE *r){
-  unsigned int constantPoolCount = loadU16(r);
+  constantPoolCount = loadU16(r);
   constantPoolCount -= 1;
 
   constantPool = malloc(sizeof(ConstantPoolEntry) * (constantPoolCount - 1));
 
   for (int i = 0; i <= constantPoolCount; i++){
     if(!i) continue;
-    unsigned int tag = loadU8(r);
-    constantPool[i].tag = tag;
+    constantPool[i].tag = loadU8(r);
 
     switch(constantPool[i].tag){
       case 7:{ //class

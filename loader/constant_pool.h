@@ -1,64 +1,64 @@
 #include<util.h>
-//#include<loader.h>
+#include<stdint.h>
 
 typedef struct {
-    unsigned short tag;
+    uint8_t tag;
     union {
         struct {
-            unsigned int name_index;
+            uint16_t name_index;
         }CONSTANT_class;
 
         struct {
-            unsigned int class_index;
-            unsigned int name_and_type_index;
+            uint16_t class_index;
+            uint16_t name_and_type_index;
         }CONSTANT_fieldref;
 
         struct {
-            unsigned int class_index;
-            unsigned int name_and_type_index;
+            uint16_t class_index;
+            uint16_t name_and_type_index;
         }CONSTANT_methodref;
 
         struct {
-            unsigned int class_index;
-            unsigned int name_and_type_index;
+            uint16_t class_index;
+            uint16_t name_and_type_index;
         }CONSTANT_interfaceMethodref;
 
         struct{
-            unsigned int string_index;
+            uint16_t string_index;
         }CONSTANT_string;
 
         struct{
-            unsigned int bytes;
+            uint32_t bytes;
         }CONSTANT_integer;
 
         struct{
-            unsigned int bytes;
+            uint32_t bytes;
         }CONSTANT_float;
 
         struct{
-            unsigned int high_bytes;
-            unsigned int low_bytes;
+            uint32_t high_bytes;
+            uint32_t low_bytes;
         }CONSTANT_long;
 
         struct{
-            unsigned int high_bytes;
-            unsigned int low_bytes;
+            uint32_t high_bytes;
+            uint32_t low_bytes;
         }CONSTANT_double;
 
         struct {
-            unsigned int name_index;
-            unsigned int descriptor_index;
+            uint16_t name_index;
+            uint16_t descriptor_index;
         }CONSTANT_nameAndType;
 
         struct {
-            unsigned int length;
+            uint16_t length;
             char *text;
         }CONSTANT_utf8;
     } info;
 } ConstantPoolEntry;
 
 //Estas variable to las tengo que liberar si las libero desde la structura
-extern unsigned int constantPoolCount;
+extern uint16_t constantPoolCount;
 extern ConstantPoolEntry *constantPool;
 
 void parseConstantPool(FILE *r);

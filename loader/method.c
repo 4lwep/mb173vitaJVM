@@ -1,6 +1,6 @@
 #include<method.h>
 
-unsigned int methodCount;
+uint16_t methodCount;
 method_info *methods;
 
 void parseMethods(FILE *r){

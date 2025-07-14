@@ -13,7 +13,7 @@ int main(){
     printf("%d.%d -> Java %d", parsedClass->major_version, parsedClass->minor_version, parsedClass->major_version - 44);
     printf("\n\n");
 
-    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[0].tag, parsedClass->constant_pool[0].info.CONSTANT_methodref.class_index);
+    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[0].tag, parsedClass->constant_pool[0].info.CONSTANT_methodref.class_index); //Esto está con los índices antiguos
     printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[1].tag, parsedClass->constant_pool[1].info.CONSTANT_class.name_index);
     printf("Tag: %d, text: %s\n\n", parsedClass->constant_pool[3].tag, parsedClass->constant_pool[3].info.CONSTANT_utf8.text);
 

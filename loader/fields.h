@@ -2,17 +2,18 @@
 #include<malloc.h>
 #include<util.h>
 #include<attributes.h>
+#include<stdint.h>
 
 typedef struct{
-    unsigned int access_flags;
-	unsigned int name_index;
-    unsigned int descriptor_index;
-	unsigned int attributes_count;
+    uint16_t access_flags;
+	uint16_t name_index;
+    uint16_t descriptor_index;
+	uint16_t attributes_count;
     attribute_info *attributes;
 }field_info;
 
 //Estas variable to las tengo que liberar si las libero desde la structura
-extern unsigned int fieldsCount;
+extern uint16_t fieldsCount;
 extern field_info *fields;
 
 void parseFields(FILE *r);

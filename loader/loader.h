@@ -14,21 +14,21 @@ typedef struct {
 } Loader;
 
 typedef struct {
-    unsigned int magic;
-    unsigned int minor_version;
-	unsigned int major_version;
-    unsigned int constant_pool_count;
+    uint32_t magic;
+    uint16_t minor_version;
+	uint16_t major_version;
+    uint16_t constant_pool_count;
 	ConstantPoolEntry *constant_pool;
-    unsigned int access_flags;
-	unsigned int this_class;
-    unsigned int super_class;
-	unsigned int interfaces_count;
-    unsigned int *interfaces;
-	unsigned int fields_count;
+    uint16_t access_flags;
+	uint16_t this_class;
+    uint16_t super_class;
+	uint16_t interfaces_count;
+    uint16_t *interfaces;
+	uint16_t fields_count;
     field_info *fields;
-	unsigned int methods_count;
+	uint16_t methods_count;
     method_info *methods;
-	unsigned int attributes_count;
+	uint16_t attributes_count;
     attribute_info *attributes;
 }ClassFile;
 

@@ -2,15 +2,15 @@
 
 ClassFile *loadClass(FILE *r){
     ClassFile *parsedClass;
-    unsigned int signature = loadU32(r);
-    unsigned int minorVersion = loadU16(r);
-    unsigned int majorVersion = loadU16(r);
+    uint32_t signature = loadU32(r);
+    uint16_t minorVersion = loadU16(r);
+    uint16_t majorVersion = loadU16(r);
     
     parseConstantPool(r);
 
-    unsigned int accessFlags = loadU16(r);
-    unsigned int thisClass = loadU16(r);
-    unsigned int superClass = loadU16(r);
+    uint16_t accessFlags = loadU16(r);
+    uint16_t thisClass = loadU16(r);
+    uint16_t superClass = loadU16(r);
 
     parseInterfaces(r);
     parseFields(r);
