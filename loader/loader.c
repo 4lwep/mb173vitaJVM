@@ -15,6 +15,7 @@ ClassFile *loadClass(FILE *r){
     unsigned int superClass = loadU16(r);
 
     parseInterfaces(r);
+    parseFields(r);
 
     parsedClass = malloc(sizeof(ClassFile));
     parsedClass->constant_pool = malloc(sizeof(ConstantPoolEntry) * constantPoolCount);
