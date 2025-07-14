@@ -7,11 +7,10 @@ ConstantPoolEntry *constantPool;
 
 void parseConstantPool(FILE *r){
   constantPoolCount = loadU16(r);
-  constantPoolCount -= 1;
 
-  constantPool = malloc(sizeof(ConstantPoolEntry) * (constantPoolCount - 1));
+  constantPool = malloc(sizeof(ConstantPoolEntry) * constantPoolCount);
 
-  for (int i = 0; i <= constantPoolCount; i++){
+  for (int i = 0; i < constantPoolCount; i++){
     if(!i) continue;
     constantPool[i].tag = loadU8(r);
 
@@ -66,7 +65,7 @@ void parseConstantPool(FILE *r){
       }
       case 1: { //utf8
         constantPool[i].info.CONSTANT_utf8.length = loadU16(r);
-        constantPool[i].info.CONSTANT_utf8.text = malloc(sizeof(char) * (constantPool[i].info.CONSTANT_utf8.length + 1));
+        constantPool[i].info.CONSTANT_utf8.text = malloc(constantPool[i].info.CONSTANT_utf8.length + 1);
         for (int j = 0; j<constantPool[i].info.CONSTANT_utf8.length; j++){
           constantPool[i].info.CONSTANT_utf8.text[j] = loadU8(r);
         }

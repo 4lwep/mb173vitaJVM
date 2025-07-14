@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<loader.h>
+#include<string.h>
 
 int main(){
     FILE *r = fopen("./test/Add.class","rb");
@@ -13,12 +14,12 @@ int main(){
     printf("%d.%d -> Java %d", parsedClass->major_version, parsedClass->minor_version, parsedClass->major_version - 44);
     printf("\n\n");
 
-    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[0].tag, parsedClass->constant_pool[0].info.CONSTANT_methodref.class_index); //Esto está con los índices antiguos
-    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[1].tag, parsedClass->constant_pool[1].info.CONSTANT_class.name_index);
-    printf("Tag: %d, text: %s\n\n", parsedClass->constant_pool[3].tag, parsedClass->constant_pool[3].info.CONSTANT_utf8.text);
+    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[1].tag, parsedClass->constant_pool[1].info.CONSTANT_methodref.class_index); //Esto está con los índices antiguos
+    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[2].tag, parsedClass->constant_pool[2].info.CONSTANT_class.name_index);
+    printf("Tag: %d, text: %s\n\n", parsedClass->constant_pool[4].tag, parsedClass->constant_pool[4].info.CONSTANT_utf8.text);
 
-    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[6].tag, parsedClass->constant_pool[6].info.CONSTANT_class.name_index);
-    printf("Tag: %d, text: %s\n\n", parsedClass->constant_pool[7].tag, parsedClass->constant_pool[7].info.CONSTANT_utf8.text);
+    printf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[8].tag, parsedClass->constant_pool[8].info.CONSTANT_class.name_index);
+    printf("Tag: %d, text: %s\n\n", parsedClass->constant_pool[10].tag, parsedClass->constant_pool[10].info.CONSTANT_utf8.text);
 
     printf("Access flag: 0x%04x\n", parsedClass->access_flags);
     printf("This class: %d\n", parsedClass->this_class);
