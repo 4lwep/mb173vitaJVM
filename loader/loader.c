@@ -15,6 +15,7 @@ ClassFile *loadClass(FILE *r){
     parseInterfaces(r);
     parseFields(r);
     parseMethods(r);
+    parseAttributes(r);
 
     parsedClass = malloc(sizeof(ClassFile));
     parsedClass->constant_pool = malloc(sizeof(ConstantPoolEntry) * constantPoolCount);
