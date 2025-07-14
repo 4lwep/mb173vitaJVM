@@ -8,6 +8,8 @@
         "loader.h": "c",
         "method.h": "c",
         "attributes.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "processmgr.h": "c",
+        "debugscreen_custom.h": "c"
     }
 }
