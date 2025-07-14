@@ -5,6 +5,8 @@
 #include<util.h>
 #include<method.h>
 #include<malloc.h>
+#include<attributes.h>
+#include<stdint.h>
 
 typedef struct {
     FILE r;
@@ -26,8 +28,8 @@ typedef struct {
     field_info *fields;
 	unsigned int methods_count;
     method_info *methods;
-	/*unsigned int attributes_count;
-    attribute_info attributes[attributes_count];*/
+	unsigned int attributes_count;
+    attribute_info *attributes;
 }ClassFile;
 
 ClassFile *loadClass(FILE *r);
