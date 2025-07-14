@@ -84,14 +84,3 @@ void parseConstantPool(FILE *r){
     }
   }
 }
-
-/*
-java \    
-  -Dorg.lwjgl.librarypath=/home/alfre/Downloads/lwjgl-2.9.3/native/linux \
-  -cp "/home/alfre/Games/PrismLauncher/libraries/com/mojang/minecraft/b1.7.3/minecraft-b1.7.3-client.jar:\
-/home/alfre/Downloads/lwjgl-2.9.3/jar/lwjgl.jar:\
-/home/alfre/Downloads/lwjgl-2.9.3/jar/lwjgl_util.jar:\
-/home/alfre/Downloads/lwjgl-2.9.3/jar/jinput.jar" \
-  net.minecraft.client.Minecraft
-
-*/
