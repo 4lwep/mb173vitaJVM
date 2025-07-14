@@ -19,7 +19,7 @@ void parseFields(FILE *r){
             fields[i].attributes[j].attribute_name_index = loadU16(r);
             fields[i].attributes[j].attribute_length = loadU32(r);
 
-            fields[i].attributes[j].info = malloc(sizeof(fields[i].attributes[j].attribute_length));
+            fields[i].attributes[j].info = malloc(fields[i].attributes[j].attribute_length);
             for (int x = 0; x < fields[i].attributes[j].attribute_length; x++){
                 fields[i].attributes[j].info[x] = loadU8(r);
             }

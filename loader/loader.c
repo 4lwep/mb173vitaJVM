@@ -34,6 +34,7 @@ ClassFile *loadClass(FILE *r){
     parsedClass->fields_count = fieldsCount;
     parsedClass->fields = fields;
     parsedClass->methods_count = methodCount;
-
+    parsedClass->methods = methods;
+    
     return parsedClass;
 }

@@ -32,6 +32,8 @@ int main(){
     printf("Field 0 attr name index: %d\n\n", parsedClass->fields[0].attributes[0].attribute_name_index);
 
     printf("Method count: %d\n", parsedClass->methods_count);
+    printf("Second method index: %d\n", parsedClass->methods[1].name_index);
+    printf("First method name: %s\n", parsedClass->constant_pool[17].info.CONSTANT_utf8.text);
 
     fclose(r);
 }
