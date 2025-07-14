@@ -1,3 +1,6 @@
+#ifndef LOADER_H
+#define LOADER_H
+
 #include<stdio.h>
 #include<constant_pool.h>
 #include<interfaces.h>
@@ -33,3 +36,5 @@ typedef struct {
 }ClassFile;
 
 ClassFile *loadClass(FILE *r);
+
+#endif

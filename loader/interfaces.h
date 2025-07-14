@@ -1,3 +1,6 @@
+#ifndef INTERFACES_H
+#define INTERFACES_H
+
 #include<util.h>
 #include<stdint.h>
 
@@ -6,3 +9,5 @@ extern uint16_t interfaceCount;
 extern uint16_t *interface;
 
 void parseInterfaces(FILE *r);
+
+#endif

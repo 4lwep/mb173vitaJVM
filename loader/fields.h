@@ -1,3 +1,6 @@
+#ifndef FIELDS_H
+#define FIELDS_H
+
 #include<stdio.h>
 #include<malloc.h>
 #include<util.h>
@@ -17,3 +20,5 @@ extern uint16_t fieldsCount;
 extern field_info *fields;
 
 void parseFields(FILE *r);
+
+#endif

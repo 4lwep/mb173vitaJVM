@@ -6,6 +6,8 @@
         "interfaces.h": "c",
         "stdio.h": "c",
         "loader.h": "c",
-        "method.h": "c"
+        "method.h": "c",
+        "attributes.h": "c",
+        "stdint.h": "c"
     }
 }

@@ -1,3 +1,6 @@
+#ifndef METHOD_H
+#define METHOD_H
+
 #include<stdio.h>
 #include<malloc.h>
 #include<util.h>
@@ -16,3 +19,5 @@ extern uint16_t methodCount;
 extern method_info *methods;
 
 void parseMethods(FILE *r);
+
+#endif
