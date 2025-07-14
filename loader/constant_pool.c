@@ -9,19 +9,11 @@ void parseConstantPool(FILE *r){
   unsigned int constantPoolCount = loadU16(r);
   constantPoolCount -= 1;
 
-  printf("Constant pool count: ");
-  printf("%d", constantPoolCount);
-  printf("\n");
-
   constantPool = malloc(sizeof(ConstantPoolEntry) * (constantPoolCount - 1));
 
   for (int i = 0; i <= constantPoolCount; i++){
     if(!i) continue;
     unsigned int tag = loadU8(r);
-    //Debug
-    printf("%d ", i);
-    printf("Tag: %d\n", tag);
-    ///////
     constantPool[i].tag = tag;
 
     switch(constantPool[i].tag){
