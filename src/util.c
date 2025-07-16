@@ -7,7 +7,7 @@ uint8_t loadU8(FILE *r){
     
     while(!fread(bytes, 1, 1, r));
     
-    return (uint64_t)bytes[0];
+    return (uint8_t)bytes[0];
 }
 
 uint16_t loadU16(FILE *r){
@@ -15,7 +15,7 @@ uint16_t loadU16(FILE *r){
     
     while(!fread(bytes, 2, 1, r));
     
-    return (uint64_t)bytes[0] << 8 | (uint64_t)bytes[1];
+    return (uint16_t)bytes[0] << 8 | (uint16_t)bytes[1];
 }
 
 uint32_t loadU32(FILE *r){
@@ -23,7 +23,7 @@ uint32_t loadU32(FILE *r){
     
     while(!fread(bytes, 1, 4, r));
     
-    return ((uint64_t)bytes[0] << 24) | ((uint64_t)bytes[1] << 16) | ((uint64_t)bytes[2] << 8)  |  (uint64_t)bytes[3];
+    return ((uint32_t)bytes[0] << 24) | ((uint32_t)bytes[1] << 16) | ((uint32_t)bytes[2] << 8)  |  (uint32_t)bytes[3];
 }
 
 uint64_t loadU64(FILE *r){
