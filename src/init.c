@@ -16,11 +16,12 @@ int initMainClass(){
 }
 
 int initMethodArea(){
-    //MainClassMethodArea = createMethodArea();
+    MainClassMethodArea = createMethodArea(parsedMainClass);
+    return 1;
 }
 
 int initHeap(){
-
+    heap->method_area = MainClassMethodArea;
     return 1;
 }
 
