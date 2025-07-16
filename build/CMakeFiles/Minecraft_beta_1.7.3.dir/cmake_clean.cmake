@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj"
-  "CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj.d"
   "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj"
   "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj.d"
   "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/constant_pool.c.obj"

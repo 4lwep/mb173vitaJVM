@@ -175,30 +175,6 @@ Minecraft_beta_1.7.3.vpk-vpk/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/build
 .PHONY : Minecraft_beta_1.7.3.vpk-vpk/fast
 
-src/common/debugScreen.obj: src/common/debugScreen.c.obj
-.PHONY : src/common/debugScreen.obj
-
-# target to build an object file
-src/common/debugScreen.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj
-.PHONY : src/common/debugScreen.c.obj
-
-src/common/debugScreen.i: src/common/debugScreen.c.i
-.PHONY : src/common/debugScreen.i
-
-# target to preprocess a source file
-src/common/debugScreen.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.i
-.PHONY : src/common/debugScreen.c.i
-
-src/common/debugScreen.s: src/common/debugScreen.c.s
-.PHONY : src/common/debugScreen.s
-
-# target to generate assembly for a file
-src/common/debugScreen.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.s
-.PHONY : src/common/debugScreen.c.s
-
 src/loader/attributes.obj: src/loader/attributes.c.obj
 .PHONY : src/loader/attributes.obj
 
@@ -404,9 +380,6 @@ help:
 	@echo "... Minecraft_beta_1.7.3.self-self"
 	@echo "... Minecraft_beta_1.7.3.vpk-vpk"
 	@echo "... Minecraft_beta_1.7.3"
-	@echo "... src/common/debugScreen.obj"
-	@echo "... src/common/debugScreen.i"
-	@echo "... src/common/debugScreen.s"
 	@echo "... src/loader/attributes.obj"
 	@echo "... src/loader/attributes.i"
 	@echo "... src/loader/attributes.s"

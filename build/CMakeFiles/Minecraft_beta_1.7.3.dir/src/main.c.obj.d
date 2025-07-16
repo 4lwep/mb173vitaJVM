@@ -65,5 +65,4 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/main.c.obj: \
  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/thread.h \
  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/cpu.h \
  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/processmgr.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2common/kernel/processmgr.h \
- /home/alfre/Desktop/mb173vitaJVM/src/common/debugScreen_custom.h
+ /usr/local/vitasdk/arm-vita-eabi/include/psp2common/kernel/processmgr.h

@@ -49,8 +49,6 @@ int main(){
     sceKernelDelayThread(10*1000000); // Wait for 3 seconds
     fclose(r);
 }
-//gcc -o ./output/main main.c loader/constant_pool.c util.c loader/interfaces.c loader/loader.c loader/fields.c loader/method.c loader/attributes.c -I. -I./loader && ./output/main
-//Creo que no es mal momento para hacer un makefile
 
 /*
 java \    

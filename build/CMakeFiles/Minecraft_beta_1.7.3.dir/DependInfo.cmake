@@ -8,7 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/alfre/Desktop/mb173vitaJVM/src/common/debugScreen.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj.d"
   "/home/alfre/Desktop/mb173vitaJVM/src/loader/attributes.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj.d"
   "/home/alfre/Desktop/mb173vitaJVM/src/loader/constant_pool.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/constant_pool.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/constant_pool.c.obj.d"
   "/home/alfre/Desktop/mb173vitaJVM/src/loader/fields.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/fields.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/fields.c.obj.d"
