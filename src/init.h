@@ -3,15 +3,18 @@
 
 #include<heap.h>
 #include<thread.h>
+#include<loader.h>
+#include<method_area.h>
 
 int initMainClass();
+int initMethodArea();
 int initHeap();
 int initThread();
 int initJVM();
 
-extern Thread *thread;
-extern Heap *heap;
 extern ClassFile *parsedMainClass;
-
+extern MethodArea *MainClassMethodArea;
+extern Heap *heap;
+extern Thread *thread;
 
 #endif

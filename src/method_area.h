@@ -20,14 +20,6 @@ typedef struct{
     method_info *method;
 } ExecutableCode;
 
-MethodArea *createMethodArea(
-    ClassFile *c,
-    ConstantPoolEntry *constantPool, 
-    uint16_t constant_pool_count, 
-    field_info *fields, 
-    uint16_t fields_count,
-    method_info *methods, 
-    uint16_t methods_count
-);
+MethodArea *createMethodArea(ClassFile *c);
 
 #endif

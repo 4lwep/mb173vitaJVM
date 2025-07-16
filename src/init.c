@@ -1,6 +1,22 @@
-int initMainClass(){
+#include<init.h>
 
+ClassFile *parsedMainClass;
+MethodArea *MainClassMethodArea;
+Heap *heap;
+
+int initMainClass(){
+    //For minecraft, the main class was libraries/com/mojang/minecraft/b1.7.3/net/minecraft/client/Minecraft.class maybe
+    FILE *r = fopen("./test/Add.class","rb");
+    if (!r) return 0;
+    
+    parsedMainClass = loadClass(r);
+    
+    fclose(r);
     return 1;
+}
+
+int initMethodArea(){
+    //MainClassMethodArea = createMethodArea();
 }
 
 int initHeap(){
