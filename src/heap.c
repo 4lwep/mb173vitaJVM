@@ -44,5 +44,5 @@ uint16_t heapAlloc(int bytes){
 
   newEntry->length = bytes;
 
-  return index;
+  return index + 2;
 }
