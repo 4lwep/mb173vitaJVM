@@ -10,6 +10,7 @@
         "attributes.h": "c",
         "stdint.h": "c",
         "processmgr.h": "c",
-        "debugscreen_custom.h": "c"
+        "debugscreen_custom.h": "c",
+        "threadmgr.h": "c"
     }
 }

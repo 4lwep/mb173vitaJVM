@@ -5,7 +5,7 @@ MethodArea *MainClassMethodArea;
 
 int initMainClass(){
     //For minecraft, the main class was libraries/com/mojang/minecraft/b1.7.3/net/minecraft/client/Minecraft.class maybe
-    FILE *r = fopen("./test/Add.class","rb");
+    FILE *r = fopen("app0:/Add.class","rb");
     if (!r) return 0;
     
     parsedMainClass = loadClass(r);
