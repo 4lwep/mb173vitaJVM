@@ -8,13 +8,11 @@
 
 int initMainClass();
 int initMethodArea();
-int initHeap();
 int initThread();
 int initJVM();
 
 extern ClassFile *parsedMainClass;
 extern MethodArea *MainClassMethodArea;
-extern Heap *heap;
 extern Thread *thread;
 
 #endif

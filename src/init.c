@@ -2,7 +2,6 @@
 
 ClassFile *parsedMainClass;
 MethodArea *MainClassMethodArea;
-Heap *heap;
 
 int initMainClass(){
     //For minecraft, the main class was libraries/com/mojang/minecraft/b1.7.3/net/minecraft/client/Minecraft.class maybe
@@ -17,11 +16,6 @@ int initMainClass(){
 
 int initMethodArea(){
     MainClassMethodArea = createMethodArea(parsedMainClass);
-    return 1;
-}
-
-int initHeap(){
-    heap->method_area = MainClassMethodArea;
     return 1;
 }
 
