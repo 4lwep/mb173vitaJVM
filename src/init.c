@@ -1,21 +1,13 @@
 #include<init.h>
 
-ClassFile *parsedMainClass;
-MethodArea *MainClassMethodArea;
-
-int initMainClass(){
+int initMainClass(ClassFile *c){
     //For minecraft, the main class was libraries/com/mojang/minecraft/b1.7.3/net/minecraft/client/Minecraft.class maybe
-    FILE *r = fopen("app0:/Add.class","rb");
+    FILE *r = fopen("./test/Add.class","rb");
     if (!r) return 0;
     
-    parsedMainClass = loadClass(r);
+    c = loadClass(r);
     
     fclose(r);
-    return 1;
-}
-
-int initMethodArea(){
-    MainClassMethodArea = createMethodArea(parsedMainClass);
     return 1;
 }
 
@@ -26,6 +18,13 @@ int initThread(){
 
 int initJVM(){
     initHeap();
+
+    ClassFile *parsedMainClass = malloc(sizeof(ClassFile));
+    initMainClass(parsedMainClass);
+
+    createMethodArea(parsedMainClass);
+
+    freeClassFile(parsedMainClass);
 
     return 1;
 }

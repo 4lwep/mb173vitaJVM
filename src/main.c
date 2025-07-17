@@ -59,6 +59,9 @@ int main(){
     psvDebugScreenPrintf("%d\n", heapAlloc(200));
     psvDebugScreenPrintf("%d\n", searchFreeSpaceIndex(4000));
 
+    MethodArea *data = (MethodArea*)&heap[2];
+    psvDebugScreenPrintf("Number inside heap %d\n", data->code_table_ptr);
+
     sceKernelDelayThread(10*1000000); // Wait for 3 seconds
     fclose(r);
 }

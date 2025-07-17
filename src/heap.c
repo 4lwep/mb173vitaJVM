@@ -5,7 +5,6 @@ uint8_t heap[HEAPSIZE];
 //Viene de nanoVM/src/heap.c línea 387 --- https://github.com/harbaum/NanoVM/blob/master/vm/src/heap.c
 void initHeap(){
   HeapEntry *h;
-  HeapEntry *h2;
 
   // just one big free block
   h = (HeapEntry*)&heap[0];

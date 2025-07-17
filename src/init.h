@@ -6,13 +6,10 @@
 #include<loader.h>
 #include<method_area.h>
 
-int initMainClass();
-int initMethodArea();
+int initMainClass(ClassFile *c);
 int initThread();
 int initJVM();
 
-extern ClassFile *parsedMainClass;
-extern MethodArea *MainClassMethodArea;
 extern Thread *thread;
 
 #endif

@@ -486,6 +486,7 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/main.c.obj: /home/alfre/Desktop/mb173vit
   /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdint.h
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/method_area.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/method_area.c \
+  /home/alfre/Desktop/mb173vitaJVM/src/heap.h \
   /home/alfre/Desktop/mb173vitaJVM/src/loader/attributes.h \
   /home/alfre/Desktop/mb173vitaJVM/src/loader/constant_pool.h \
   /home/alfre/Desktop/mb173vitaJVM/src/loader/fields.h \
