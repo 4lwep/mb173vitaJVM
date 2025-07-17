@@ -56,6 +56,7 @@ int main(){
     psvDebugScreenPrintf("First attribute name: %s\n", parsedClass->constant_pool[21].info.CONSTANT_utf8.text);
 
     initJVM();
+    psvDebugScreenPrintf("%d\n", heapAlloc(200));
     psvDebugScreenPrintf("%d\n", searchFreeSpaceIndex(4000));
 
     sceKernelDelayThread(10*1000000); // Wait for 3 seconds
