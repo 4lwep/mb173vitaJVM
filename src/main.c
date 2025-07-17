@@ -41,7 +41,15 @@ int main(){
 
     psvDebugScreenPrintf("Method count: %d\n", parsedClass->methods_count);
     psvDebugScreenPrintf("Second method index: %d\n", parsedClass->methods[1].name_index);
-    psvDebugScreenPrintf("Second method name: %s\n\n", parsedClass->constant_pool[17].info.CONSTANT_utf8.text);
+    psvDebugScreenPrintf("Second method name: %s\n", parsedClass->constant_pool[17].info.CONSTANT_utf8.text);
+    psvDebugScreenPrintf("Second method attrb: %d\n", parsedClass->methods[1].attributes_count);
+    psvDebugScreenPrintf("Second method attrb name index: %d\n", parsedClass->methods[1].attributes[0].attribute_name_index);
+    psvDebugScreenPrintf("Second method attrb name: %s\n", parsedClass->constant_pool[15].info.CONSTANT_utf8.text);
+    psvDebugScreenPrintf("----------------------------------------INSTRUCTIONS----------------------------------------\n");
+    for (int i = 0; i < parsedClass->methods[1].attributes[0].attribute_length; i++){
+      psvDebugScreenPrintf("%x ", parsedClass->methods[1].attributes[0].info[i]);
+    }
+    psvDebugScreenPrintf("\n");
 
     psvDebugScreenPrintf("Attrb count: %d\n", parsedClass->attributes_count);
     psvDebugScreenPrintf("First attrb: %d\n", parsedClass->attributes[0].attribute_name_index);
