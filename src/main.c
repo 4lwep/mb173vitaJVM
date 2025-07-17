@@ -47,7 +47,7 @@ int main(){
     psvDebugScreenPrintf("First attribute name: %s\n", parsedClass->constant_pool[21].info.CONSTANT_utf8.text);
 
     initHeap();
-    printf("%d\n", searchFreeSpaceIndex(4000));
+    psvDebugScreenPrintf("%d\n", searchFreeSpaceIndex(4000));
 
     sceKernelDelayThread(10*1000000); // Wait for 3 seconds
     fclose(r);
