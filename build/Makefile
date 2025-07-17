@@ -223,6 +223,30 @@ src/heap.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/heap.c.s
 .PHONY : src/heap.c.s
 
+src/init.obj: src/init.c.obj
+.PHONY : src/init.obj
+
+# target to build an object file
+src/init.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.obj
+.PHONY : src/init.c.obj
+
+src/init.i: src/init.c.i
+.PHONY : src/init.i
+
+# target to preprocess a source file
+src/init.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.i
+.PHONY : src/init.c.i
+
+src/init.s: src/init.c.s
+.PHONY : src/init.s
+
+# target to generate assembly for a file
+src/init.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.s
+.PHONY : src/init.c.s
+
 src/loader/attributes.obj: src/loader/attributes.c.obj
 .PHONY : src/loader/attributes.obj
 
@@ -458,6 +482,9 @@ help:
 	@echo "... src/heap.obj"
 	@echo "... src/heap.i"
 	@echo "... src/heap.s"
+	@echo "... src/init.obj"
+	@echo "... src/init.i"
+	@echo "... src/init.s"
 	@echo "... src/loader/attributes.obj"
 	@echo "... src/loader/attributes.i"
 	@echo "... src/loader/attributes.s"

@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<loader.h>
 #include<string.h>
+#include<init.h>
 #include <psp2/kernel/threadmgr.h>
 #include <psp2/kernel/processmgr.h>
 
@@ -46,7 +47,7 @@ int main(){
     psvDebugScreenPrintf("First attrb: %d\n", parsedClass->attributes[0].attribute_name_index);
     psvDebugScreenPrintf("First attribute name: %s\n", parsedClass->constant_pool[21].info.CONSTANT_utf8.text);
 
-    initHeap();
+    initJVM();
     psvDebugScreenPrintf("%d\n", searchFreeSpaceIndex(4000));
 
     sceKernelDelayThread(10*1000000); // Wait for 3 seconds

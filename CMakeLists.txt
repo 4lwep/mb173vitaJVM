@@ -32,6 +32,7 @@ add_executable(${PROJECT_NAME}
   src/util.c
   src/heap.c
   src/method_area.c
+  src/init.c
   src/loader/attributes.c
   src/loader/constant_pool.c
   src/loader/fields.c

@@ -25,6 +25,7 @@ int initThread(){
 }
 
 int initJVM(){
+    initHeap();
 
     return 1;
 }
