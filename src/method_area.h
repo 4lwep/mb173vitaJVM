@@ -5,6 +5,12 @@
 #include<string.h>
 
 typedef struct{
+    uint16_t length;
+    uint8_t *code;
+    method_info *method;
+} ExecutableCode;
+
+typedef struct{
     ConstantPoolEntry *constantPool;
     uint16_t constant_pool_count;
     field_info *fields;
@@ -13,12 +19,6 @@ typedef struct{
     uint16_t methods_count;
     ExecutableCode *code_table;
 } MethodArea;
-
-typedef struct{
-    uint16_t length;
-    uint8_t *code;
-    method_info *method;
-} ExecutableCode;
 
 MethodArea *createMethodArea(ClassFile *c);
 

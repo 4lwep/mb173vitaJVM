@@ -175,6 +175,54 @@ Minecraft_beta_1.7.3.vpk-vpk/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/build
 .PHONY : Minecraft_beta_1.7.3.vpk-vpk/fast
 
+src/common/debugScreen.obj: src/common/debugScreen.c.obj
+.PHONY : src/common/debugScreen.obj
+
+# target to build an object file
+src/common/debugScreen.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj
+.PHONY : src/common/debugScreen.c.obj
+
+src/common/debugScreen.i: src/common/debugScreen.c.i
+.PHONY : src/common/debugScreen.i
+
+# target to preprocess a source file
+src/common/debugScreen.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.i
+.PHONY : src/common/debugScreen.c.i
+
+src/common/debugScreen.s: src/common/debugScreen.c.s
+.PHONY : src/common/debugScreen.s
+
+# target to generate assembly for a file
+src/common/debugScreen.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.s
+.PHONY : src/common/debugScreen.c.s
+
+src/heap.obj: src/heap.c.obj
+.PHONY : src/heap.obj
+
+# target to build an object file
+src/heap.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/heap.c.obj
+.PHONY : src/heap.c.obj
+
+src/heap.i: src/heap.c.i
+.PHONY : src/heap.i
+
+# target to preprocess a source file
+src/heap.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/heap.c.i
+.PHONY : src/heap.c.i
+
+src/heap.s: src/heap.c.s
+.PHONY : src/heap.s
+
+# target to generate assembly for a file
+src/heap.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/heap.c.s
+.PHONY : src/heap.c.s
+
 src/loader/attributes.obj: src/loader/attributes.c.obj
 .PHONY : src/loader/attributes.obj
 
@@ -343,6 +391,30 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/method_area.obj: src/method_area.c.obj
+.PHONY : src/method_area.obj
+
+# target to build an object file
+src/method_area.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/method_area.c.obj
+.PHONY : src/method_area.c.obj
+
+src/method_area.i: src/method_area.c.i
+.PHONY : src/method_area.i
+
+# target to preprocess a source file
+src/method_area.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/method_area.c.i
+.PHONY : src/method_area.c.i
+
+src/method_area.s: src/method_area.c.s
+.PHONY : src/method_area.s
+
+# target to generate assembly for a file
+src/method_area.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/method_area.c.s
+.PHONY : src/method_area.c.s
+
 src/util.obj: src/util.c.obj
 .PHONY : src/util.obj
 
@@ -380,6 +452,12 @@ help:
 	@echo "... Minecraft_beta_1.7.3.self-self"
 	@echo "... Minecraft_beta_1.7.3.vpk-vpk"
 	@echo "... Minecraft_beta_1.7.3"
+	@echo "... src/common/debugScreen.obj"
+	@echo "... src/common/debugScreen.i"
+	@echo "... src/common/debugScreen.s"
+	@echo "... src/heap.obj"
+	@echo "... src/heap.i"
+	@echo "... src/heap.s"
 	@echo "... src/loader/attributes.obj"
 	@echo "... src/loader/attributes.i"
 	@echo "... src/loader/attributes.s"
@@ -401,6 +479,9 @@ help:
 	@echo "... src/main.obj"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/method_area.obj"
+	@echo "... src/method_area.i"
+	@echo "... src/method_area.s"
 	@echo "... src/util.obj"
 	@echo "... src/util.i"
 	@echo "... src/util.s"

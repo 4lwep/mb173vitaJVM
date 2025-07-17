@@ -1,5 +1,7 @@
-CMakeFiles/Minecraft_beta_1.7.3.dir/src/main.c.obj: \
- /home/alfre/Desktop/mb173vitaJVM/src/main.c \
+CMakeFiles/Minecraft_beta_1.7.3.dir/src/method_area.c.obj: \
+ /home/alfre/Desktop/mb173vitaJVM/src/method_area.c \
+ /home/alfre/Desktop/mb173vitaJVM/src/method_area.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/loader/loader.h \
  /usr/local/vitasdk/arm-vita-eabi/include/stdio.h \
  /usr/local/vitasdk/arm-vita-eabi/include/_ansi.h \
  /usr/local/vitasdk/arm-vita-eabi/include/newlib.h \
@@ -31,7 +33,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/main.c.obj: \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/sched.h \
  /usr/local/vitasdk/arm-vita-eabi/include/machine/types.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/stdio.h \
- /home/alfre/Desktop/mb173vitaJVM/src/loader/loader.h \
  /home/alfre/Desktop/mb173vitaJVM/src/loader/constant_pool.h \
  /home/alfre/Desktop/mb173vitaJVM/src/util.h \
  /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdint.h \
@@ -46,24 +47,4 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/main.c.obj: \
  /usr/local/vitasdk/arm-vita-eabi/include/string.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/_locale.h \
  /usr/local/vitasdk/arm-vita-eabi/include/strings.h \
- /usr/local/vitasdk/arm-vita-eabi/include/sys/string.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr.h \
- /usr/local/vitasdk/arm-vita-eabi/include/vitasdk/build_utils.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/callback.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/types.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2common/types.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2common/kernel/threadmgr.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/cond.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/eventflag.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/lw_cond.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/lw_mutex.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/msgpipe.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/mutex.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/rwlock.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/semaphore.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/signal.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/thread.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/cpu.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/processmgr.h \
- /usr/local/vitasdk/arm-vita-eabi/include/psp2common/kernel/processmgr.h \
- /home/alfre/Desktop/mb173vitaJVM/src/common/debugScreen_custom.h
+ /usr/local/vitasdk/arm-vita-eabi/include/sys/string.h

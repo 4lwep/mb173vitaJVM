@@ -30,6 +30,8 @@ include_directories(src)
 add_executable(${PROJECT_NAME}
   src/main.c
   src/util.c
+  src/heap.c
+  src/method_area.c
   src/loader/attributes.c
   src/loader/constant_pool.c
   src/loader/fields.c
