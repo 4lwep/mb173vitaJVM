@@ -1,8 +1,15 @@
 #include<method_area.h>
 
-MethodArea *createMethodArea(ClassFile *c){
-    MethodArea *method_area = malloc(sizeof(MethodArea));
-    ExecutableCode *code = malloc(sizeof(ExecutableCode) * c->methods_count);
+int createMethodArea(ClassFile *c){
+    int method_area = heapAlloc(sizeof(MethodArea));
+
+    MethodArea *data = (MethodArea*)&heap[method_area];
+
+    data->code_table_ptr = 2;
+    
+    
+    
+    /*ExecutableCode *code = malloc(sizeof(ExecutableCode) * c->methods_count);
 
     method_area->constantPool = c->constant_pool;
     method_area->constant_pool_count = c->constant_pool_count;
@@ -22,7 +29,7 @@ MethodArea *createMethodArea(ClassFile *c){
         }
     }
 
-    method_area->code_table = code;
+    method_area->code_table = code;*/
 
     return method_area;
 }

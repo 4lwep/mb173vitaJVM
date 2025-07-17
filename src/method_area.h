@@ -3,23 +3,24 @@
 
 #include<loader.h>
 #include<string.h>
+#include<heap.h>
 
 typedef struct{
     uint16_t length;
-    uint8_t *code;
-    method_info *method;
+    uint16_t code_array_ptr;
+    uint16_t method_ptr;
 } ExecutableCode;
 
 typedef struct{
-    ConstantPoolEntry *constantPool;
+    uint16_t constant_pool_ptr;
     uint16_t constant_pool_count;
-    field_info *fields;
+    uint16_t fields_ptr;
     uint16_t fields_count;
-    method_info *methods;
+    uint16_t methods_ptr;
     uint16_t methods_count;
-    ExecutableCode *code_table;
+    uint16_t code_table_ptr;
 } MethodArea;
 
-MethodArea *createMethodArea(ClassFile *c);
+int createMethodArea(ClassFile *c);
 
 #endif
