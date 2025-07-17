@@ -36,5 +36,6 @@ typedef struct {
 }ClassFile;
 
 ClassFile *loadClass(FILE *r);
+int freeClassFile(ClassFile *c);
 
 #endif

@@ -42,3 +42,13 @@ ClassFile *loadClass(FILE *r){
 
     return parsedClass;
 }
+
+int freeClassFile(ClassFile *c){
+    free(c->constant_pool);
+    free(c->interfaces);
+    free(c->fields);
+    free(c->methods);
+    free(c);
+
+    return 1;
+}
