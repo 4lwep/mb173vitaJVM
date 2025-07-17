@@ -10,11 +10,7 @@ void initHeap(){
   // just one big free block
   h = (HeapEntry*)&heap[0];
 
-  h->length = MAX_HEAP_ENTRY_SIZE;
-
-  h2 = (HeapEntry*)&heap[MAX_HEAP_ENTRY_SIZE + sizeof(HeapEntry)];
-
-  h2->length = MAX_HEAP_ENTRY_SIZE;
+  h->length = MAX_HEAP_ENTRY_SIZE | ENTRY_MARK_MASK;
 }
 
 int searchFreeSpaceIndex(int bytes){
@@ -24,10 +20,10 @@ int searchFreeSpaceIndex(int bytes){
   do {
     l = (HeapEntry*)&heap[curr];
 
-    if (((l->length & MAX_HEAP_ENTRY_SIZE) > bytes) && (l->length & ENTRY_MARK_MASK)){
-      printf("trueewe\n");
-      return curr;
-    }
-    curr += l->length;
-  }while(curr < l->length);
+    if (((l->length & MAX_HEAP_ENTRY_SIZE) > bytes) && (l->length & ENTRY_MARK_MASK)) return curr;
+    
+    curr += l->length + sizeof(HeapEntry);
+  }while(curr < sizeof(heap));
+
+  return -1;
 }
