@@ -2,15 +2,11 @@
 #include<malloc.h>
 #include<constant_pool.h>
 
-uint16_t constantPoolCount;
-ConstantPoolEntry *constantPool;
+uint16_t parseConstantPool(FILE *r, uint16_t entries){
+  uint16_t constantPoolPtr = heapAlloc(sizeof(ConstantPoolEntry) * entries);
+  ConstantPoolEntry *constantPool = (ConstantPoolEntry*)&heap[constantPoolPtr];
 
-void parseConstantPool(FILE *r){
-  constantPoolCount = loadU16(r);
-
-  constantPool = malloc(sizeof(ConstantPoolEntry) * constantPoolCount);
-
-  for (int i = 0; i < constantPoolCount; i++){
+  for (int i = 0; i < entries; i++){
     if(!i) continue;
     constantPool[i].tag = loadU8(r);
 
@@ -65,13 +61,19 @@ void parseConstantPool(FILE *r){
       }
       case 1: { //utf8
         constantPool[i].info.CONSTANT_utf8.length = loadU16(r);
-        constantPool[i].info.CONSTANT_utf8.text = malloc(constantPool[i].info.CONSTANT_utf8.length + 1);
+
+        //constantPool[i].info.CONSTANT_utf8.text_ptr = malloc(constantPool[i].info.CONSTANT_utf8.length + 1);
+        constantPool[i].info.CONSTANT_utf8.text_ptr = heapAlloc(constantPool[i].info.CONSTANT_utf8.length + 1);
+        uint8_t *text = (uint8_t*)&heap[constantPool[i].info.CONSTANT_utf8.text_ptr];
+
         for (int j = 0; j<constantPool[i].info.CONSTANT_utf8.length; j++){
-          constantPool[i].info.CONSTANT_utf8.text[j] = loadU8(r);
+          text[j] = loadU8(r);
         }
         break;
       }
       default: break;
     }
   }
+
+  return constantPoolPtr;
 }

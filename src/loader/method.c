@@ -1,27 +1,29 @@
 #include<method.h>
 
-uint16_t methodCount;
-method_info *methods;
+uint16_t parseMethods(FILE *r, uint16_t methodCount){
+    uint16_t methods_ptr = heapAlloc(sizeof(method_info) * methodCount);
+    method_info *methods = (method_info*)&heap[methods_ptr];
 
-void parseMethods(FILE *r){
-    methodCount = loadU16(r);
-
-    methods = malloc(sizeof(method_info) * methodCount);
     for (int i = 0; i < methodCount; i++){
         methods[i].access_flags = loadU16(r);
         methods[i].name_index = loadU16(r);
         methods[i].descriptor_index = loadU16(r);
         methods[i].attributes_count = loadU16(r);
 
-        methods[i].attributes = malloc(sizeof(attribute_info) * methods[i].attributes_count);
-        for (int j = 0; j < methods[i].attributes_count; j++){
-            methods[i].attributes[j].attribute_name_index = loadU16(r);
-            methods[i].attributes[j].attribute_length = loadU32(r);
+        methods[i].attributes_ptr = heapAlloc(sizeof(attribute_info) * methods[i].attributes_count);
+        attribute_info *attribute = (attribute_info*)&heap[methods[i].attributes_ptr];
 
-            methods[i].attributes[j].info = malloc(methods[i].attributes[j].attribute_length);
-            for (int x = 0; x < methods[i].attributes[j].attribute_length; x++){
-                methods[i].attributes[j].info[x] = loadU8(r);
+        for(int j = 0; j < methods[i].attributes_count; j++){
+            attribute[j].attribute_name_index = loadU16(r);
+            attribute[j].attribute_length = loadU32(r);
+
+            attribute[j].info_ptr = heapAlloc(attribute[j].attribute_length);
+            uint8_t *info = (uint8_t*)&heap[attribute[j].info_ptr];
+            for (int x = 0; x < attribute[j].attribute_length; x++){
+                info[x] = loadU8(r);
             }
         }
     }
+
+    return methods_ptr;
 }

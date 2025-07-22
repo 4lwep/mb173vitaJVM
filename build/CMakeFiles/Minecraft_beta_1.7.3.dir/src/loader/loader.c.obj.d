@@ -37,6 +37,7 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/loader.c.obj: \
  /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdint.h \
  /usr/local/vitasdk/arm-vita-eabi/include/stdint.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/_intsup.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/heap.h \
  /home/alfre/Desktop/mb173vitaJVM/src/loader/interfaces.h \
  /home/alfre/Desktop/mb173vitaJVM/src/loader/fields.h \
  /usr/local/vitasdk/arm-vita-eabi/include/malloc.h \

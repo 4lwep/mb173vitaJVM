@@ -3,6 +3,7 @@
 
 #include<util.h>
 #include<stdint.h>
+#include<heap.h>
 
 typedef struct {
     uint8_t tag;
@@ -55,15 +56,11 @@ typedef struct {
 
         struct {
             uint16_t length;
-            char *text;
+            uint16_t text_ptr; //puntero
         }CONSTANT_utf8;
     } info;
 } ConstantPoolEntry;
 
-//Estas variable to las tengo que liberar si las libero desde la structura
-extern uint16_t constantPoolCount;
-extern ConstantPoolEntry *constantPool;
-
-void parseConstantPool(FILE *r);
+uint16_t parseConstantPool(FILE *r, uint16_t entries);
 
 #endif

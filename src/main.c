@@ -8,62 +8,15 @@
 #include "debugScreen_custom.h"
 
 int main(){
-    FILE *r = fopen("app0:/Add.class","rb");
-    ClassFile *parsedClass = loadClass(r);
+  uint16_t ma = initJVM();
 
-    psvDebugScreenInit();
+  MethodArea *data = (MethodArea*)&heap[ma];
+  ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[data->constant_pool_ptr];
+  psvDebugScreenPrintf("Number inside heap %d\n", cp[1].tag);
 
-    psvDebugScreenPrintf("Signature: ");
-    psvDebugScreenPrintf("%08x", parsedClass->magic);
-    psvDebugScreenPrintf("\n");
+  psvDebugScreenPrintf("Tamaño de heap ocupado %d\n", heapAlloc(200));
 
-    psvDebugScreenPrintf("Version: ");
-    psvDebugScreenPrintf("%d.%d -> Java %d", parsedClass->major_version, parsedClass->minor_version, parsedClass->major_version - 44);
-    psvDebugScreenPrintf("\n\n");
-
-    psvDebugScreenPrintf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[1].tag, parsedClass->constant_pool[1].info.CONSTANT_methodref.class_index);
-    psvDebugScreenPrintf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[2].tag, parsedClass->constant_pool[2].info.CONSTANT_class.name_index);
-    psvDebugScreenPrintf("Tag: %d, text: %s\n\n", parsedClass->constant_pool[4].tag, parsedClass->constant_pool[4].info.CONSTANT_utf8.text);
-
-    psvDebugScreenPrintf("Tag: %d, Ref index: %d\n", parsedClass->constant_pool[8].tag, parsedClass->constant_pool[8].info.CONSTANT_class.name_index);
-    psvDebugScreenPrintf("Tag: %d, text: %s\n\n", parsedClass->constant_pool[10].tag, parsedClass->constant_pool[10].info.CONSTANT_utf8.text);
-
-    psvDebugScreenPrintf("Access flag: 0x%04x\n", parsedClass->access_flags);
-    psvDebugScreenPrintf("This class: %d\n", parsedClass->this_class);
-    psvDebugScreenPrintf("Super class: %d\n", parsedClass->super_class);
-
-    psvDebugScreenPrintf("Number of interfaces: %d\n", parsedClass->interfaces_count);
-    psvDebugScreenPrintf("First interface index: %d\n\n", parsedClass->interfaces[0]);
-
-    psvDebugScreenPrintf("Number of fields: %d\n", parsedClass->fields_count);
-    psvDebugScreenPrintf("Number of attr in field 0: %d\n\n", parsedClass->fields[0].attributes_count);
-    //printf("Field 0 attr name index: %d\n\n", parsedClass->fields[0].attributes[0].attribute_name_index);
-
-    psvDebugScreenPrintf("Method count: %d\n", parsedClass->methods_count);
-    psvDebugScreenPrintf("Second method index: %d\n", parsedClass->methods[1].name_index);
-    psvDebugScreenPrintf("Second method name: %s\n", parsedClass->constant_pool[17].info.CONSTANT_utf8.text);
-    psvDebugScreenPrintf("Second method attrb: %d\n", parsedClass->methods[1].attributes_count);
-    psvDebugScreenPrintf("Second method attrb name index: %d\n", parsedClass->methods[1].attributes[0].attribute_name_index);
-    psvDebugScreenPrintf("Second method attrb name: %s\n", parsedClass->constant_pool[15].info.CONSTANT_utf8.text);
-    psvDebugScreenPrintf("----------------------------------------INSTRUCTIONS----------------------------------------\n");
-    for (int i = 0; i < parsedClass->methods[1].attributes[0].attribute_length; i++){
-      psvDebugScreenPrintf("%x ", parsedClass->methods[1].attributes[0].info[i]);
-    }
-    psvDebugScreenPrintf("\n");
-
-    psvDebugScreenPrintf("Attrb count: %d\n", parsedClass->attributes_count);
-    psvDebugScreenPrintf("First attrb: %d\n", parsedClass->attributes[0].attribute_name_index);
-    psvDebugScreenPrintf("First attribute name: %s\n", parsedClass->constant_pool[21].info.CONSTANT_utf8.text);
-
-    initJVM();
-    psvDebugScreenPrintf("%d\n", heapAlloc(200));
-    psvDebugScreenPrintf("%d\n", searchFreeSpaceIndex(4000));
-
-    MethodArea *data = (MethodArea*)&heap[2];
-    psvDebugScreenPrintf("Number inside heap %d\n", data->code_table_ptr);
-
-    sceKernelDelayThread(10*1000000); // Wait for 3 seconds
-    fclose(r);
+  method_info *me = (method_info*)&heap[data->methods_ptr];
 }
 
 /*

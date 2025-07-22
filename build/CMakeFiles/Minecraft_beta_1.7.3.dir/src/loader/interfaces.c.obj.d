@@ -37,4 +37,5 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/interfaces.c.obj: \
  /home/alfre/Desktop/mb173vitaJVM/src/util.h \
  /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdint.h \
  /usr/local/vitasdk/arm-vita-eabi/include/stdint.h \
- /usr/local/vitasdk/arm-vita-eabi/include/sys/_intsup.h
+ /usr/local/vitasdk/arm-vita-eabi/include/sys/_intsup.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/heap.h

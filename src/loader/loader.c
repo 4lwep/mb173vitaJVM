@@ -6,49 +6,43 @@ ClassFile *loadClass(FILE *r){
     uint16_t minorVersion = loadU16(r);
     uint16_t majorVersion = loadU16(r);
     
-    parseConstantPool(r);
+    uint16_t constantPoolCount = loadU16(r);
+    uint16_t cp_array_ptr = parseConstantPool(r, constantPoolCount);
 
     uint16_t accessFlags = loadU16(r);
     uint16_t thisClass = loadU16(r);
     uint16_t superClass = loadU16(r);
 
-    parseInterfaces(r);
-    parseFields(r);
-    parseMethods(r);
-    parseAttributes(r);
+    uint16_t interfaceCount = loadU16(r);
+    uint16_t interface_array_ptr = parseInterfaces(r, interfaceCount);
+
+    uint16_t fieldsCount = loadU16(r);
+    uint16_t fields_array_ptr = parseFields(r, fieldsCount);
+
+    uint16_t methodCount = loadU16(r);
+    uint16_t methods_array_ptr = parseMethods(r, methodCount);
+
+    uint16_t attributesCount = loadU16(r);
+    uint16_t attributes_array_ptr = parseAttributes(r, attributesCount);
 
     parsedClass = malloc(sizeof(ClassFile));
-    parsedClass->constant_pool = malloc(sizeof(ConstantPoolEntry) * constantPoolCount);
-    parsedClass->interfaces = malloc(sizeof(uint16_t) * interfaceCount);
-    parsedClass->fields = malloc(sizeof(field_info) * fieldsCount);
-    parsedClass->methods = malloc(sizeof(method_info) * methodCount);
 
     parsedClass->magic = signature;
     parsedClass->minor_version = minorVersion;
     parsedClass->major_version = majorVersion;
     parsedClass->constant_pool_count = constantPoolCount;
-    parsedClass->constant_pool = constantPool;
+    parsedClass->cp_array_ptr = cp_array_ptr;
     parsedClass->access_flags = accessFlags;
     parsedClass->this_class = thisClass;
     parsedClass->super_class = superClass;
     parsedClass->interfaces_count = interfaceCount;
-    parsedClass->interfaces = interface;
+    parsedClass->interface_array_ptr = interface_array_ptr;
     parsedClass->fields_count = fieldsCount;
-    parsedClass->fields = fields;
+    parsedClass->fields_array_ptr = fields_array_ptr;
     parsedClass->methods_count = methodCount;
-    parsedClass->methods = methods;
+    parsedClass->methods_array_ptr = methods_array_ptr;
     parsedClass->attributes_count = attributesCount;
-    parsedClass->attributes = attributes;
+    parsedClass->attributes_array_ptr = attributes_array_ptr;
 
     return parsedClass;
-}
-
-int freeClassFile(ClassFile *c){
-    free(c->constant_pool);
-    free(c->interfaces);
-    free(c->fields);
-    free(c->methods);
-    free(c);
-
-    return 1;
 }
