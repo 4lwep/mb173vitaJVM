@@ -1,7 +1,7 @@
 #ifndef HEAP_H
 #define HEAP_H
 
-#include <method_area.h>
+#include<stdint.h>
 
 #define HEAPSIZE (50 * 1024 * 1024)  //50 MB
 #define MARK 0;
