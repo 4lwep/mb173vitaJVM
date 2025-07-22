@@ -6,9 +6,9 @@
 #include<loader.h>
 #include<method_area.h>
 
-int initMainClass(ClassFile **c);
+int initMainClass(ClassFile **c, FILE *r);
 int initThread();
-uint16_t initJVM();
+uint16_t initJVM(char* path);
 
 extern Thread *thread;
 

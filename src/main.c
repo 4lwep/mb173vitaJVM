@@ -10,15 +10,13 @@
 int main(){
   psvDebugScreenInit();
 
-  uint16_t ma = initJVM();
+  int ma = initJVM("app0:/Add.class");
 
   MethodArea *data = (MethodArea*)&heap[ma];
   ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[data->constant_pool_ptr];
-  psvDebugScreenPrintf("Number inside heap %d\n", cp[1].tag);
 
-  psvDebugScreenPrintf("Tamaño de heap ocupado %d\n", heapAlloc(200));
-
-  method_info *me = (method_info*)&heap[data->methods_ptr];
+  int a = 50 * 1024 *1024;
+  psvDebugScreenPrintf("Tamaño de heap ocupado %d/%d\n", heapAlloc(200), a);
 
   sceKernelDelayThread(10*1000000);
 
