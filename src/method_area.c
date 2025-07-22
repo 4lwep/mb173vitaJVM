@@ -1,23 +1,34 @@
 #include<method_area.h>
 
-int createMethodArea(ClassFile *c){
-    int method_area = heapAlloc(sizeof(MethodArea));
+int createMethodArea(ClassFile *c, int ma){
+    MethodArea *last_ma_data;
 
-    MethodArea *data = (MethodArea*)&heap[method_area];
+    int cur_method_area = heapAlloc(sizeof(MethodArea));
+    MethodArea *curr_ma_data = (MethodArea*)&heap[cur_method_area];
 
-    data->constant_pool_ptr = c->cp_array_ptr;
-    data->constant_pool_count = c->constant_pool_count;
-    data->fields_ptr = c->fields_array_ptr;
-    data->fields_count = c->fields_count;
-    data->methods_count = c->methods_count;
-    data->methods_ptr = c->methods_array_ptr;
+    if (ma){
+        while(1){
+            last_ma_data = (MethodArea*)&heap[ma];
+            if (last_ma_data->next_method_area_ptr) ma = last_ma_data->next_method_area_ptr; else break;
+        }
+
+        last_ma_data->next_method_area_ptr = cur_method_area;
+    }
+
+    curr_ma_data->constant_pool_ptr = c->cp_array_ptr;
+    curr_ma_data->constant_pool_count = c->constant_pool_count;
+    curr_ma_data->fields_ptr = c->fields_array_ptr;
+    curr_ma_data->fields_count = c->fields_count;
+    curr_ma_data->methods_count = c->methods_count;
+    curr_ma_data->methods_ptr = c->methods_array_ptr;
+    curr_ma_data->next_method_area_ptr = 0;
     
     int code = heapAlloc(sizeof(ExecutableCode) * c->methods_count);
-    data->code_table_ptr = code;
-    ExecutableCode *exCode = (ExecutableCode*)&heap[data->code_table_ptr];
+    curr_ma_data->code_table_ptr = code;
+    ExecutableCode *exCode = (ExecutableCode*)&heap[curr_ma_data->code_table_ptr];
     method_info *methods = (method_info*)&heap[c->methods_array_ptr];
-    ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[data->constant_pool_ptr];
-   
+    ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[curr_ma_data->constant_pool_ptr];
+    
     for (int i = 0; i < c->methods_count; i++){
         attribute_info *method_attributes = (attribute_info*)&heap[methods[i].attributes_ptr];
         for (int j = 0; j < methods[i].attributes_count; j++){
@@ -40,5 +51,5 @@ int createMethodArea(ClassFile *c){
         }
     }
 
-    return method_area;
+    return cur_method_area;
 }

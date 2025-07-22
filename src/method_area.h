@@ -6,8 +6,8 @@
 
 typedef struct{
     uint16_t length;
-    int code_array_ptr;
-    int method_ptr;
+    uint16_t code_array_ptr;
+    uint16_t method_ptr;
 } ExecutableCode;
 
 typedef struct{
@@ -19,13 +19,9 @@ typedef struct{
     int methods_ptr;
     uint16_t methods_count;
     int code_table_ptr;
+    int next_method_area_ptr;
 } MethodArea;
 
-/*typedef struct {
-    uint16_t method_area_count;
-    uint16_t method_area_entry_array_ptr;
-}MethodArea;*/
-
-int createMethodArea(ClassFile *c);
+int createMethodArea(ClassFile *c, int ma);
 
 #endif

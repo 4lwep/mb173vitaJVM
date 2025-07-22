@@ -31,6 +31,6 @@ typedef struct {
 }ClassFile;
 
 ClassFile *parseClass(FILE *r);
-int loadClass(FILE *r);
+int loadClass(FILE *r, int ma);
 
 #endif

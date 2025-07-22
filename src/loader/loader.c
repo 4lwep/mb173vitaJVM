@@ -48,12 +48,12 @@ ClassFile *parseClass(FILE *r){
     return parsedClass;
 }
 
-int loadClass(FILE *r){
+int loadClass(FILE *r, int first_ma){
     ClassFile *parsedClass;
 
     parsedClass = parseClass(r);
 
-    int ma = createMethodArea(parsedClass);
+    int ma = createMethodArea(parsedClass, first_ma);
 
     free(parsedClass);
 
