@@ -6,7 +6,7 @@
 
 typedef struct{
     uint16_t length;
-    int code_array_ptr; //ptr uint8_t Tal vez pueda ser un array normal []
+    int code_array_ptr;
     int method_ptr;
 } ExecutableCode;
 
