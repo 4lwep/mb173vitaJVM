@@ -1,7 +1,7 @@
 #include<fields.h>
 
-uint16_t parseFields(FILE *r, uint16_t fieldsCount){
-    uint16_t fields_ptr = heapAlloc(sizeof(field_info) * fieldsCount);
+int parseFields(FILE *r, uint16_t fieldsCount){
+    int fields_ptr = heapAlloc(sizeof(field_info) * fieldsCount);
     field_info *fields = (field_info*)&heap[fields_ptr];
 
     for (int i = 0; i<fieldsCount; i++){

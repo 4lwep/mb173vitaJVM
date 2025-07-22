@@ -56,11 +56,11 @@ typedef struct {
 
         struct {
             uint16_t length;
-            uint16_t text_ptr; //puntero
+            int text_ptr; //puntero
         }CONSTANT_utf8;
     } info;
 } ConstantPoolEntry;
 
-uint16_t parseConstantPool(FILE *r, uint16_t entries);
+int parseConstantPool(FILE *r, uint16_t entries);
 
 #endif

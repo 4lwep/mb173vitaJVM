@@ -7,23 +7,23 @@ ClassFile *loadClass(FILE *r){
     uint16_t majorVersion = loadU16(r);
     
     uint16_t constantPoolCount = loadU16(r);
-    uint16_t cp_array_ptr = parseConstantPool(r, constantPoolCount);
+    int cp_array_ptr = parseConstantPool(r, constantPoolCount);
 
     uint16_t accessFlags = loadU16(r);
     uint16_t thisClass = loadU16(r);
     uint16_t superClass = loadU16(r);
 
     uint16_t interfaceCount = loadU16(r);
-    uint16_t interface_array_ptr = parseInterfaces(r, interfaceCount);
+    int interface_array_ptr = parseInterfaces(r, interfaceCount);
 
     uint16_t fieldsCount = loadU16(r);
-    uint16_t fields_array_ptr = parseFields(r, fieldsCount);
+    int fields_array_ptr = parseFields(r, fieldsCount);
 
     uint16_t methodCount = loadU16(r);
-    uint16_t methods_array_ptr = parseMethods(r, methodCount);
+    int methods_array_ptr = parseMethods(r, methodCount);
 
     uint16_t attributesCount = loadU16(r);
-    uint16_t attributes_array_ptr = parseAttributes(r, attributesCount);
+    int attributes_array_ptr = parseAttributes(r, attributesCount);
 
     parsedClass = malloc(sizeof(ClassFile));
 

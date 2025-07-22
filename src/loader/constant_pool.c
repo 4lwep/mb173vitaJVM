@@ -2,8 +2,8 @@
 #include<malloc.h>
 #include<constant_pool.h>
 
-uint16_t parseConstantPool(FILE *r, uint16_t entries){
-  uint16_t constantPoolPtr = heapAlloc(sizeof(ConstantPoolEntry) * entries);
+int parseConstantPool(FILE *r, uint16_t entries){
+  int constantPoolPtr = heapAlloc(sizeof(ConstantPoolEntry) * entries);
   ConstantPoolEntry *constantPool = (ConstantPoolEntry*)&heap[constantPoolPtr];
 
   for (int i = 0; i < entries; i++){

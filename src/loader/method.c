@@ -1,7 +1,7 @@
 #include<method.h>
 
-uint16_t parseMethods(FILE *r, uint16_t methodCount){
-    uint16_t methods_ptr = heapAlloc(sizeof(method_info) * methodCount);
+int parseMethods(FILE *r, uint16_t methodCount){
+    int methods_ptr = heapAlloc(sizeof(method_info) * methodCount);
     method_info *methods = (method_info*)&heap[methods_ptr];
 
     for (int i = 0; i < methodCount; i++){

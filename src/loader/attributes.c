@@ -1,7 +1,7 @@
 #include<attributes.h>
 
-uint16_t parseAttributes(FILE *r, uint16_t attributesCount){
-    uint16_t attributes_ptr = heapAlloc(sizeof(attribute_info) * attributesCount);
+int parseAttributes(FILE *r, uint16_t attributesCount){
+    int attributes_ptr = heapAlloc(sizeof(attribute_info) * attributesCount);
     attribute_info *attributes = (attribute_info*)&heap[attributes_ptr];
 
     for (int i = 0; i < attributesCount; i++){

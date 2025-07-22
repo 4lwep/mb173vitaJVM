@@ -5,6 +5,6 @@
 #include<stdint.h>
 #include<heap.h>
 
-uint16_t parseInterfaces(FILE *r, uint16_t interfaceCount);
+int parseInterfaces(FILE *r, uint16_t interfaceCount);
 
 #endif

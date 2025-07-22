@@ -13,9 +13,9 @@ typedef struct{
 	uint16_t name_index;
     uint16_t descriptor_index;
 	uint16_t attributes_count;
-	uint16_t attributes_ptr; //ptr attribute_info
+	int attributes_ptr; //ptr attribute_info
 }method_info;
 
-uint16_t parseMethods(FILE *r, uint16_t methodCount);
+int parseMethods(FILE *r, uint16_t methodCount);
 
 #endif

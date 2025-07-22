@@ -15,8 +15,8 @@ typedef struct {
 extern uint8_t heap[HEAPSIZE];
 
 void initHeap();
-uint16_t searchFreeSpaceIndex(int bytes);
-uint16_t heapAlloc(int bytes);
+int searchFreeSpaceIndex(int bytes);
+int heapAlloc(int bytes);
 //int heap_garbage_collect();
 
 #endif

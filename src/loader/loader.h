@@ -16,18 +16,18 @@ typedef struct {
     uint16_t minor_version;
 	uint16_t major_version;
     uint16_t constant_pool_count;
-	uint16_t cp_array_ptr; //ptr constantPoolEntry
+	int cp_array_ptr; //ptr constantPoolEntry
     uint16_t access_flags;
 	uint16_t this_class;
     uint16_t super_class;
 	uint16_t interfaces_count;
-    uint16_t interface_array_ptr; //ptr uint16_t
+    int interface_array_ptr; //ptr uint16_t
 	uint16_t fields_count;
-    uint16_t fields_array_ptr; //ptr field_info
+    int fields_array_ptr; //ptr field_info
 	uint16_t methods_count;
-    uint16_t methods_array_ptr; //ptr method_info
+    int methods_array_ptr; //ptr method_info
 	uint16_t attributes_count;
-    uint16_t attributes_array_ptr; //ptr attribute_info
+    int attributes_array_ptr; //ptr attribute_info
 }ClassFile;
 
 ClassFile *loadClass(FILE *r);

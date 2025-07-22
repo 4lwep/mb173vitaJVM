@@ -11,6 +11,8 @@
         "stdint.h": "c",
         "processmgr.h": "c",
         "debugscreen_custom.h": "c",
-        "threadmgr.h": "c"
+        "threadmgr.h": "c",
+        "compare": "c",
+        "cstdint": "c"
     }
 }

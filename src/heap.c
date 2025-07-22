@@ -12,7 +12,7 @@ void initHeap(){
   h->length = MAX_HEAP_ENTRY_SIZE | ENTRY_MARK_MASK;
 }
 
-uint16_t searchFreeSpaceIndex(int bytes){
+int searchFreeSpaceIndex(int bytes){
   int curr = 0;
   HeapEntry *l;
 
@@ -40,7 +40,7 @@ uint16_t searchFreeSpaceIndex(int bytes){
   return -1;
 }
 
-uint16_t heapAlloc(int bytes){
+int heapAlloc(int bytes){
   if (bytes > MAX_HEAP_ENTRY_SIZE) return -1;
 
   HeapEntry *newEntry;
