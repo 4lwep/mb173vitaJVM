@@ -8,6 +8,8 @@
 #include "debugScreen_custom.h"
 
 int main(){
+  psvDebugScreenInit();
+
   uint16_t ma = initJVM();
 
   MethodArea *data = (MethodArea*)&heap[ma];
@@ -17,6 +19,10 @@ int main(){
   psvDebugScreenPrintf("Tamaño de heap ocupado %d\n", heapAlloc(200));
 
   method_info *me = (method_info*)&heap[data->methods_ptr];
+
+  sceKernelDelayThread(10*1000000);
+
+  return 0;
 }
 
 /*
