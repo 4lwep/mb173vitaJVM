@@ -10,7 +10,7 @@
 int main(){
   psvDebugScreenInit();
 
-  int ma = initJVM("app0:/Add.class");
+  int ma = initJVM("app0:/Add.class"); //Estoy usando el primer method area para el nodo raíz pero si implemento gabage collection tal vez no sea la mejor idea
 
   MethodArea *data = (MethodArea*)&heap[ma];
   ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[data->constant_pool_ptr];
