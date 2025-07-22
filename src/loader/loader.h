@@ -30,6 +30,7 @@ typedef struct {
     int attributes_array_ptr; //ptr attribute_info
 }ClassFile;
 
-ClassFile *loadClass(FILE *r);
+ClassFile *parseClass(FILE *r);
+int loadClass(FILE *r);
 
 #endif

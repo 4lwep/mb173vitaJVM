@@ -1,6 +1,7 @@
 #include<loader.h>
+#include<method_area.h>
 
-ClassFile *loadClass(FILE *r){
+ClassFile *parseClass(FILE *r){
     ClassFile *parsedClass;
     uint32_t signature = loadU32(r);
     uint16_t minorVersion = loadU16(r);
@@ -12,7 +13,7 @@ ClassFile *loadClass(FILE *r){
     uint16_t accessFlags = loadU16(r);
     uint16_t thisClass = loadU16(r);
     uint16_t superClass = loadU16(r);
-
+    
     uint16_t interfaceCount = loadU16(r);
     int interface_array_ptr = parseInterfaces(r, interfaceCount);
 
@@ -45,4 +46,16 @@ ClassFile *loadClass(FILE *r){
     parsedClass->attributes_array_ptr = attributes_array_ptr;
 
     return parsedClass;
+}
+
+int loadClass(FILE *r){
+    ClassFile *parsedClass;
+
+    parsedClass = parseClass(r);
+
+    int ma = createMethodArea(parsedClass);
+
+    free(parsedClass);
+
+    return ma;
 }

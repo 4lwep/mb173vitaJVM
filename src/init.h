@@ -5,10 +5,10 @@
 #include<thread.h>
 #include<loader.h>
 #include<method_area.h>
+#include<loader.h>
 
-int initMainClass(ClassFile **c, FILE *r);
 int initThread();
-uint16_t initJVM(char* path);
+int initJVM(char* path);
 
 extern Thread *thread;
 
