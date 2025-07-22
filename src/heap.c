@@ -12,12 +12,25 @@ void initHeap(){
   h->length = MAX_HEAP_ENTRY_SIZE | ENTRY_MARK_MASK;
 }
 
-int searchFreeSpaceIndex(int bytes){
+uint16_t searchFreeSpaceIndex(int bytes){
   int curr = 0;
   HeapEntry *l;
 
   do {
     l = (HeapEntry*)&heap[curr];
+
+    if (!l->length){ //Si la entrada no existe se crea una con la longitud adecuada
+      for (int i = curr; i<curr + MAX_HEAP_ENTRY_SIZE; i++){
+        HeapEntry *s = (HeapEntry*)&heap[i];
+        if(s->length){
+          l->length = (i - curr) | ENTRY_MARK_MASK;
+          return curr;
+        }
+        if(i == (curr + MAX_HEAP_ENTRY_SIZE) - 1){
+          l->length = MAX_HEAP_ENTRY_SIZE | ENTRY_MARK_MASK;
+        }
+      }
+    }
 
     if (((l->length & MAX_HEAP_ENTRY_SIZE) > bytes) && (l->length & ENTRY_MARK_MASK)) return curr;
 

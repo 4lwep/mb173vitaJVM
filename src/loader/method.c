@@ -19,6 +19,7 @@ uint16_t parseMethods(FILE *r, uint16_t methodCount){
 
             attribute[j].info_ptr = heapAlloc(attribute[j].attribute_length);
             uint8_t *info = (uint8_t*)&heap[attribute[j].info_ptr];
+    
             for (int x = 0; x < attribute[j].attribute_length; x++){
                 info[x] = loadU8(r);
             }
