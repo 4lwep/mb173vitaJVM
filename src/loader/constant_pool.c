@@ -69,6 +69,7 @@ int parseConstantPool(FILE *r, uint16_t entries){
         for (int j = 0; j<constantPool[i].info.CONSTANT_utf8.length; j++){
           text[j] = loadU8(r);
         }
+        text[constantPool[i].info.CONSTANT_utf8.length] = '\0';
         break;
       }
       default: break;
