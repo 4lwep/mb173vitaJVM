@@ -8,19 +8,23 @@
 #include "debugScreen_custom.h"
 
 int main(){
-  psvDebugScreenInit();
+    psvDebugScreenInit();
 
-  int ma = initJVM("app0:/Add.class"); //Estoy usando el primer method area para el nodo raíz pero si implemento gabage collection tal vez no sea la mejor idea
+    int ma = initJVM("app0:/Add.class"); //Estoy usando el primer method area para el nodo raíz pero si implemento gabage collection tal vez no sea la mejor idea
 
-  MethodArea *data = (MethodArea*)&heap[ma];
-  ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[data->constant_pool_ptr];
+    MethodArea *data = (MethodArea*)&heap[ma];
+    ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[data->constant_pool_ptr];
 
-  int a = 50 * 1024 *1024;
-  psvDebugScreenPrintf("Tamaño de heap ocupado %d/%d\n", heapAlloc(200), a);
+    ExecutableCode *exCode = (ExecutableCode*)&heap[data->code_table_ptr];
+    psvDebugScreenPrintf("max locals %d\n", exCode[0].max_locals);
+    psvDebugScreenPrintf("max stack %d\n", exCode[0].max_stack);
 
-  sceKernelDelayThread(10*1000000);
+    int a = 50 * 1024 *1024;
+    psvDebugScreenPrintf("Tamaño de heap ocupado %d/%d\n", heapAlloc(200), a);
 
-  return 0;
+    sceKernelDelayThread(10*1000000);
+
+    return 0;
 }
 
 /*
