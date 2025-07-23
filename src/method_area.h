@@ -8,6 +8,8 @@ typedef struct{
     uint16_t length;
     int code_array_ptr;
     int method_ptr;
+    uint16_t max_stack;
+    uint16_t max_locals;
 } ExecutableCode;
 
 typedef struct{
