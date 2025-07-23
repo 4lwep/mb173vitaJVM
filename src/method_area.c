@@ -39,7 +39,7 @@ int createMethodArea(ClassFile *c, int ma){
 
                 exCode[i].max_stack = ((uint16_t)attribute_info[0] << 8) | (uint16_t)attribute_info[1];
                 exCode[i].max_locals = ((uint16_t)attribute_info[2] << 8) | (uint16_t)attribute_info[3];
-                uint16_t codeLen = ((uint32_t)attribute_info[4] << 24) | ((uint32_t)attribute_info[5] << 16) | ((uint32_t)attribute_info[6] << 8)  |  (uint32_t)attribute_info[7];
+                uint32_t codeLen = ((uint32_t)attribute_info[4] << 24) | ((uint32_t)attribute_info[5] << 16) | ((uint32_t)attribute_info[6] << 8)  |  (uint32_t)attribute_info[7];
 
                 exCode[i].code_array_ptr = heapAlloc(codeLen);
                 uint8_t *codeStream = (uint8_t*)&heap[exCode[i].code_array_ptr];
