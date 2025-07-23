@@ -6,10 +6,10 @@ int createMethodArea(ClassFile *c, int ma){
     int cur_method_area = heapAlloc(sizeof(MethodArea));
     MethodArea *curr_ma_data = (MethodArea*)&heap[cur_method_area];
 
-    if (ma){
+    if (ma != -1){
         while(1){
             last_ma_data = (MethodArea*)&heap[ma];
-            if (last_ma_data->next_method_area_ptr) ma = last_ma_data->next_method_area_ptr; else break;
+            if (last_ma_data->next_method_area_ptr != -1) ma = last_ma_data->next_method_area_ptr; else break;
         }
 
         last_ma_data->next_method_area_ptr = cur_method_area;
@@ -21,7 +21,7 @@ int createMethodArea(ClassFile *c, int ma){
     curr_ma_data->fields_count = c->fields_count;
     curr_ma_data->methods_count = c->methods_count;
     curr_ma_data->methods_ptr = c->methods_array_ptr;
-    curr_ma_data->next_method_area_ptr = 0;
+    curr_ma_data->next_method_area_ptr = -1;
     
     int code = heapAlloc(sizeof(ExecutableCode) * c->methods_count);
     curr_ma_data->code_table_ptr = code;
