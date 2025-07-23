@@ -6,8 +6,8 @@
 
 typedef struct{
     uint16_t length;
-    uint16_t code_array_ptr;
-    uint16_t method_ptr;
+    int code_array_ptr;
+    int method_ptr;
 } ExecutableCode;
 
 typedef struct{
