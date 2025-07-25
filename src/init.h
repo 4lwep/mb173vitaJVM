@@ -6,7 +6,6 @@
 #include<method_area.h>
 #include<loader.h>
 
-int initThread();
 int initJVM(char* path);
 
 #endif

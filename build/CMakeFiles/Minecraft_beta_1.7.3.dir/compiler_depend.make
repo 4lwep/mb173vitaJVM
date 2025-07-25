@@ -81,7 +81,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/heap.c.obj: /home/alfre/Desktop/mb173vit
   /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdint.h
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/init.c \
-  /home/alfre/Desktop/mb173vitaJVM/src/frame.h \
   /home/alfre/Desktop/mb173vitaJVM/src/heap.h \
   /home/alfre/Desktop/mb173vitaJVM/src/init.h \
   /home/alfre/Desktop/mb173vitaJVM/src/loader/attributes.h \
@@ -91,7 +90,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.obj: /home/alfre/Desktop/mb173vit
   /home/alfre/Desktop/mb173vitaJVM/src/loader/loader.h \
   /home/alfre/Desktop/mb173vitaJVM/src/loader/method.h \
   /home/alfre/Desktop/mb173vitaJVM/src/method_area.h \
-  /home/alfre/Desktop/mb173vitaJVM/src/thread.h \
   /home/alfre/Desktop/mb173vitaJVM/src/util.h \
   /usr/local/vitasdk/arm-vita-eabi/include/_ansi.h \
   /usr/local/vitasdk/arm-vita-eabi/include/_newlib_version.h \
@@ -387,7 +385,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj: /home/alfre/Desktop
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/main.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/main.c \
   /home/alfre/Desktop/mb173vitaJVM/src/common/debugScreen_custom.h \
-  /home/alfre/Desktop/mb173vitaJVM/src/frame.h \
   /home/alfre/Desktop/mb173vitaJVM/src/heap.h \
   /home/alfre/Desktop/mb173vitaJVM/src/init.h \
   /home/alfre/Desktop/mb173vitaJVM/src/loader/attributes.h \
@@ -397,7 +394,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/main.c.obj: /home/alfre/Desktop/mb173vit
   /home/alfre/Desktop/mb173vitaJVM/src/loader/loader.h \
   /home/alfre/Desktop/mb173vitaJVM/src/loader/method.h \
   /home/alfre/Desktop/mb173vitaJVM/src/method_area.h \
-  /home/alfre/Desktop/mb173vitaJVM/src/thread.h \
   /home/alfre/Desktop/mb173vitaJVM/src/util.h \
   /usr/local/vitasdk/arm-vita-eabi/include/_ansi.h \
   /usr/local/vitasdk/arm-vita-eabi/include/_newlib_version.h \
@@ -564,8 +560,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/util.c.obj: /home/alfre/Desktop/mb173vit
 
 /home/alfre/Desktop/mb173vitaJVM/src/loader/loader.h:
 
-/home/alfre/Desktop/mb173vitaJVM/src/frame.h:
-
 /home/alfre/Desktop/mb173vitaJVM/src/loader/constant_pool.h:
 
 /home/alfre/Desktop/mb173vitaJVM/src/init.c:
@@ -573,8 +567,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/util.c.obj: /home/alfre/Desktop/mb173vit
 /home/alfre/Desktop/mb173vitaJVM/src/heap.h:
 
 /home/alfre/Desktop/mb173vitaJVM/src/heap.c:
-
-/home/alfre/Desktop/mb173vitaJVM/src/thread.h:
 
 /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdint.h:
 

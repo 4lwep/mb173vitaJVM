@@ -1,10 +1,5 @@
 #include<init.h>
 
-int initThread(){
-
-    return 1;
-}
-
 int initJVM(char* path){
     initHeap();
 
