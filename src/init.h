@@ -4,8 +4,10 @@
 #include<heap.h>
 #include<loader.h>
 #include<method_area.h>
-#include<loader.h>
+#include<frame.h>
 
 int initJVM(char* path);
+
+extern int pc;
 
 #endif
