@@ -34,12 +34,10 @@ void initFirstFrame(int ma){
     ExecutableCode *exCode = (ExecutableCode*)&heap[ma_data->code_table_ptr];
     ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[ma_data->constant_pool_ptr];
 
-    Frame firstFrame;
-
     for (int i = 0; i<ma_data->methods_count; i++){
         method_info *met = (method_info*)&heap[exCode[i].method_ptr];
-        char* met_name = (char*)&heap[constant_pool[met->name_index].info.CONSTANT_utf8.text_ptr];
-
+        char *met_name = (char*)&heap[constant_pool[met->name_index].info.CONSTANT_utf8.text_ptr];
+        
         if(!strcmp(met_name, "main")){
             initFrame(ma, exCode[i].method_ptr);
         }
