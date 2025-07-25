@@ -1,5 +1,7 @@
 #include<init.h>
 
+int pc = -1;
+
 int initJVM(char* path){
     initHeap();
 
