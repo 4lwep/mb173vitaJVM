@@ -11,8 +11,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.obj: \
  /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include-fixed/limits.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/_intsup.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/_stdint.h \
- /home/alfre/Desktop/mb173vitaJVM/src/thread.h \
- /home/alfre/Desktop/mb173vitaJVM/src/frame.h \
  /home/alfre/Desktop/mb173vitaJVM/src/loader/loader.h \
  /usr/local/vitasdk/arm-vita-eabi/include/stdio.h \
  /usr/local/vitasdk/arm-vita-eabi/include/_ansi.h \
