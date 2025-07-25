@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<malloc.h>
 #include<constant_pool.h>
 
 int parseConstantPool(FILE *r, uint16_t entries){
@@ -46,12 +45,14 @@ int parseConstantPool(FILE *r, uint16_t entries){
         constantPool[i].info.CONSTANT_long.high_bytes = loadU32(r);
         constantPool[i].info.CONSTANT_long.low_bytes = loadU32(r);
         i++;
+        constantPool[i].tag = 0; //
         break;
       }
       case 6:{ //double --- Falta especificar algunos casos como con los float
         constantPool[i].info.CONSTANT_double.high_bytes = loadU32(r);
         constantPool[i].info.CONSTANT_double.low_bytes = loadU32(r);
         i++;
+        constantPool[i].tag = 0; //
         break;
       }
       case 12:{ //nameAndType
@@ -62,7 +63,6 @@ int parseConstantPool(FILE *r, uint16_t entries){
       case 1: { //utf8
         constantPool[i].info.CONSTANT_utf8.length = loadU16(r);
 
-        //constantPool[i].info.CONSTANT_utf8.text_ptr = malloc(constantPool[i].info.CONSTANT_utf8.length + 1);
         constantPool[i].info.CONSTANT_utf8.text_ptr = heapAlloc(constantPool[i].info.CONSTANT_utf8.length + 1);
         uint8_t *text = (uint8_t*)&heap[constantPool[i].info.CONSTANT_utf8.text_ptr];
 
@@ -72,9 +72,11 @@ int parseConstantPool(FILE *r, uint16_t entries){
         text[constantPool[i].info.CONSTANT_utf8.length] = '\0';
         break;
       }
-      default: break;
+      default:{
+        printf("tag desconocido");
+        break;
+      } 
     }
   }
-
   return constantPoolPtr;
 }
