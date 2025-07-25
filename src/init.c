@@ -7,6 +7,8 @@ int initJVM(char* path){
 
     FILE *r = fopen(path, "rb");
     int ma = loadClass(r, -1);
+
+    initFirstFrame(ma);
     
     return ma;
 }
