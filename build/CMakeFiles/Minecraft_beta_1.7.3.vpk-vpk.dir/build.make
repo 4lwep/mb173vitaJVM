@@ -72,8 +72,9 @@ CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk: Minecraft_beta_1.7.3.vpk.out
 Minecraft_beta_1.7.3.vpk.out: Minecraft_beta_1.7.3.vpk_param.sfo
 Minecraft_beta_1.7.3.vpk.out: Minecraft_beta_1.7.3.self
 Minecraft_beta_1.7.3.vpk.out: /home/alfre/Desktop/mb173vitaJVM/test/Add.class
+Minecraft_beta_1.7.3.vpk.out: /home/alfre/Desktop/mb173vitaJVM/test/JvmTest.class
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building vpk Minecraft_beta_1.7.3.vpk"
-	/usr/local/vitasdk/bin/vita-pack-vpk -a /home/alfre/Desktop/mb173vitaJVM/test/Add.class=Add.class -s /home/alfre/Desktop/mb173vitaJVM/build/Minecraft_beta_1.7.3.vpk_param.sfo -b /home/alfre/Desktop/mb173vitaJVM/build/Minecraft_beta_1.7.3.self /home/alfre/Desktop/mb173vitaJVM/build/Minecraft_beta_1.7.3.vpk.out
+	/usr/local/vitasdk/bin/vita-pack-vpk -a /home/alfre/Desktop/mb173vitaJVM/test/Add.class=Add.class -a /home/alfre/Desktop/mb173vitaJVM/test/JvmTest.class=JvmTest.class -s /home/alfre/Desktop/mb173vitaJVM/build/Minecraft_beta_1.7.3.vpk_param.sfo -b /home/alfre/Desktop/mb173vitaJVM/build/Minecraft_beta_1.7.3.self /home/alfre/Desktop/mb173vitaJVM/build/Minecraft_beta_1.7.3.vpk.out
 
 Minecraft_beta_1.7.3.vpk_param.sfo: Minecraft_beta_1.7.3.self
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating param.sfo for Minecraft_beta_1.7.3.vpk"
