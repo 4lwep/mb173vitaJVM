@@ -21,6 +21,8 @@ void initFrame(int ma, int method){
             frame.operand_stack_ptr = createStack(exCode[i].max_stack);
             frame.current_operand_stack_entry = -1;
             frame.pc_ptr = &pc;
+            frame.method_ptr = method;
+            frame.method_area_pointer = ma;
         }
     }
 

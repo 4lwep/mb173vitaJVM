@@ -16,6 +16,8 @@ typedef struct{
     int current_operand_stack_entry;
     int *pc_ptr;
     int curr_pc_context;
+    int method_ptr;
+    int method_area_pointer;
 } Frame;
 
 void initFrame(int ma, int method);
