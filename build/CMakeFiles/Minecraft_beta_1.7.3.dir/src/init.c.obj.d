@@ -50,4 +50,5 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.obj: \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/_locale.h \
  /usr/local/vitasdk/arm-vita-eabi/include/strings.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/string.h \
- /home/alfre/Desktop/mb173vitaJVM/src/frame/frame.h
+ /home/alfre/Desktop/mb173vitaJVM/src/frame/frame.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/frame/stacks.h
