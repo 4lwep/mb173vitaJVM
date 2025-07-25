@@ -58,4 +58,5 @@ vita_create_vpk(${PROJECT_NAME}.vpk ${VITA_TITLEID} ${PROJECT_NAME}.self
   VERSION ${VITA_VERSION}
   NAME ${VITA_APP_NAME}
   FILE test/Add.class Add.class
+  FILE test/JvmTest.class JvmTest.class
 )
