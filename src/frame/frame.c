@@ -42,8 +42,6 @@ void initFirstFrame(int ma){
             initFrame(ma, exCode[i].method_ptr);
         }
     }
-    
-    pushFrame(firstFrame);
 }
 
 void pushFrame(Frame frame){
