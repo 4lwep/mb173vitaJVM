@@ -25,6 +25,7 @@ set(VITA_MKSFOEX_FLAGS "${VITA_MKSFOEX_FLAGS} -d PARENTAL_LEVEL=1")
 
 include_directories(src/loader)
 include_directories(src/common)
+include_directories(src/frame)
 include_directories(src)
 
 add_executable(${PROJECT_NAME}
@@ -33,6 +34,8 @@ add_executable(${PROJECT_NAME}
   src/heap.c
   src/method_area.c
   src/init.c
+  src/frame/frame.c
+  src/frame/stacks.c
   src/loader/attributes.c
   src/loader/constant_pool.c
   src/loader/fields.c

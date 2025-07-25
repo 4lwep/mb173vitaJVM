@@ -4,7 +4,7 @@
 # compile C with /usr/local/vitasdk/bin/arm-vita-eabi-gcc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/alfre/Desktop/mb173vitaJVM/src/loader -I/home/alfre/Desktop/mb173vitaJVM/src/common -I/home/alfre/Desktop/mb173vitaJVM/src
+C_INCLUDES = -I/home/alfre/Desktop/mb173vitaJVM/src/loader -I/home/alfre/Desktop/mb173vitaJVM/src/common -I/home/alfre/Desktop/mb173vitaJVM/src/frame -I/home/alfre/Desktop/mb173vitaJVM/src
 
 C_FLAGS =  -Wl,-q -Wall
 

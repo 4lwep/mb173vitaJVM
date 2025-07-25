@@ -94,12 +94,12 @@ clean: CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/clean
 CMakeFiles/Minecraft_beta_1.7.3.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Built target Minecraft_beta_1.7.3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target Minecraft_beta_1.7.3"
 .PHONY : CMakeFiles/Minecraft_beta_1.7.3.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Minecraft_beta_1.7.3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Minecraft_beta_1.7.3.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles 0
 .PHONY : CMakeFiles/Minecraft_beta_1.7.3.dir/rule
@@ -111,7 +111,7 @@ Minecraft_beta_1.7.3: CMakeFiles/Minecraft_beta_1.7.3.dir/rule
 # codegen rule for target.
 CMakeFiles/Minecraft_beta_1.7.3.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Finished codegen for target Minecraft_beta_1.7.3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Finished codegen for target Minecraft_beta_1.7.3"
 .PHONY : CMakeFiles/Minecraft_beta_1.7.3.dir/codegen
 
 # clean rule for target.
@@ -126,12 +126,12 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/clean:
 CMakeFiles/Minecraft_beta_1.7.3-velf.dir/all: CMakeFiles/Minecraft_beta_1.7.3.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3-velf.dir/build.make CMakeFiles/Minecraft_beta_1.7.3-velf.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3-velf.dir/build.make CMakeFiles/Minecraft_beta_1.7.3-velf.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=14 "Built target Minecraft_beta_1.7.3-velf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=16 "Built target Minecraft_beta_1.7.3-velf"
 .PHONY : CMakeFiles/Minecraft_beta_1.7.3-velf.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Minecraft_beta_1.7.3-velf.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles 16
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Minecraft_beta_1.7.3-velf.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles 0
 .PHONY : CMakeFiles/Minecraft_beta_1.7.3-velf.dir/rule
@@ -143,7 +143,7 @@ Minecraft_beta_1.7.3-velf: CMakeFiles/Minecraft_beta_1.7.3-velf.dir/rule
 # codegen rule for target.
 CMakeFiles/Minecraft_beta_1.7.3-velf.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3-velf.dir/build.make CMakeFiles/Minecraft_beta_1.7.3-velf.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=14 "Finished codegen for target Minecraft_beta_1.7.3-velf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=16 "Finished codegen for target Minecraft_beta_1.7.3-velf"
 .PHONY : CMakeFiles/Minecraft_beta_1.7.3-velf.dir/codegen
 
 # clean rule for target.
@@ -159,12 +159,12 @@ CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/all: CMakeFiles/Minecraft_beta_1.7
 CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/all: CMakeFiles/Minecraft_beta_1.7.3-velf.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=15 "Built target Minecraft_beta_1.7.3.self-self"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=17 "Built target Minecraft_beta_1.7.3.self-self"
 .PHONY : CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles 17
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles 0
 .PHONY : CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/rule
@@ -177,7 +177,7 @@ Minecraft_beta_1.7.3.self-self: CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/ru
 CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/codegen: CMakeFiles/Minecraft_beta_1.7.3.dir/all
 CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/codegen: CMakeFiles/Minecraft_beta_1.7.3-velf.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=15 "Finished codegen for target Minecraft_beta_1.7.3.self-self"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=17 "Finished codegen for target Minecraft_beta_1.7.3.self-self"
 .PHONY : CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/codegen
 
 # clean rule for target.
@@ -192,12 +192,12 @@ CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/clean:
 CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/all: CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=16,17 "Built target Minecraft_beta_1.7.3.vpk-vpk"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=18,19 "Built target Minecraft_beta_1.7.3.vpk-vpk"
 .PHONY : CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles 19
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles 0
 .PHONY : CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/rule
@@ -209,7 +209,7 @@ Minecraft_beta_1.7.3.vpk-vpk: CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/rule
 # codegen rule for target.
 CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/codegen: CMakeFiles/Minecraft_beta_1.7.3.self-self.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=16,17 "Finished codegen for target Minecraft_beta_1.7.3.vpk-vpk"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=18,19 "Finished codegen for target Minecraft_beta_1.7.3.vpk-vpk"
 .PHONY : CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir/codegen
 
 # clean rule for target.

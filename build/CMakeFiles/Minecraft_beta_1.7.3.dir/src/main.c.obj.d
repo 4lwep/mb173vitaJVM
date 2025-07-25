@@ -50,6 +50,7 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/main.c.obj: \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/string.h \
  /home/alfre/Desktop/mb173vitaJVM/src/init.h \
  /home/alfre/Desktop/mb173vitaJVM/src/method_area.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/frame/frame.h \
  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr.h \
  /usr/local/vitasdk/arm-vita-eabi/include/vitasdk/build_utils.h \
  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/callback.h \

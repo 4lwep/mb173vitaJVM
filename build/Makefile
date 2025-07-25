@@ -199,6 +199,54 @@ src/common/debugScreen.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.s
 .PHONY : src/common/debugScreen.c.s
 
+src/frame/frame.obj: src/frame/frame.c.obj
+.PHONY : src/frame/frame.obj
+
+# target to build an object file
+src/frame/frame.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj
+.PHONY : src/frame/frame.c.obj
+
+src/frame/frame.i: src/frame/frame.c.i
+.PHONY : src/frame/frame.i
+
+# target to preprocess a source file
+src/frame/frame.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.i
+.PHONY : src/frame/frame.c.i
+
+src/frame/frame.s: src/frame/frame.c.s
+.PHONY : src/frame/frame.s
+
+# target to generate assembly for a file
+src/frame/frame.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.s
+.PHONY : src/frame/frame.c.s
+
+src/frame/stacks.obj: src/frame/stacks.c.obj
+.PHONY : src/frame/stacks.obj
+
+# target to build an object file
+src/frame/stacks.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj
+.PHONY : src/frame/stacks.c.obj
+
+src/frame/stacks.i: src/frame/stacks.c.i
+.PHONY : src/frame/stacks.i
+
+# target to preprocess a source file
+src/frame/stacks.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.i
+.PHONY : src/frame/stacks.c.i
+
+src/frame/stacks.s: src/frame/stacks.c.s
+.PHONY : src/frame/stacks.s
+
+# target to generate assembly for a file
+src/frame/stacks.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.s
+.PHONY : src/frame/stacks.c.s
+
 src/heap.obj: src/heap.c.obj
 .PHONY : src/heap.obj
 
@@ -479,6 +527,12 @@ help:
 	@echo "... src/common/debugScreen.obj"
 	@echo "... src/common/debugScreen.i"
 	@echo "... src/common/debugScreen.s"
+	@echo "... src/frame/frame.obj"
+	@echo "... src/frame/frame.i"
+	@echo "... src/frame/frame.s"
+	@echo "... src/frame/stacks.obj"
+	@echo "... src/frame/stacks.i"
+	@echo "... src/frame/stacks.s"
 	@echo "... src/heap.obj"
 	@echo "... src/heap.i"
 	@echo "... src/heap.s"

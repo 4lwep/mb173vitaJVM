@@ -9,6 +9,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/alfre/Desktop/mb173vitaJVM/src/common/debugScreen.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj.d"
+  "/home/alfre/Desktop/mb173vitaJVM/src/frame/frame.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj.d"
+  "/home/alfre/Desktop/mb173vitaJVM/src/frame/stacks.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj.d"
   "/home/alfre/Desktop/mb173vitaJVM/src/heap.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/heap.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/heap.c.obj.d"
   "/home/alfre/Desktop/mb173vitaJVM/src/init.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.obj.d"
   "/home/alfre/Desktop/mb173vitaJVM/src/loader/attributes.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj.d"

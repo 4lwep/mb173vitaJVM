@@ -1,6 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj"
   "CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj.d"
+  "CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj"
+  "CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj.d"
+  "CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj"
+  "CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj.d"
   "CMakeFiles/Minecraft_beta_1.7.3.dir/src/heap.c.obj"
   "CMakeFiles/Minecraft_beta_1.7.3.dir/src/heap.c.obj.d"
   "CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.obj"
