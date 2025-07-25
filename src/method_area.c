@@ -33,7 +33,7 @@ int createMethodArea(ClassFile *c, int ma){
         attribute_info *method_attributes = (attribute_info*)&heap[methods[i].attributes_ptr];
         for (int j = 0; j < methods[i].attributes_count; j++){
             char *attribute_name = (char*)&heap[constant_pool[method_attributes[j].attribute_name_index].info.CONSTANT_utf8.text_ptr];
-            
+
             if (!strcmp(attribute_name, "Code")){
                 uint8_t *attribute_info = (uint8_t*)&heap[method_attributes[j].info_ptr];
 
@@ -48,7 +48,7 @@ int createMethodArea(ClassFile *c, int ma){
                     codeStream[x] = attribute_info[x+8];
                 }
                 exCode[i].length = codeLen;
-                exCode[i].method_ptr = c->methods_array_ptr * i + 1;
+                exCode[i].method_ptr = c->methods_array_ptr + (sizeof(method_info) * i);
             }
         }
     }
