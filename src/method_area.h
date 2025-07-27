@@ -24,6 +24,21 @@ typedef struct{
     int next_method_area_ptr;
 } MethodArea;
 
+#define TABLE_SIZE 1000
+
+typedef struct Entry {
+    char* key;
+    int value;
+    struct Entry* next; // Para manejar colisiones (encadenamiento)
+} MaHashMapEntry;
+
+typedef struct {
+    MaHashMapEntry* buckets[TABLE_SIZE]; // Array de listas
+} MaHashMap;
+
 int createMethodArea(ClassFile *c, int ma);
+unsigned int hash(const char* key);
+void insert(MaHashMap* map, const char* key, int value);
+int get(MaHashMap* map, const char* key);
 
 #endif

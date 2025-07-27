@@ -61,3 +61,47 @@ int createMethodArea(ClassFile *c, int ma){
 
     return cur_method_area;
 }
+
+//Chat gpt de aquí para abajo
+unsigned int hash(const char* key) {
+    unsigned int h = 0;
+    while (*key) {
+        h = (h * 31) + *key++; // Multiplica por un primo y suma el char
+    }
+    return h % TABLE_SIZE;
+}
+
+void insert(MaHashMap* map, const char* key, int value) {
+    unsigned int index = hash(key);
+    MaHashMapEntry* current = map->buckets[index];
+
+    while (current) {
+        if (strcmp(current->key, key) == 0) {
+            current->value = value; // Actualiza si ya existe
+            return;
+        }
+        current = current->next;
+    }
+
+    // Si no existe, crea nueva entrada
+    MaHashMapEntry* newEntry = malloc(sizeof(MaHashMapEntry));
+    newEntry->key = strdup(key);
+    newEntry->value = value;
+    newEntry->next = map->buckets[index];
+    map->buckets[index] = newEntry;
+}
+
+int get(MaHashMap* map, const char* key) {
+    unsigned int index = hash(key);
+    MaHashMapEntry* current = map->buckets[index];
+
+    while (current) {
+        if (strcmp(current->key, key) == 0) {
+            return current->value;
+        }
+        current = current->next;
+    }
+
+    // Si no se encuentra
+    return -1; // O algún valor que indique "no encontrado"
+}
