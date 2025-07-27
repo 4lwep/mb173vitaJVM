@@ -9,5 +9,6 @@
 int initJVM(char* path);
 
 extern int pc;
+extern MaHashMap *ma_hashmap;
 
 #endif
