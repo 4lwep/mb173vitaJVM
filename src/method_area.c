@@ -31,6 +31,12 @@ int createMethodArea(ClassFile *c, int ma){
     
     for (int i = 0; i < c->methods_count; i++){
         attribute_info *method_attributes = (attribute_info*)&heap[methods[i].attributes_ptr];
+        
+        if (methods[i].access_flags & 0x0100){
+            exCode[i].method_ptr = c->methods_array_ptr + (sizeof(method_info) * i);
+            continue;
+        }
+
         for (int j = 0; j < methods[i].attributes_count; j++){
             char *attribute_name = (char*)&heap[constant_pool[method_attributes[j].attribute_name_index].info.CONSTANT_utf8.text_ptr];
 

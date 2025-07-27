@@ -69,7 +69,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj: /home/alfre/De
   /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdint.h
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/frame/frame.c \
-  /home/alfre/Desktop/mb173vitaJVM/src/common/debugScreen_custom.h \
   /home/alfre/Desktop/mb173vitaJVM/src/frame/frame.h \
   /home/alfre/Desktop/mb173vitaJVM/src/frame/stacks.h \
   /home/alfre/Desktop/mb173vitaJVM/src/heap.h \
@@ -94,24 +93,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj: /home/alfre/Desktop/m
   /usr/local/vitasdk/arm-vita-eabi/include/machine/types.h \
   /usr/local/vitasdk/arm-vita-eabi/include/malloc.h \
   /usr/local/vitasdk/arm-vita-eabi/include/newlib.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/cpu.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/processmgr.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/callback.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/cond.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/eventflag.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/lw_cond.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/lw_mutex.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/msgpipe.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/mutex.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/rwlock.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/semaphore.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/signal.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/thread.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/types.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2common/kernel/processmgr.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2common/kernel/threadmgr.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2common/types.h \
   /usr/local/vitasdk/arm-vita-eabi/include/stdint.h \
   /usr/local/vitasdk/arm-vita-eabi/include/stdio.h \
   /usr/local/vitasdk/arm-vita-eabi/include/string.h \
@@ -135,7 +116,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj: /home/alfre/Desktop/m
   /usr/local/vitasdk/arm-vita-eabi/include/sys/string.h \
   /usr/local/vitasdk/arm-vita-eabi/include/sys/timespec.h \
   /usr/local/vitasdk/arm-vita-eabi/include/sys/types.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/vitasdk/build_utils.h \
   /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include-fixed/limits.h \
   /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdarg.h \
   /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stddef.h \
@@ -173,7 +153,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/heap.c.obj: /home/alfre/Desktop/mb173vit
   /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdint.h
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/init.c \
-  /home/alfre/Desktop/mb173vitaJVM/src/common/debugScreen_custom.h \
   /home/alfre/Desktop/mb173vitaJVM/src/frame/frame.h \
   /home/alfre/Desktop/mb173vitaJVM/src/frame/stacks.h \
   /home/alfre/Desktop/mb173vitaJVM/src/heap.h \
@@ -198,24 +177,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.obj: /home/alfre/Desktop/mb173vit
   /usr/local/vitasdk/arm-vita-eabi/include/machine/types.h \
   /usr/local/vitasdk/arm-vita-eabi/include/malloc.h \
   /usr/local/vitasdk/arm-vita-eabi/include/newlib.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/cpu.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/processmgr.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/callback.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/cond.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/eventflag.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/lw_cond.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/lw_mutex.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/msgpipe.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/mutex.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/rwlock.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/semaphore.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/signal.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/thread.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2/types.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2common/kernel/processmgr.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2common/kernel/threadmgr.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/psp2common/types.h \
   /usr/local/vitasdk/arm-vita-eabi/include/stdint.h \
   /usr/local/vitasdk/arm-vita-eabi/include/stdio.h \
   /usr/local/vitasdk/arm-vita-eabi/include/string.h \
@@ -239,7 +200,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.obj: /home/alfre/Desktop/mb173vit
   /usr/local/vitasdk/arm-vita-eabi/include/sys/string.h \
   /usr/local/vitasdk/arm-vita-eabi/include/sys/timespec.h \
   /usr/local/vitasdk/arm-vita-eabi/include/sys/types.h \
-  /usr/local/vitasdk/arm-vita-eabi/include/vitasdk/build_utils.h \
   /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include-fixed/limits.h \
   /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdarg.h \
   /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stddef.h \
@@ -656,6 +616,8 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/util.c.obj: /home/alfre/Desktop/mb173vit
   /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdint.h
 
 
+/usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/processmgr.h:
+
 /home/alfre/Desktop/mb173vitaJVM/src/loader/method.c:
 
 /home/alfre/Desktop/mb173vitaJVM/src/loader/loader.c:
@@ -663,8 +625,6 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/util.c.obj: /home/alfre/Desktop/mb173vit
 /home/alfre/Desktop/mb173vitaJVM/src/loader/interfaces.c:
 
 /home/alfre/Desktop/mb173vitaJVM/src/heap.c:
-
-/usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/processmgr.h:
 
 /usr/local/vitasdk/arm-vita-eabi/include/machine/malloc.h:
 
