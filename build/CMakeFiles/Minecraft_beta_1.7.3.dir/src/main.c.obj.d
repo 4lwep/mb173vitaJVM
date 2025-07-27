@@ -37,21 +37,22 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/main.c.obj: \
  /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdint.h \
  /usr/local/vitasdk/arm-vita-eabi/include/stdint.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/_intsup.h \
- /home/alfre/Desktop/mb173vitaJVM/src/heap.h \
- /home/alfre/Desktop/mb173vitaJVM/src/loader/interfaces.h \
- /home/alfre/Desktop/mb173vitaJVM/src/loader/fields.h \
- /usr/local/vitasdk/arm-vita-eabi/include/malloc.h \
- /usr/local/vitasdk/arm-vita-eabi/include/machine/malloc.h \
- /home/alfre/Desktop/mb173vitaJVM/src/loader/attributes.h \
- /home/alfre/Desktop/mb173vitaJVM/src/loader/method.h \
  /usr/local/vitasdk/arm-vita-eabi/include/string.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/_locale.h \
  /usr/local/vitasdk/arm-vita-eabi/include/strings.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/string.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/malloc.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/machine/malloc.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/heap.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/loader/interfaces.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/loader/fields.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/loader/attributes.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/loader/method.h \
  /home/alfre/Desktop/mb173vitaJVM/src/init.h \
  /home/alfre/Desktop/mb173vitaJVM/src/method_area.h \
  /home/alfre/Desktop/mb173vitaJVM/src/frame/frame.h \
  /home/alfre/Desktop/mb173vitaJVM/src/frame/stacks.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/runtime.h \
  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr.h \
  /usr/local/vitasdk/arm-vita-eabi/include/vitasdk/build_utils.h \
  /usr/local/vitasdk/arm-vita-eabi/include/psp2/kernel/threadmgr/callback.h \

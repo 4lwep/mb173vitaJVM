@@ -21,6 +21,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/alfre/Desktop/mb173vitaJVM/src/loader/method.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj.d"
   "/home/alfre/Desktop/mb173vitaJVM/src/main.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/main.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/main.c.obj.d"
   "/home/alfre/Desktop/mb173vitaJVM/src/method_area.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/method_area.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/method_area.c.obj.d"
+  "/home/alfre/Desktop/mb173vitaJVM/src/runtime.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj.d"
   "/home/alfre/Desktop/mb173vitaJVM/src/util.c" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/util.c.obj" "gcc" "CMakeFiles/Minecraft_beta_1.7.3.dir/src/util.c.obj.d"
   )
 

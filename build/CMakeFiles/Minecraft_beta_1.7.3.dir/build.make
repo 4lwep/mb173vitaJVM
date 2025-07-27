@@ -142,10 +142,24 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.s"
 	/usr/local/vitasdk/bin/arm-vita-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/alfre/Desktop/mb173vitaJVM/src/init.c -o CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.s
 
+CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/flags.make
+CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/runtime.c
+CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj"
+	/usr/local/vitasdk/bin/arm-vita-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj -MF CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj.d -o CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj -c /home/alfre/Desktop/mb173vitaJVM/src/runtime.c
+
+CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.i"
+	/usr/local/vitasdk/bin/arm-vita-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/alfre/Desktop/mb173vitaJVM/src/runtime.c > CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.i
+
+CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.s"
+	/usr/local/vitasdk/bin/arm-vita-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/alfre/Desktop/mb173vitaJVM/src/runtime.c -o CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.s
+
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/flags.make
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/frame/frame.c
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj"
 	/usr/local/vitasdk/bin/arm-vita-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj -MF CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj.d -o CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj -c /home/alfre/Desktop/mb173vitaJVM/src/frame/frame.c
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.i: cmake_force
@@ -159,7 +173,7 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.s: cmake_force
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/flags.make
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/frame/stacks.c
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj"
 	/usr/local/vitasdk/bin/arm-vita-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj -MF CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj.d -o CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj -c /home/alfre/Desktop/mb173vitaJVM/src/frame/stacks.c
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.i: cmake_force
@@ -173,7 +187,7 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.s: cmake_force
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/flags.make
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/loader/attributes.c
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj"
 	/usr/local/vitasdk/bin/arm-vita-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj -MF CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj.d -o CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj -c /home/alfre/Desktop/mb173vitaJVM/src/loader/attributes.c
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.i: cmake_force
@@ -187,7 +201,7 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.s: cmake_force
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/constant_pool.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/flags.make
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/constant_pool.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/loader/constant_pool.c
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/constant_pool.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/constant_pool.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/constant_pool.c.obj"
 	/usr/local/vitasdk/bin/arm-vita-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/constant_pool.c.obj -MF CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/constant_pool.c.obj.d -o CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/constant_pool.c.obj -c /home/alfre/Desktop/mb173vitaJVM/src/loader/constant_pool.c
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/constant_pool.c.i: cmake_force
@@ -201,7 +215,7 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/constant_pool.c.s: cmake_force
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/fields.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/flags.make
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/fields.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/loader/fields.c
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/fields.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/fields.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/fields.c.obj"
 	/usr/local/vitasdk/bin/arm-vita-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/fields.c.obj -MF CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/fields.c.obj.d -o CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/fields.c.obj -c /home/alfre/Desktop/mb173vitaJVM/src/loader/fields.c
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/fields.c.i: cmake_force
@@ -215,7 +229,7 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/fields.c.s: cmake_force
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/interfaces.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/flags.make
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/interfaces.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/loader/interfaces.c
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/interfaces.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/interfaces.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/interfaces.c.obj"
 	/usr/local/vitasdk/bin/arm-vita-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/interfaces.c.obj -MF CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/interfaces.c.obj.d -o CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/interfaces.c.obj -c /home/alfre/Desktop/mb173vitaJVM/src/loader/interfaces.c
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/interfaces.c.i: cmake_force
@@ -229,7 +243,7 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/interfaces.c.s: cmake_force
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/loader.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/flags.make
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/loader.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/loader/loader.c
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/loader.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/loader.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/loader.c.obj"
 	/usr/local/vitasdk/bin/arm-vita-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/loader.c.obj -MF CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/loader.c.obj.d -o CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/loader.c.obj -c /home/alfre/Desktop/mb173vitaJVM/src/loader/loader.c
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/loader.c.i: cmake_force
@@ -243,7 +257,7 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/loader.c.s: cmake_force
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/flags.make
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/loader/method.c
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj"
 	/usr/local/vitasdk/bin/arm-vita-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj -MF CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj.d -o CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj -c /home/alfre/Desktop/mb173vitaJVM/src/loader/method.c
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.i: cmake_force
@@ -257,7 +271,7 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.s: cmake_force
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/flags.make
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj: /home/alfre/Desktop/mb173vitaJVM/src/common/debugScreen.c
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj: CMakeFiles/Minecraft_beta_1.7.3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj"
 	/usr/local/vitasdk/bin/arm-vita-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj -MF CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj.d -o CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj -c /home/alfre/Desktop/mb173vitaJVM/src/common/debugScreen.c
 
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.i: cmake_force
@@ -275,6 +289,7 @@ Minecraft_beta_1_7_3_OBJECTS = \
 "CMakeFiles/Minecraft_beta_1.7.3.dir/src/heap.c.obj" \
 "CMakeFiles/Minecraft_beta_1.7.3.dir/src/method_area.c.obj" \
 "CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.obj" \
+"CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj" \
 "CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj" \
 "CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj" \
 "CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj" \
@@ -293,6 +308,7 @@ Minecraft_beta_1.7.3: CMakeFiles/Minecraft_beta_1.7.3.dir/src/util.c.obj
 Minecraft_beta_1.7.3: CMakeFiles/Minecraft_beta_1.7.3.dir/src/heap.c.obj
 Minecraft_beta_1.7.3: CMakeFiles/Minecraft_beta_1.7.3.dir/src/method_area.c.obj
 Minecraft_beta_1.7.3: CMakeFiles/Minecraft_beta_1.7.3.dir/src/init.c.obj
+Minecraft_beta_1.7.3: CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj
 Minecraft_beta_1.7.3: CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/frame.c.obj
 Minecraft_beta_1.7.3: CMakeFiles/Minecraft_beta_1.7.3.dir/src/frame/stacks.c.obj
 Minecraft_beta_1.7.3: CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/attributes.c.obj
@@ -304,7 +320,7 @@ Minecraft_beta_1.7.3: CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.ob
 Minecraft_beta_1.7.3: CMakeFiles/Minecraft_beta_1.7.3.dir/src/common/debugScreen.c.obj
 Minecraft_beta_1.7.3: CMakeFiles/Minecraft_beta_1.7.3.dir/build.make
 Minecraft_beta_1.7.3: CMakeFiles/Minecraft_beta_1.7.3.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking C executable Minecraft_beta_1.7.3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking C executable Minecraft_beta_1.7.3"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Minecraft_beta_1.7.3.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

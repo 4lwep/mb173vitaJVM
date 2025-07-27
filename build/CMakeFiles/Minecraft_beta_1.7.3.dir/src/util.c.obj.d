@@ -1,5 +1,6 @@
 CMakeFiles/Minecraft_beta_1.7.3.dir/src/util.c.obj: \
  /home/alfre/Desktop/mb173vitaJVM/src/util.c \
+ /home/alfre/Desktop/mb173vitaJVM/src/util.h \
  /usr/local/vitasdk/arm-vita-eabi/include/stdio.h \
  /usr/local/vitasdk/arm-vita-eabi/include/_ansi.h \
  /usr/local/vitasdk/arm-vita-eabi/include/newlib.h \
@@ -31,8 +32,12 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/util.c.obj: \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/sched.h \
  /usr/local/vitasdk/arm-vita-eabi/include/machine/types.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/stdio.h \
- /usr/local/vitasdk/arm-vita-eabi/include/malloc.h \
- /usr/local/vitasdk/arm-vita-eabi/include/machine/malloc.h \
  /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdint.h \
  /usr/local/vitasdk/arm-vita-eabi/include/stdint.h \
- /usr/local/vitasdk/arm-vita-eabi/include/sys/_intsup.h
+ /usr/local/vitasdk/arm-vita-eabi/include/sys/_intsup.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/string.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/sys/_locale.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/strings.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/sys/string.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/malloc.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/machine/malloc.h

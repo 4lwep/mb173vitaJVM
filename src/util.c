@@ -1,6 +1,4 @@
-#include<stdio.h>
-#include<malloc.h>
-#include<stdint.h>
+#include<util.h>
 
 uint8_t loadU8(FILE *r){
     unsigned char bytes[1];
@@ -35,4 +33,14 @@ uint64_t loadU64(FILE *r){
            ((uint64_t)bytes[2] << 40) | ((uint64_t)bytes[3] << 32) |
            ((uint64_t)bytes[4] << 24) | ((uint64_t)bytes[5] << 16) |
            ((uint64_t)bytes[6] << 8)  |  (uint64_t)bytes[7];
+}
+
+char *strconcat(char *original, char *sufix){
+    int size = strlen(original) + strlen(sufix) + 1;
+    char *copy = malloc(size);
+    strcpy(copy, original);
+
+    strcat(copy, sufix);
+
+    return copy;
 }

@@ -34,6 +34,7 @@ add_executable(${PROJECT_NAME}
   src/heap.c
   src/method_area.c
   src/init.c
+  src/runtime.c
   src/frame/frame.c
   src/frame/stacks.c
   src/loader/attributes.c

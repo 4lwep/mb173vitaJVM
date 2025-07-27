@@ -1,7 +1,8 @@
-CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj: \
- /home/alfre/Desktop/mb173vitaJVM/src/loader/method.c \
- /home/alfre/Desktop/mb173vitaJVM/src/loader/method.h \
- /usr/local/vitasdk/arm-vita-eabi/include/stdio.h \
+CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj: \
+ /home/alfre/Desktop/mb173vitaJVM/src/runtime.c \
+ /home/alfre/Desktop/mb173vitaJVM/src/runtime.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/method_area.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/string.h \
  /usr/local/vitasdk/arm-vita-eabi/include/_ansi.h \
  /usr/local/vitasdk/arm-vita-eabi/include/newlib.h \
  /usr/local/vitasdk/arm-vita-eabi/include/_newlib_version.h \
@@ -10,15 +11,20 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj: \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/features.h \
  /usr/local/vitasdk/arm-vita-eabi/include/bits/posix_opt.h \
  /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include-fixed/limits.h \
- /usr/local/vitasdk/arm-vita-eabi/include/sys/cdefs.h \
- /usr/local/vitasdk/arm-vita-eabi/include/machine/_default_types.h \
- /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stddef.h \
- /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdarg.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/reent.h \
  /usr/local/vitasdk/arm-vita-eabi/include/_ansi.h \
+ /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stddef.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/_types.h \
  /usr/local/vitasdk/arm-vita-eabi/include/machine/_types.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/machine/_default_types.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/lock.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/sys/cdefs.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/sys/_locale.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/strings.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/sys/string.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/loader/loader.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/stdio.h \
+ /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdarg.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/types.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/_stdint.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/select.h \
@@ -32,15 +38,18 @@ CMakeFiles/Minecraft_beta_1.7.3.dir/src/loader/method.c.obj: \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/sched.h \
  /usr/local/vitasdk/arm-vita-eabi/include/machine/types.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/stdio.h \
- /usr/local/vitasdk/arm-vita-eabi/include/malloc.h \
- /usr/local/vitasdk/arm-vita-eabi/include/machine/malloc.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/loader/constant_pool.h \
  /home/alfre/Desktop/mb173vitaJVM/src/util.h \
  /usr/local/vitasdk/lib/gcc/arm-vita-eabi/10.3.0/include/stdint.h \
  /usr/local/vitasdk/arm-vita-eabi/include/stdint.h \
  /usr/local/vitasdk/arm-vita-eabi/include/sys/_intsup.h \
- /usr/local/vitasdk/arm-vita-eabi/include/string.h \
- /usr/local/vitasdk/arm-vita-eabi/include/sys/_locale.h \
- /usr/local/vitasdk/arm-vita-eabi/include/strings.h \
- /usr/local/vitasdk/arm-vita-eabi/include/sys/string.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/malloc.h \
+ /usr/local/vitasdk/arm-vita-eabi/include/machine/malloc.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/heap.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/loader/interfaces.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/loader/fields.h \
  /home/alfre/Desktop/mb173vitaJVM/src/loader/attributes.h \
- /home/alfre/Desktop/mb173vitaJVM/src/heap.h
+ /home/alfre/Desktop/mb173vitaJVM/src/loader/method.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/frame/frame.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/frame/stacks.h \
+ /home/alfre/Desktop/mb173vitaJVM/src/init.h

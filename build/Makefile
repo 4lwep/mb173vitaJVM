@@ -487,6 +487,30 @@ src/method_area.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/method_area.c.s
 .PHONY : src/method_area.c.s
 
+src/runtime.obj: src/runtime.c.obj
+.PHONY : src/runtime.obj
+
+# target to build an object file
+src/runtime.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj
+.PHONY : src/runtime.c.obj
+
+src/runtime.i: src/runtime.c.i
+.PHONY : src/runtime.i
+
+# target to preprocess a source file
+src/runtime.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.i
+.PHONY : src/runtime.c.i
+
+src/runtime.s: src/runtime.c.s
+.PHONY : src/runtime.s
+
+# target to generate assembly for a file
+src/runtime.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Minecraft_beta_1.7.3.dir/build.make CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.s
+.PHONY : src/runtime.c.s
+
 src/util.obj: src/util.c.obj
 .PHONY : src/util.obj
 
@@ -563,6 +587,9 @@ help:
 	@echo "... src/method_area.obj"
 	@echo "... src/method_area.i"
 	@echo "... src/method_area.s"
+	@echo "... src/runtime.obj"
+	@echo "... src/runtime.i"
+	@echo "... src/runtime.s"
 	@echo "... src/util.obj"
 	@echo "... src/util.i"
 	@echo "... src/util.s"

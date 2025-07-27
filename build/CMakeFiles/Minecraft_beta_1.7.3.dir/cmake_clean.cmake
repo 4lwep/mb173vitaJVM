@@ -25,6 +25,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Minecraft_beta_1.7.3.dir/src/main.c.obj.d"
   "CMakeFiles/Minecraft_beta_1.7.3.dir/src/method_area.c.obj"
   "CMakeFiles/Minecraft_beta_1.7.3.dir/src/method_area.c.obj.d"
+  "CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj"
+  "CMakeFiles/Minecraft_beta_1.7.3.dir/src/runtime.c.obj.d"
   "CMakeFiles/Minecraft_beta_1.7.3.dir/src/util.c.obj"
   "CMakeFiles/Minecraft_beta_1.7.3.dir/src/util.c.obj.d"
   "Minecraft_beta_1.7.3"
