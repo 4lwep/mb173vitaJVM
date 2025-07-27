@@ -14,7 +14,7 @@ void executeNative(){
     ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[ma->constant_pool_ptr];
     method_info *method = (method_info*)&heap[curr_frame_data->method_ptr];
     char *methodName = (char*)&heap[cp[method->name_index].info.CONSTANT_utf8.text_ptr];
-    psvDebugScreenPrintf("Atención: %s no está definido\n", methodName);
+    //psvDebugScreenPrintf("Atención: %s no está definido\n", methodName);
     popFrame();
 }
 
@@ -25,7 +25,7 @@ void execute(int ma){
     uint8_t *opcode;
 
     while(!exit){
-        psvDebugScreenPrintf("cur frame: %d\n", curr_frame);
+        //psvDebugScreenPrintf("cur frame: %d\n", curr_frame);
         chFrame = 0;
 
         Frame *curr_frame_data = &jvmStack[curr_frame];
@@ -33,14 +33,14 @@ void execute(int ma){
         *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
         
         if (curr_frame_data->isNative){
-            psvDebugScreenPrintf("Nativo\n");
+            //psvDebugScreenPrintf("Nativo\n");
             executeNative();
             continue;
         }
         
         opcode = (uint8_t*)&heap[*curr_frame_data->pc_ptr];
         
-        psvDebugScreenPrintf("op code %d\n", *opcode);
+        //psvDebugScreenPrintf("op code %d\n", *opcode);
         
         switch(*opcode){
             case 178: {
@@ -85,14 +85,14 @@ void execute(int ma){
                         attribute_info *oAttributes = (attribute_info*)&heap[oFields[i].attributes_ptr];
 
                         char *oAttributeName = (char*)&heap[oAttributes[0].attribute_name_index];
-                        psvDebugScreenPrintf("mnbc,vbzxdvnbzxcmvnbxcmnvbxvmcnb: %d\n", oAttributeName);
+                        //psvDebugScreenPrintf("mnbc,vbzxdvnbzxcmvnbxcmnvbxvmcnb: %d\n", oAttributeName);
 
                         for(int j = 0; j<oFields[i].attributes_count; j++){
                             char *oAttributeName = (char*)&heap[oAttributes[j].attribute_name_index];
 
                             if (!strcmp(oAttributeName, "ConstantValue")){
                                 uint16_t *oAttributeInfo = (uint16_t*)&heap[oAttributes[j].info_ptr];
-                                psvDebugScreenPrintf("Attr info: %d\n", *oAttributeInfo);
+                                //psvDebugScreenPrintf("Attr info: %d\n", *oAttributeInfo);
                             }
                         }
                     }

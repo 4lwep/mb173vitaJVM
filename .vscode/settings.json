@@ -16,6 +16,8 @@
         "cstdint": "c",
         "init.h": "c",
         "string.h": "c",
-        "method_area.h": "c"
+        "method_area.h": "c",
+        "heap.h": "c",
+        "frame.h": "c"
     }
 }
