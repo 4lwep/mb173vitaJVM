@@ -73,7 +73,7 @@ int parseConstantPool(FILE *r, uint16_t entries){
         break;
       }
       default:{
-        printf("tag desconocido");
+        //printf("tag desconocido");
         break;
       } 
     }

@@ -2,23 +2,30 @@
 #include<frame.h>
 #include<loader.h>
 
+#include <psp2/kernel/threadmgr.h>
+#include <psp2/kernel/processmgr.h>
+
+#include "debugScreen_custom.h"
+
 void executeNative(){
+    psvDebugScreenInit();
     Frame *curr_frame_data = &jvmStack[curr_frame];
     MethodArea *ma = (MethodArea*)&heap[curr_frame_data->method_area_pointer];
     ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[ma->constant_pool_ptr];
     method_info *method = (method_info*)&heap[curr_frame_data->method_ptr];
     char *methodName = (char*)&heap[cp[method->name_index].info.CONSTANT_utf8.text_ptr];
-    printf("Atención: %s no está definido\n", methodName);
+    psvDebugScreenPrintf("Atención: %s no está definido\n", methodName);
     popFrame();
 }
 
 void execute(int ma){
+    psvDebugScreenInit();
     uint8_t exit = 0;
     uint8_t chFrame = 0;
     uint8_t *opcode;
 
     while(!exit){
-        printf("cur frame: %d\n", curr_frame);
+        psvDebugScreenPrintf("cur frame: %d\n", curr_frame);
         chFrame = 0;
 
         Frame *curr_frame_data = &jvmStack[curr_frame];
@@ -26,14 +33,14 @@ void execute(int ma){
         *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
         
         if (curr_frame_data->isNative){
-            printf("Nativo\n");
+            psvDebugScreenPrintf("Nativo\n");
             executeNative();
             continue;
         }
         
         opcode = (uint8_t*)&heap[*curr_frame_data->pc_ptr];
         
-        printf("op code %d\n", *opcode);
+        psvDebugScreenPrintf("op code %d\n", *opcode);
         
         switch(*opcode){
             case 178: {
@@ -55,7 +62,7 @@ void execute(int ma){
                 char *class_name = (char*)&heap[class_name_ptr];
 
                 if (get(ma_hashmap, class_name) == -1){
-                    char *classQualifiedName = strconcat(class_name, ".class");
+                    char *classQualifiedName = strconcat("ux0:data/", strconcat(class_name, ".class"));
                     FILE *newClass = fopen(classQualifiedName, "rb");
                     loadClass(newClass, ma);
                     fclose(newClass);
@@ -78,14 +85,14 @@ void execute(int ma){
                         attribute_info *oAttributes = (attribute_info*)&heap[oFields[i].attributes_ptr];
 
                         char *oAttributeName = (char*)&heap[oAttributes[0].attribute_name_index];
-                        printf("mnbc,vbzxdvnbzxcmvnbxcmnvbxvmcnb: %d\n", oAttributeName);
+                        psvDebugScreenPrintf("mnbc,vbzxdvnbzxcmvnbxcmnvbxvmcnb: %d\n", oAttributeName);
 
                         for(int j = 0; j<oFields[i].attributes_count; j++){
                             char *oAttributeName = (char*)&heap[oAttributes[j].attribute_name_index];
 
                             if (!strcmp(oAttributeName, "ConstantValue")){
                                 uint16_t *oAttributeInfo = (uint16_t*)&heap[oAttributes[j].info_ptr];
-                                printf("Attr info: %d\n", *oAttributeInfo);
+                                psvDebugScreenPrintf("Attr info: %d\n", *oAttributeInfo);
                             }
                         }
                     }
@@ -126,7 +133,7 @@ void execute(int ma){
                 char *methodClassName = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.class_index].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr];
 
                 if (get(ma_hashmap, methodClassName) == -1){
-                    char *classQualifiedName = strconcat(methodClassName, ".class");
+                    char *classQualifiedName = strconcat("ux0:/data/", strconcat(methodClassName, ".class"));
                     FILE *newClass = fopen(classQualifiedName, "rb");
                     loadClass(newClass, ma);
                     fclose(newClass);
