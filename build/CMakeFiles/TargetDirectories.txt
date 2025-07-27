@@ -1,6 +1,0 @@
-/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles/Minecraft_beta_1.7.3.dir
-/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles/Minecraft_beta_1.7.3-velf.dir
-/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles/Minecraft_beta_1.7.3.self-self.dir
-/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles/Minecraft_beta_1.7.3.vpk-vpk.dir
-/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles/edit_cache.dir
-/home/alfre/Desktop/mb173vitaJVM/build/CMakeFiles/rebuild_cache.dir
