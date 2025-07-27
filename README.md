@@ -1,2 +1,2 @@
 # Como compilar
-El proyecto realmente se puede compilar como está, para poder ejecutar el .vpk sin errores, sí hace falta compilar el proyeecto con la carpeta java del archivo rt.jar del jre6 dentro del directorio src
+El proyecto realmente se puede compilar como está, para poder ejecutar el .vpk sin errores, hace falta copiar la carpeta java del archivo rt.jar del jre6 dentro del directorio ux0:data/
