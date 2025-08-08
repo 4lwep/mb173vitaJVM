@@ -122,11 +122,6 @@ void execute(struct Context *context){
                 break;
             }
             case 176:{
-                method_info *method = (method_info*)&heap[curr_frame_data->method_ptr];
-                MethodArea *ma = (MethodArea*)&heap[curr_frame_data->method_area_pointer];
-                ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[ma->constant_pool_ptr];
-                char *descriptor = (char*)&heap[cp[method->descriptor_index].info.CONSTANT_utf8.text_ptr];
-                
                 if (context->curr_frame){ 
                     popFrame(context->jvmStack, &context->curr_frame);
                 } else {
