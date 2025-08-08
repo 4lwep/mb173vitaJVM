@@ -2,6 +2,7 @@
 #define HEAP_H
 
 #include<stdint.h>
+#include<stdio.h>
 
 #define HEAPSIZE (50 * 1024 * 1024)  //50 MB
 #define MARK 0;
@@ -13,6 +14,7 @@ typedef struct {
 } HeapEntry;
 
 extern uint8_t heap[HEAPSIZE];
+extern FILE *log_file;
 
 void initHeap();
 int searchFreeSpaceIndex(int bytes);

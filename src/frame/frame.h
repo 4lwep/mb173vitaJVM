@@ -2,11 +2,8 @@
 #define FRAME_H
 
 #include<stdint.h>
-#include<method_area.h>
 #include<string.h>
 #include<stacks.h>
-#include<init.h>
-#include<runtime.h>
 
 #define MAX_JVM_STACK 256
 
@@ -19,16 +16,19 @@ typedef struct{
     int curr_pc_context;
     int method_ptr;
     int method_area_pointer;
+    int max_stack;
+    int max_locals;
     uint8_t isNative;
 } Frame;
 
-void initFrame(int ma, int method);
-void excuteClinit(int ma);
-void initFirstFrame(int ma);
-void pushFrame(Frame frame);
-Frame popFrame();
+struct Context;
 
-extern Frame jvmStack[MAX_JVM_STACK];
-extern int curr_frame;
+void initFrame(int ma, int method, struct Context *context);
+void excuteClinit(int ma, struct Context *context);
+void initFirstFrame(int ma, struct Context *context);
+void pushFrame(Frame frame, Frame *stack, int *curr_frame);
+void popFrame(Frame* stack, int *curr_frame);
+
+//extern int curr_frame;
 
 #endif

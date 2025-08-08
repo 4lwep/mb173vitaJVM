@@ -1,6 +1,7 @@
 #include<loader.h>
 #include<method_area.h>
 #include<frame.h>
+#include<init.h>
 
 ClassFile *parseClass(FILE *r){
     ClassFile *parsedClass;
@@ -49,14 +50,12 @@ ClassFile *parseClass(FILE *r){
     return parsedClass;
 }
 
-int loadClass(FILE *r, int first_ma){
+int loadClass(FILE *r, struct Context *context){
     ClassFile *parsedClass;
 
     parsedClass = parseClass(r);
 
-    int ma = createMethodArea(parsedClass, first_ma);
-
-    excuteClinit(ma);
+    int ma = createMethodArea(parsedClass);
 
     ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[parsedClass->cp_array_ptr]  ;
     char *className = (char*)&heap[cp[cp[parsedClass->this_class].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr];
@@ -64,5 +63,6 @@ int loadClass(FILE *r, int first_ma){
 
     free(parsedClass);
 
+    excuteClinit(ma, context);
     return ma;
 }

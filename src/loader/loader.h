@@ -10,6 +10,7 @@
 #include<malloc.h>
 #include<attributes.h>
 #include<stdint.h>
+#include<runtime.h>
 
 typedef struct {
     uint32_t magic;
@@ -31,6 +32,6 @@ typedef struct {
 }ClassFile;
 
 ClassFile *parseClass(FILE *r);
-int loadClass(FILE *r, int ma);
+int loadClass(FILE *r, struct Context *context);
 
 #endif

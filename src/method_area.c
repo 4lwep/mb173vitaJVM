@@ -1,19 +1,10 @@
 #include<method_area.h>
 
-int createMethodArea(ClassFile *c, int ma){
+int createMethodArea(ClassFile *c){
     MethodArea *last_ma_data;
 
     int cur_method_area = heapAlloc(sizeof(MethodArea));
     MethodArea *curr_ma_data = (MethodArea*)&heap[cur_method_area];
-
-    if (ma != -1){
-        while(1){
-            last_ma_data = (MethodArea*)&heap[ma];
-            if (last_ma_data->next_method_area_ptr != -1) ma = last_ma_data->next_method_area_ptr; else break;
-        }
-
-        last_ma_data->next_method_area_ptr = cur_method_area;
-    }
 
     curr_ma_data->constant_pool_ptr = c->cp_array_ptr;
     curr_ma_data->constant_pool_count = c->constant_pool_count;
@@ -21,7 +12,6 @@ int createMethodArea(ClassFile *c, int ma){
     curr_ma_data->fields_count = c->fields_count;
     curr_ma_data->methods_count = c->methods_count;
     curr_ma_data->methods_ptr = c->methods_array_ptr;
-    curr_ma_data->next_method_area_ptr = -1;
     
     int code = heapAlloc(sizeof(ExecutableCode) * c->methods_count);
     curr_ma_data->code_table_ptr = code;
@@ -63,7 +53,7 @@ int createMethodArea(ClassFile *c, int ma){
 }
 
 //Chat gpt de aquí para abajo
-unsigned int hash(const char* key) {
+unsigned int hash(char* key) {
     unsigned int h = 0;
     while (*key) {
         h = (h * 31) + *key++; // Multiplica por un primo y suma el char
@@ -71,7 +61,7 @@ unsigned int hash(const char* key) {
     return h % TABLE_SIZE;
 }
 
-void insert(MaHashMap* map, const char* key, int value) {
+void insert(MaHashMap* map, char* key, int value) {
     unsigned int index = hash(key);
     MaHashMapEntry* current = map->buckets[index];
 
@@ -91,17 +81,16 @@ void insert(MaHashMap* map, const char* key, int value) {
     map->buckets[index] = newEntry;
 }
 
-int get(MaHashMap* map, const char* key) {
+int get(MaHashMap* map, char* key) {
     unsigned int index = hash(key);
     MaHashMapEntry* current = map->buckets[index];
-
+    
     while (current) {
         if (strcmp(current->key, key) == 0) {
             return current->value;
         }
         current = current->next;
     }
-
     // Si no se encuentra
     return -1; // O algún valor que indique "no encontrado"
 }

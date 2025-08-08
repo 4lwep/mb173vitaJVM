@@ -15,10 +15,6 @@ int main(){
     MethodArea *data = (MethodArea*)&heap[ma];
     ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[data->constant_pool_ptr];
 
-    ExecutableCode *exCode = (ExecutableCode*)&heap[data->code_table_ptr];
-    psvDebugScreenPrintf("max locals %d\n", exCode[0].max_locals);
-    psvDebugScreenPrintf("max stack %d\n", exCode[0].max_stack);
-
     int a = 50 * 1024 *1024;
     psvDebugScreenPrintf("Tamanyo de heap ocupado %d/%d\n", heapAlloc(200), a);
 

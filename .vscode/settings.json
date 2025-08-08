@@ -18,6 +18,11 @@
         "string.h": "c",
         "method_area.h": "c",
         "heap.h": "c",
-        "frame.h": "c"
+        "frame.h": "c",
+        "stacks.h": "c",
+        "fields.h": "c",
+        "cmath": "c",
+        "complex": "c",
+        "runtime.h": "c"
     }
 }

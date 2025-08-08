@@ -1,10 +1,13 @@
 #include<heap.h>
 
 uint8_t heap[HEAPSIZE];
+FILE *log_file;
 
 //Viene de nanoVM/src/heap.c línea 387 --- https://github.com/harbaum/NanoVM/blob/master/vm/src/heap.c
 void initHeap(){
   HeapEntry *h;
+  log_file = fopen("ux0:data/minecraft_log.txt", "a");
+  setvbuf(log_file, NULL, _IONBF, 0);
 
   // just one big free block
   h = (HeapEntry*)&heap[0];

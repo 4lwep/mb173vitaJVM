@@ -1,54 +1,161 @@
 #include<runtime.h>
-#include<frame.h>
-#include<loader.h>
+#include<init.h>
 
 #include <psp2/kernel/threadmgr.h>
 #include <psp2/kernel/processmgr.h>
 
 #include "debugScreen_custom.h"
 
-void executeNative(){
-    psvDebugScreenInit();
-    Frame *curr_frame_data = &jvmStack[curr_frame];
+long JNICurrentTimeMilis(){
+    return 1716437;
+}
+
+void executeNative(struct Context *context){
+    Frame *curr_frame_data = &context->jvmStack[context->curr_frame];
     MethodArea *ma = (MethodArea*)&heap[curr_frame_data->method_area_pointer];
     ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[ma->constant_pool_ptr];
     method_info *method = (method_info*)&heap[curr_frame_data->method_ptr];
     char *methodName = (char*)&heap[cp[method->name_index].info.CONSTANT_utf8.text_ptr];
-    //psvDebugScreenPrintf("Atención: %s no está definido\n", methodName);
-    popFrame();
+    if (!strcmp(methodName, "registerNatives")){
+
+    } else if (!strcmp(methodName, "currentTimeMillis")){
+        Slot entry;
+        entry.type = VALUE_LONG;
+        entry.long_value = JNICurrentTimeMilis();
+        popFrame(context->jvmStack, &context->curr_frame);
+        curr_frame_data = &context->jvmStack[context->curr_frame];
+        stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+        return;
+    } else {
+        fprintf(log_file, "Atención: %s no está definido\n", methodName);
+    }
+    
+    popFrame(context->jvmStack, &context->curr_frame);
 }
 
-void execute(int ma){
-    psvDebugScreenInit();
+void execute(struct Context *context){
+    //fclose(log_file);
     uint8_t exit = 0;
-    uint8_t chFrame = 0;
     uint8_t *opcode;
 
     while(!exit){
-        //psvDebugScreenPrintf("cur frame: %d\n", curr_frame);
-        chFrame = 0;
+        //log_file = fopen("ux0:data/minecraft_log.txt", "a");
+        fprintf(log_file, "cur frame: %d\n", context->curr_frame);
 
-        Frame *curr_frame_data = &jvmStack[curr_frame];
+        Frame *curr_frame_data = &context->jvmStack[context->curr_frame];
 
         *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
         
         if (curr_frame_data->isNative){
-            //psvDebugScreenPrintf("Nativo\n");
-            executeNative();
+            fprintf(log_file, "Nativo\n");
+            executeNative(context);
+            //fclose(log_file);
             continue;
         }
         
         opcode = (uint8_t*)&heap[*curr_frame_data->pc_ptr];
         
-        //psvDebugScreenPrintf("op code %d\n", *opcode);
+        fprintf(log_file, "op code %d\n", *opcode);
         
         switch(*opcode){
+            case 1:{
+                if (curr_frame_data->current_operand_stack_entry < curr_frame_data->max_stack){ //Temporal para no asignar más valores de los permitidos
+                    Slot entry;
+                    entry.type = VALUE_REF;
+                    entry.ref_value = -1;
+
+                    stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+                }
+                curr_frame_data->curr_pc_context += 1;
+                *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
+                break;
+            }
+            case 9:{
+                Slot entry;
+                entry.type = VALUE_LONG;
+                entry.long_value = 0;
+
+                stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+                curr_frame_data->curr_pc_context += 1;
+                *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
+
+                break;
+            }
+            /*case 18: {
+                break;
+            }*/
+            case 148: {
+                Slot entry;
+                entry.type = VALUE_INT;
+
+                Slot slot1 = stackPop(curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+                fprintf(log_file, "Valor primero %d\n", slot1.long_value);
+                Slot slot2 = stackPop(curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+                fprintf(log_file, "Valor segundo %d\n", slot2.long_value);
+
+                if (slot1.long_value < slot2.long_value) {
+                    entry.int_value = 1;
+                    stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+                } else {
+                    entry.int_value = 0;
+                    stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+                }
+
+                curr_frame_data->curr_pc_context += 1;
+                *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
+
+                break;
+            }
+            case 158: {
+                int16_t offset = ((int16_t)opcode[1] << 8) | ((int16_t)opcode[2]);
+                
+                Slot slot1 = stackPop(curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+
+                if (slot1.int_value <= 0){
+                    curr_frame_data->curr_pc_context += offset;
+                } else {
+                    curr_frame_data->curr_pc_context += 3;
+                }
+
+                *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
+
+                break;
+            }
+            case 176:{
+                method_info *method = (method_info*)&heap[curr_frame_data->method_ptr];
+                MethodArea *ma = (MethodArea*)&heap[curr_frame_data->method_area_pointer];
+                ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[ma->constant_pool_ptr];
+                char *descriptor = (char*)&heap[cp[method->descriptor_index].info.CONSTANT_utf8.text_ptr];
+                
+                if (context->curr_frame){ 
+                    popFrame(context->jvmStack, &context->curr_frame);
+                } else {
+                    exit = 1;
+                    popFrame(context->jvmStack, &context->curr_frame);
+                }
+                break;
+            }
+            case 177: {
+                psvDebugScreenPrintf("a\n");
+                if (context->curr_frame){ 
+                    psvDebugScreenPrintf("b\n");
+                    popFrame(context->jvmStack, &context->curr_frame);
+                    psvDebugScreenPrintf("c\n");
+                } else {
+                    psvDebugScreenPrintf("d\n");
+                    exit = 1;
+                    popFrame(context->jvmStack, &context->curr_frame);
+                    psvDebugScreenPrintf("e\n");
+                }
+                psvDebugScreenPrintf("f\n");
+                break;
+            }
             case 178: {
                 uint16_t args = ((uint16_t)opcode[1] << 8) | ((uint16_t)opcode[2]);
 
                 Slot entry;
 
-                MethodArea *ma_data = (MethodArea*)&heap[jvmStack[curr_frame].method_area_pointer];
+                MethodArea *ma_data = (MethodArea*)&heap[context->jvmStack[context->curr_frame].method_area_pointer];
 
                 ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[ma_data->constant_pool_ptr];
 
@@ -64,9 +171,8 @@ void execute(int ma){
                 if (get(ma_hashmap, class_name) == -1){
                     char *classQualifiedName = strconcat("ux0:data/", strconcat(class_name, ".class"));
                     FILE *newClass = fopen(classQualifiedName, "rb");
-                    loadClass(newClass, ma);
+                    loadClass(newClass, context);
                     fclose(newClass);
-                    chFrame = 1;
                     break;
                 }
 
@@ -84,15 +190,11 @@ void execute(int ma){
                     if ((!strcmp(oFieldName, name)) && (!strcmp(oFieldDesc, type)) && (oFields[i].access_flags & 0x0008)){
                         attribute_info *oAttributes = (attribute_info*)&heap[oFields[i].attributes_ptr];
 
-                        char *oAttributeName = (char*)&heap[oAttributes[0].attribute_name_index];
-                        //psvDebugScreenPrintf("mnbc,vbzxdvnbzxcmvnbxcmnvbxvmcnb: %d\n", oAttributeName);
-
                         for(int j = 0; j<oFields[i].attributes_count; j++){
-                            char *oAttributeName = (char*)&heap[oAttributes[j].attribute_name_index];
+                            char *oAttributeName = (char*)&heap[oConstantPool[oAttributes[j].attribute_name_index].info.CONSTANT_utf8.text_ptr];
 
                             if (!strcmp(oAttributeName, "ConstantValue")){
                                 uint16_t *oAttributeInfo = (uint16_t*)&heap[oAttributes[j].info_ptr];
-                                //psvDebugScreenPrintf("Attr info: %d\n", *oAttributeInfo);
                             }
                         }
                     }
@@ -109,16 +211,9 @@ void execute(int ma){
 
                 break;
             }
-            /*case 18: {
-                break;
-            }*/
-            case 177: {
-                if (curr_frame){ 
-                    popFrame();
-                } else {
-                    exit = 1;
-                    popFrame();
-                }
+            case 179: {
+                curr_frame_data->curr_pc_context += 3;
+                *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
                 break;
             }
             case 184: {
@@ -135,34 +230,29 @@ void execute(int ma){
                 if (get(ma_hashmap, methodClassName) == -1){
                     char *classQualifiedName = strconcat("ux0:/data/", strconcat(methodClassName, ".class"));
                     FILE *newClass = fopen(classQualifiedName, "rb");
-                    loadClass(newClass, ma);
+                    loadClass(newClass, context);
                     fclose(newClass);
-                    chFrame = 1;
                     break;
                 }
 
-                curr_frame_data->curr_pc_context += 2;
-                curr_frame_data->curr_pc_context += 1;
+                curr_frame_data->curr_pc_context += 3;
                 *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
 
                 for (int i = 0; i<methodArea->methods_count; i++){
                     char *fMethodName = (char*)&heap[constantPool[methods[i].name_index].info.CONSTANT_utf8.text_ptr];
                     if (!strcmp(methodName, fMethodName)){
-                        
-                        initFrame(get(ma_hashmap, methodClassName), (methodArea->methods_ptr + (sizeof(method_info) * i)));
-                        chFrame = 1;
-                        break;
+                        initFrame(get(ma_hashmap, methodClassName), (methodArea->methods_ptr + (sizeof(method_info) * i)), context);
                     }
                 }
 
                 break;
             }
             case 191: { //Por hacer, esto es temporal
-                if (curr_frame){ 
-                    popFrame();
+                if (context->curr_frame){
+                    popFrame(context->jvmStack, &context->curr_frame);
                 } else {
                     exit = 1;
-                    popFrame();
+                    popFrame(context->jvmStack, &context->curr_frame);
                 }
                 break;
             }
@@ -173,4 +263,7 @@ void execute(int ma){
             } 
         }
     }
+
+    fflush(log_file);
+    fclose(log_file);
 }

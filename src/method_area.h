@@ -21,7 +21,6 @@ typedef struct{
     int methods_ptr;
     uint16_t methods_count;
     int code_table_ptr;
-    int next_method_area_ptr;
 } MethodArea;
 
 #define TABLE_SIZE 1000
@@ -36,9 +35,9 @@ typedef struct {
     MaHashMapEntry* buckets[TABLE_SIZE]; // Array de listas
 } MaHashMap;
 
-int createMethodArea(ClassFile *c, int ma);
-unsigned int hash(const char* key);
-void insert(MaHashMap* map, const char* key, int value);
-int get(MaHashMap* map, const char* key);
+int createMethodArea(ClassFile *c);
+unsigned int hash(char* key);
+void insert(MaHashMap* map, char* key, int value);
+int get(MaHashMap* map, char* key);
 
 #endif
