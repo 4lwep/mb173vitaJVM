@@ -24,7 +24,7 @@ typedef struct {
 } Slot;
 
 Slot *createStack(int maxSize);
-int stackPush(Slot newEntry, Slot *stack, int *current_operand_stack_entry);
+int stackPush(Slot newEntry, Slot *stack, int *current_operand_stack_entry, int *maxStack);
 Slot stackPop(Slot *stack, int *current_operand_stack_entry);
 
 #endif

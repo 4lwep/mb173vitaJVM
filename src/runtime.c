@@ -24,7 +24,7 @@ void executeNative(struct Context *context){
         entry.long_value = JNICurrentTimeMilis();
         popFrame(context->jvmStack, &context->curr_frame);
         curr_frame_data = &context->jvmStack[context->curr_frame];
-        stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+        stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
         return;
     } else {
         fprintf(log_file, "Atención: %s no está definido\n", methodName);
@@ -64,7 +64,7 @@ void execute(struct Context *context){
                     entry.type = VALUE_REF;
                     entry.ref_value = -1;
 
-                    stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+                    stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
                 }
                 curr_frame_data->curr_pc_context += 1;
                 *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
@@ -75,7 +75,7 @@ void execute(struct Context *context){
                 entry.type = VALUE_LONG;
                 entry.long_value = 0;
 
-                stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+                stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
                 curr_frame_data->curr_pc_context += 1;
                 *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
 
@@ -95,10 +95,10 @@ void execute(struct Context *context){
 
                 if (slot1.long_value < slot2.long_value) {
                     entry.int_value = 1;
-                    stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+                    stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
                 } else {
                     entry.int_value = 0;
-                    stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+                    stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
                 }
 
                 curr_frame_data->curr_pc_context += 1;
@@ -122,6 +122,11 @@ void execute(struct Context *context){
                 break;
             }
             case 176:{
+                method_info *method = (method_info*)&heap[curr_frame_data->method_ptr];
+                MethodArea *ma = (MethodArea*)&heap[curr_frame_data->method_area_pointer];
+                ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[ma->constant_pool_ptr];
+                char *descriptor = (char*)&heap[cp[method->descriptor_index].info.CONSTANT_utf8.text_ptr];
+                
                 if (context->curr_frame){ 
                     popFrame(context->jvmStack, &context->curr_frame);
                 } else {

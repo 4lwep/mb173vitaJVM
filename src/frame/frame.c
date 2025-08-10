@@ -103,7 +103,9 @@ void popFrame(Frame* stack, int *curr_frame){
     psvDebugScreenPrintf("1\n");
     if (popFrame->max_locals) free(popFrame->local_stack_ptr);
     psvDebugScreenPrintf("2\n");
-    //if (popFrame->max_stack) free(popFrame->operand_stack_ptr); Tengo que arrglar esto: en ocasiones falla al intentar liberar esto y no se por qué
+    fprintf(log_file, "cantidad máxima de op stack pesao %d\n", popFrame->max_stack);
+    fprintf(log_file, "cantidad de op stack pesao: %d\n", popFrame->current_operand_stack_entry);
+    if (popFrame->max_stack) free(popFrame->operand_stack_ptr); //Tengo que arreglar esto: en ocasiones falla al intentar liberar esto y no se por qué
     psvDebugScreenPrintf("3\n");
 
     *curr_frame -= 1;
