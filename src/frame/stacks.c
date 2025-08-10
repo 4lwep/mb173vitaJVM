@@ -20,7 +20,7 @@ int compareSlots(Slot *slot1, Slot *slot2){
 }
 
 int stackPush(Slot newEntry, Slot *stack, int *current_operand_stack_entry, int *maxStack){
-    if (current_operand_stack_entry + 1 < *maxStack){
+    if (*current_operand_stack_entry + 1 < *maxStack){
         *current_operand_stack_entry += 1;
         stack[*current_operand_stack_entry] = newEntry;
 

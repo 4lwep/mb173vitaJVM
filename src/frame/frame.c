@@ -93,7 +93,6 @@ void initFirstFrame(int ma, struct Context *context){
 void pushFrame(Frame frame, Frame *stack, int *curr_frame){
     *curr_frame += 1;
     stack[*curr_frame] = frame;
-    fprintf(log_file, "Nuevo frame insertado: %d\n", *curr_frame);
 }
 
 void popFrame(Frame* stack, int *curr_frame){
