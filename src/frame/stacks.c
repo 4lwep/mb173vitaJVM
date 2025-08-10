@@ -35,7 +35,6 @@ Slot stackPop(Slot *stack, int *current_operand_stack_entry){
     if (*current_operand_stack_entry > -1) {
         Slot popValue = stack[*current_operand_stack_entry];
         *current_operand_stack_entry -= 1;
-        fprintf(log_file, "Curr op stack after pop %d\n", *current_operand_stack_entry);
         return popValue;
     } 
     Slot fail;

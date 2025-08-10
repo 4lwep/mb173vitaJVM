@@ -91,7 +91,6 @@ void initFirstFrame(int ma, struct Context *context){
 }
 
 void pushFrame(Frame frame, Frame *stack, int *curr_frame){
-    fprintf(log_file, "opstack push %p\n", frame.operand_stack_ptr);
     *curr_frame += 1;
     stack[*curr_frame] = frame;
     fprintf(log_file, "Nuevo frame insertado: %d\n", *curr_frame);
@@ -99,14 +98,8 @@ void pushFrame(Frame frame, Frame *stack, int *curr_frame){
 
 void popFrame(Frame* stack, int *curr_frame){
     Frame *popFrame = &stack[*curr_frame];
-    fprintf(log_file, "opstack pop %p\n", popFrame->operand_stack_ptr);
-    psvDebugScreenPrintf("1\n");
     if (popFrame->max_locals) free(popFrame->local_stack_ptr);
-    psvDebugScreenPrintf("2\n");
-    fprintf(log_file, "cantidad máxima de op stack pesao %d\n", popFrame->max_stack);
-    fprintf(log_file, "cantidad de op stack pesao: %d\n", popFrame->current_operand_stack_entry);
-    if (popFrame->max_stack) free(popFrame->operand_stack_ptr); //Tengo que arreglar esto: en ocasiones falla al intentar liberar esto y no se por qué
-    psvDebugScreenPrintf("3\n");
+    if (popFrame->max_stack) free(popFrame->operand_stack_ptr);
 
     *curr_frame -= 1;
 }

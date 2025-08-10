@@ -136,18 +136,12 @@ void execute(struct Context *context){
                 break;
             }
             case 177: {
-                psvDebugScreenPrintf("a\n");
-                if (context->curr_frame){ 
-                    psvDebugScreenPrintf("b\n");
+                if (context->curr_frame){
                     popFrame(context->jvmStack, &context->curr_frame);
-                    psvDebugScreenPrintf("c\n");
                 } else {
-                    psvDebugScreenPrintf("d\n");
                     exit = 1;
                     popFrame(context->jvmStack, &context->curr_frame);
-                    psvDebugScreenPrintf("e\n");
                 }
-                psvDebugScreenPrintf("f\n");
                 break;
             }
             case 178: {
