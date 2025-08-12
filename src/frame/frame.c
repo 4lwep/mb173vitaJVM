@@ -9,10 +9,10 @@ void initFrame(int ma, int method, struct Context *context){
     Frame frame;
 
     if (methodData->access_flags & 0x0100){
-        frame.local_stack_ptr = createStack(1);
+        frame.local_stack = createStack(1);
         frame.current_local_stack_entry = -1;
         frame.curr_pc_context = -1;
-        frame.operand_stack_ptr = createStack(1);
+        frame.operand_stack = createStack(1);
         frame.current_operand_stack_entry = -1;
         frame.pc_ptr = &context->pc;
         frame.method_ptr = method;
@@ -35,10 +35,10 @@ void initFrame(int ma, int method, struct Context *context){
             }
             fprintf(log_file, "\n");
 
-            frame.local_stack_ptr = createStack(exCode[i].max_locals);
+            frame.local_stack = createStack(exCode[i].max_locals);
             frame.current_local_stack_entry = -1;
             frame.curr_pc_context = exCode[i].code_array_ptr;
-            frame.operand_stack_ptr = createStack(exCode[i].max_stack);
+            frame.operand_stack = createStack(exCode[i].max_stack);
             frame.current_operand_stack_entry = -1;
             frame.pc_ptr = &context->pc;
             frame.method_ptr = method;
@@ -54,6 +54,11 @@ void initFrame(int ma, int method, struct Context *context){
     }
 
     finish:
+        /*fprintf(log_file, "max locals: %d\n", frame.max_locals);
+        fprintf(log_file, "max stack: %d\n", frame.max_stack);
+        ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[ma_data->constant_pool_ptr];
+        char *desc = (char*)&heap[cp[methodData->descriptor_index].info.CONSTANT_utf8.text_ptr];
+        fprintf(log_file, "method descriptor: %s\n", desc);*/
         pushFrame(frame, context->jvmStack, &context->curr_frame);
 }
 
@@ -97,8 +102,8 @@ void pushFrame(Frame frame, Frame *stack, int *curr_frame){
 
 void popFrame(Frame* stack, int *curr_frame){
     Frame *popFrame = &stack[*curr_frame];
-    if (popFrame->max_locals) free(popFrame->local_stack_ptr);
-    if (popFrame->max_stack) free(popFrame->operand_stack_ptr);
+    if (popFrame->max_locals) free(popFrame->local_stack);
+    if (popFrame->max_stack) free(popFrame->operand_stack);
 
     *curr_frame -= 1;
 }

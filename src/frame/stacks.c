@@ -19,22 +19,22 @@ int compareSlots(Slot *slot1, Slot *slot2){
 
 }
 
-int stackPush(Slot newEntry, Slot *stack, int *current_operand_stack_entry, int *maxStack){
-    if (*current_operand_stack_entry + 1 < *maxStack){
-        *current_operand_stack_entry += 1;
-        stack[*current_operand_stack_entry] = newEntry;
+int stackPush(Slot newEntry, Slot *stack, int *current_stack_entry, int *maxStack){
+    if (*current_stack_entry + 1 < *maxStack){
+        *current_stack_entry += 1;
+        stack[*current_stack_entry] = newEntry;
 
-        Slot *newValue = &stack[*current_operand_stack_entry];
+        Slot *newValue = &stack[*current_stack_entry];
 
         return compareSlots(&newEntry, newValue);
     }
     return -1;
 }
 
-Slot stackPop(Slot *stack, int *current_operand_stack_entry){
-    if (*current_operand_stack_entry > -1) {
-        Slot popValue = stack[*current_operand_stack_entry];
-        *current_operand_stack_entry -= 1;
+Slot stackPop(Slot *stack, int *current_stack_entry){
+    if (*current_stack_entry > -1) {
+        Slot popValue = stack[*current_stack_entry];
+        *current_stack_entry -= 1;
         return popValue;
     } 
     Slot fail;

@@ -8,8 +8,8 @@
 #define MAX_JVM_STACK 256
 
 typedef struct{
-    Slot *local_stack_ptr;
-    Slot *operand_stack_ptr;
+    Slot *local_stack;
+    Slot *operand_stack;
     int current_local_stack_entry;
     int current_operand_stack_entry;
     int *pc_ptr;

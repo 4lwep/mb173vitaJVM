@@ -24,7 +24,7 @@ void executeNative(struct Context *context){
         entry.long_value = JNICurrentTimeMilis();
         popFrame(context->jvmStack, &context->curr_frame);
         curr_frame_data = &context->jvmStack[context->curr_frame];
-        stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
+        stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
         return;
     } else {
         fprintf(log_file, "Atención: %s no está definido\n", methodName);
@@ -34,12 +34,10 @@ void executeNative(struct Context *context){
 }
 
 void execute(struct Context *context){
-    //fclose(log_file);
     uint8_t exit = 0;
     uint8_t *opcode;
 
     while(!exit){
-        //log_file = fopen("ux0:data/minecraft_log.txt", "a");
         fprintf(log_file, "cur frame: %d\n", context->curr_frame);
 
         Frame *curr_frame_data = &context->jvmStack[context->curr_frame];
@@ -49,7 +47,6 @@ void execute(struct Context *context){
         if (curr_frame_data->isNative){
             fprintf(log_file, "Nativo\n");
             executeNative(context);
-            //fclose(log_file);
             continue;
         }
         
@@ -59,12 +56,13 @@ void execute(struct Context *context){
         
         switch(*opcode){
             case 1:{
-                if (curr_frame_data->current_operand_stack_entry < curr_frame_data->max_stack){ //Temporal para no asignar más valores de los permitidos
-                    Slot entry;
-                    entry.type = VALUE_REF;
-                    entry.ref_value = -1;
 
-                    stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
+                if (curr_frame_data->current_operand_stack_entry < curr_frame_data->max_stack){ //Temporal para no asignar más valores de los permitidos
+                Slot entry;
+                entry.type = VALUE_REF;
+                entry.ref_value = -1;
+
+                stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
                 }
                 curr_frame_data->curr_pc_context += 1;
                 *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
@@ -75,7 +73,7 @@ void execute(struct Context *context){
                 entry.type = VALUE_LONG;
                 entry.long_value = 0;
 
-                stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
+                stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
                 curr_frame_data->curr_pc_context += 1;
                 *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
 
@@ -88,17 +86,17 @@ void execute(struct Context *context){
                 Slot entry;
                 entry.type = VALUE_INT;
 
-                Slot slot1 = stackPop(curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+                Slot slot1 = stackPop(curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry);
                 fprintf(log_file, "Valor primero %d\n", slot1.long_value);
-                Slot slot2 = stackPop(curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+                Slot slot2 = stackPop(curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry);
                 fprintf(log_file, "Valor segundo %d\n", slot2.long_value);
 
                 if (slot1.long_value < slot2.long_value) {
                     entry.int_value = 1;
-                    stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
+                    stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
                 } else {
                     entry.int_value = 0;
-                    stackPush(entry, curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
+                    stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
                 }
 
                 curr_frame_data->curr_pc_context += 1;
@@ -109,7 +107,7 @@ void execute(struct Context *context){
             case 158: {
                 int16_t offset = ((int16_t)opcode[1] << 8) | ((int16_t)opcode[2]);
                 
-                Slot slot1 = stackPop(curr_frame_data->operand_stack_ptr, &curr_frame_data->current_operand_stack_entry);
+                Slot slot1 = stackPop(curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry);
 
                 if (slot1.int_value <= 0){
                     curr_frame_data->curr_pc_context += offset;
@@ -126,13 +124,14 @@ void execute(struct Context *context){
                 MethodArea *ma = (MethodArea*)&heap[curr_frame_data->method_area_pointer];
                 ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[ma->constant_pool_ptr];
                 char *descriptor = (char*)&heap[cp[method->descriptor_index].info.CONSTANT_utf8.text_ptr];
+                //TODO: Esto es para comparar el retorno de la función con el tipo del descriptor
+
+                Slot ret = stackPop(curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry);
                 
-                if (context->curr_frame){ 
-                    popFrame(context->jvmStack, &context->curr_frame);
-                } else {
-                    exit = 1;
-                    popFrame(context->jvmStack, &context->curr_frame);
-                }
+                popFrame(context->jvmStack, &context->curr_frame);
+                curr_frame_data = &context->jvmStack[context->curr_frame]; //Podría asignar esto al hacer pop para no hacerlo en cada iteración innecesariamente
+
+                stackPush(ret, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
                 break;
             }
             case 177: {
@@ -198,7 +197,7 @@ void execute(struct Context *context){
                 entry.ref_value = args;// Valor provisional
 
                 ++curr_frame_data->current_operand_stack_entry;
-                curr_frame_data->operand_stack_ptr[curr_frame_data->current_operand_stack_entry] = entry ;
+                curr_frame_data->operand_stack[curr_frame_data->current_operand_stack_entry] = entry ;
 
                 curr_frame_data->curr_pc_context += 1;
                 *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
