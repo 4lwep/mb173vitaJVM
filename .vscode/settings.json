@@ -23,6 +23,9 @@
         "fields.h": "c",
         "cmath": "c",
         "complex": "c",
-        "runtime.h": "c"
+        "runtime.h": "c",
+        "bitset": "c",
+        "string_view": "c",
+        "atomic": "c"
     }
 }

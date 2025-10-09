@@ -16,6 +16,6 @@ typedef struct{
     int attributes_ptr; //ptr attribute_info
 }field_info;
 
-int parseFields(FILE *r, uint16_t fieldsCount);
+int parseFields(FILE *bytecode_file, uint16_t fields_count);
 
 #endif

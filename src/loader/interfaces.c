@@ -2,12 +2,12 @@
 #include<malloc.h>
 #include<interfaces.h>
 
-int parseInterfaces(FILE *r, uint16_t interfaceCount){
-    int interface_ptr = heapAlloc(sizeof(uint16_t) * interfaceCount);
+int parseInterfaces(FILE *bytecode_file, uint16_t interface_count){
+    int interface_ptr = heapAlloc(sizeof(uint16_t) * interface_count);
     uint16_t *interface = (uint16_t*)&heap[interface_ptr];
 
-    for (int i = 0; i<interfaceCount; i++){
-        interface[i] = loadU16(r);
+    for (int i = 0; i<interface_count; i++){
+        interface[i] = loadU16(bytecode_file);
     }
 
     return interface_ptr;

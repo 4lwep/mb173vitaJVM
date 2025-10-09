@@ -22,15 +22,15 @@ typedef struct{
     int method_area_pointer;
     int max_stack;
     int max_locals;
-    uint8_t isNative;
+    uint8_t is_native;
 } Frame;
 
 struct Context;
 
-void initFrame(int ma, int method, struct Context *context);
-void excuteClinit(int ma, struct Context *context);
-void initFirstFrame(int ma, struct Context *context);
-void pushFrame(Frame frame, Frame *stack, int *curr_frame);
-void popFrame(Frame* stack, int *curr_frame);
+void initFrame(int maframe_method_area, int frame_method, struct Context *frame_context);
+void excuteClinit(int method_area, struct Context *context);
+void initFirstFrame(int method_area, struct Context *context);
+void pushFrame(Frame frame, Frame *stack, int *current_frame);
+void popFrame(Frame* stack, int *current_frame);
 
 #endif

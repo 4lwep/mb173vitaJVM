@@ -1,29 +1,29 @@
 #include<method_area.h>
 
-int createMethodArea(ClassFile *c){
+int createMethodArea(ClassFile *class_file){
     MethodArea *last_ma_data;
 
     int cur_method_area = heapAlloc(sizeof(MethodArea));
     MethodArea *curr_ma_data = (MethodArea*)&heap[cur_method_area];
 
-    curr_ma_data->constant_pool_ptr = c->cp_array_ptr;
-    curr_ma_data->constant_pool_count = c->constant_pool_count;
-    curr_ma_data->fields_ptr = c->fields_array_ptr;
-    curr_ma_data->fields_count = c->fields_count;
-    curr_ma_data->methods_count = c->methods_count;
-    curr_ma_data->methods_ptr = c->methods_array_ptr;
+    curr_ma_data->constant_pool_ptr = class_file->cp_array_ptr;
+    curr_ma_data->constant_pool_count = class_file->constant_pool_count;
+    curr_ma_data->fields_ptr = class_file->fields_array_ptr;
+    curr_ma_data->fields_count = class_file->fields_count;
+    curr_ma_data->methods_count = class_file->methods_count;
+    curr_ma_data->methods_ptr = class_file->methods_array_ptr;
     
-    int code = heapAlloc(sizeof(ExecutableCode) * c->methods_count);
+    int code = heapAlloc(sizeof(ExecutableCode) * class_file->methods_count);
     curr_ma_data->code_table_ptr = code;
     ExecutableCode *exCode = (ExecutableCode*)&heap[curr_ma_data->code_table_ptr];
-    method_info *methods = (method_info*)&heap[c->methods_array_ptr];
+    method_info *methods = (method_info*)&heap[class_file->methods_array_ptr];
     ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[curr_ma_data->constant_pool_ptr];
     
-    for (int i = 0; i < c->methods_count; i++){
+    for (int i = 0; i < class_file->methods_count; i++){
         attribute_info *method_attributes = (attribute_info*)&heap[methods[i].attributes_ptr];
         
-        if (methods[i].access_flags & 0x0100){
-            exCode[i].method_ptr = c->methods_array_ptr + (sizeof(method_info) * i);
+        if (methods[i].access_flags & ACC_NATIVE){
+            exCode[i].method_ptr = class_file->methods_array_ptr + (sizeof(method_info) * i);
             continue;
         }
 
@@ -44,7 +44,7 @@ int createMethodArea(ClassFile *c){
                     codeStream[x] = attribute_info[x+8];
                 }
                 exCode[i].length = codeLen;
-                exCode[i].method_ptr = c->methods_array_ptr + (sizeof(method_info) * i);
+                exCode[i].method_ptr = class_file->methods_array_ptr + (sizeof(method_info) * i);
             }
         }
     }
@@ -52,7 +52,7 @@ int createMethodArea(ClassFile *c){
     return cur_method_area;
 }
 
-//Chat gpt de aquí para abajo
+//Chat gpt de aquí para abajo (Esto debería de ir a util o algo pero no creo que aquí esté bien)
 unsigned int hash(char* key) {
     unsigned int h = 0;
     while (*key) {

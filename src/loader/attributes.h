@@ -13,6 +13,6 @@ typedef struct { // Hay varios tipos de atributos predefinidos. Tal vez tenga qu
     int info_ptr; //ptr u8
 } attribute_info;
 
-int parseAttributes(FILE *r, uint16_t attributesCount);
+int parseAttributes(FILE *bytecode_file, uint16_t attributes_count);
 
 #endif

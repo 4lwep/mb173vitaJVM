@@ -1,21 +1,21 @@
 #include<init.h>
 
 //int pc = -1;
-MaHashMap *ma_hashmap;
+MaHashMap *method_area_hashmap;
 //Frame** jvmStack;
 
-int initJVM(char* path){
+int initJVM(char* bytecode_path){
     initHeap();
-    ma_hashmap = calloc(1, sizeof(MaHashMap));
+    method_area_hashmap = calloc(1, sizeof(MaHashMap));
     struct Context *context = malloc(sizeof(struct Context));
     context->curr_frame = NULL_PTR;
     context->pc = NULL_PTR;
-    context->jvmStack = malloc(sizeof(Frame) * MAX_JVM_STACK);
+    context->jvm_stack = malloc(sizeof(Frame) * MAX_JVM_STACK);
 
-    FILE *r = fopen(path, "rb");
-    int ma = loadClass(r, context);
+    FILE *bytecode_file = fopen(bytecode_path, "rb");
+    int method_area = loadClass(bytecode_file, context);
 
-    initFirstFrame(ma, context);
+    initFirstFrame(method_area, context);
     
-    return ma;
+    return method_area;
 }

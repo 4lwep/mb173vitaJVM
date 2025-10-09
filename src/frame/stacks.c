@@ -1,9 +1,9 @@
 #include<stacks.h>
 #include<heap.h>
 
-Slot *createStack(int maxSize){
-    if (!maxSize) return NULL;
-    Slot *stack = malloc(sizeof(Slot) * maxSize);
+Slot *createStack(int max_size){
+    if (!max_size) return NULL;
+    Slot *stack = malloc(sizeof(Slot) * max_size);
 
     return stack;
 }
@@ -19,23 +19,23 @@ int compareSlots(Slot *slot1, Slot *slot2){ //Principalmente para verificar que 
 
 }
 
-int stackPush(Slot newEntry, Slot *stack, int *current_stack_entry, int maxStack){
-    if (*current_stack_entry + 1 < maxStack){
+int stackPush(Slot new_entry, Slot *stack, int *current_stack_entry, int max_stack){
+    if (*current_stack_entry + 1 < max_stack){
         *current_stack_entry += 1;
-        stack[*current_stack_entry] = newEntry;
+        stack[*current_stack_entry] = new_entry;
 
-        Slot *newValue = &stack[*current_stack_entry];
+        Slot *new_value = &stack[*current_stack_entry];
 
-        return compareSlots(&newEntry, newValue); // Estoy comparando la dirección de newEntry con newValue justo después de asignarlo, siempre va a dar bien. El argumento newEntry tal vez debería ser un puntero 
+        return compareSlots(&new_entry, new_value); // Estoy comparando la dirección de newEntry con newValue justo después de asignarlo, siempre va a dar bien. El argumento newEntry tal vez debería ser un puntero 
     }
     return NULL_PTR;
 }
 
 Slot stackPop(Slot *stack, int *current_stack_entry){
     if (*current_stack_entry > NULL_PTR) {
-        Slot popValue = stack[*current_stack_entry];
+        Slot pop_value = stack[*current_stack_entry];
         *current_stack_entry -= 1;
-        return popValue;
+        return pop_value;
     } 
     Slot fail;
     return fail;

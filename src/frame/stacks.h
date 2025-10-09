@@ -23,8 +23,8 @@ typedef struct {
     };
 } Slot;
 
-Slot *createStack(int maxSize);
-int stackPush(Slot newEntry, Slot *stack, int *current_operand_stack_entry, int maxStack);
+Slot *createStack(int max_size);
+int stackPush(Slot new_entry, Slot *stack, int *current_operand_stack_entry, int max_stack);
 Slot stackPop(Slot *stack, int *current_operand_stack_entry);
 
 #endif

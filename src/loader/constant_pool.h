@@ -61,6 +61,6 @@ typedef struct {
     } info;
 } ConstantPoolEntry;
 
-int parseConstantPool(FILE *r, uint16_t entries);
+int parseConstantPool(FILE *bytecode_file, uint16_t entries);
 
 #endif

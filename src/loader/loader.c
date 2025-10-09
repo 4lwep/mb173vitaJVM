@@ -3,66 +3,66 @@
 #include<frame.h>
 #include<init.h>
 
-ClassFile *parseClass(FILE *r){
-    ClassFile *parsedClass;
-    uint32_t signature = loadU32(r);
-    uint16_t minorVersion = loadU16(r);
-    uint16_t majorVersion = loadU16(r);
+ClassFile *parseClass(FILE *bytecode_file){
+    ClassFile *parsed_class;
+    uint32_t signature = loadU32(bytecode_file);
+    uint16_t minor_version = loadU16(bytecode_file);
+    uint16_t major_version = loadU16(bytecode_file);
     
-    uint16_t constantPoolCount = loadU16(r);
-    int cp_array_ptr = parseConstantPool(r, constantPoolCount);
+    uint16_t constant_pool_count = loadU16(bytecode_file);
+    int constant_pool_array_ptr = parseConstantPool(bytecode_file, constant_pool_count);
 
-    uint16_t accessFlags = loadU16(r);
-    uint16_t thisClass = loadU16(r);
-    uint16_t superClass = loadU16(r);
+    uint16_t access_flags = loadU16(bytecode_file);
+    uint16_t this_class = loadU16(bytecode_file);
+    uint16_t super_class = loadU16(bytecode_file);
     
-    uint16_t interfaceCount = loadU16(r);
-    int interface_array_ptr = parseInterfaces(r, interfaceCount);
+    uint16_t interface_count = loadU16(bytecode_file);
+    int interface_array_ptr = parseInterfaces(bytecode_file, interface_count);
 
-    uint16_t fieldsCount = loadU16(r);
-    int fields_array_ptr = parseFields(r, fieldsCount);
+    uint16_t fields_count = loadU16(bytecode_file);
+    int fields_array_ptr = parseFields(bytecode_file, fields_count);
 
-    uint16_t methodCount = loadU16(r);
-    int methods_array_ptr = parseMethods(r, methodCount);
+    uint16_t method_count = loadU16(bytecode_file);
+    int methods_array_ptr = parseMethods(bytecode_file, method_count);
 
-    uint16_t attributesCount = loadU16(r);
-    int attributes_array_ptr = parseAttributes(r, attributesCount);
+    uint16_t attributes_count = loadU16(bytecode_file);
+    int attributes_array_ptr = parseAttributes(bytecode_file, attributes_count);
 
-    parsedClass = malloc(sizeof(ClassFile));
+    parsed_class = malloc(sizeof(ClassFile));
 
-    parsedClass->magic = signature;
-    parsedClass->minor_version = minorVersion;
-    parsedClass->major_version = majorVersion;
-    parsedClass->constant_pool_count = constantPoolCount;
-    parsedClass->cp_array_ptr = cp_array_ptr;
-    parsedClass->access_flags = accessFlags;
-    parsedClass->this_class = thisClass;
-    parsedClass->super_class = superClass;
-    parsedClass->interfaces_count = interfaceCount;
-    parsedClass->interface_array_ptr = interface_array_ptr;
-    parsedClass->fields_count = fieldsCount;
-    parsedClass->fields_array_ptr = fields_array_ptr;
-    parsedClass->methods_count = methodCount;
-    parsedClass->methods_array_ptr = methods_array_ptr;
-    parsedClass->attributes_count = attributesCount;
-    parsedClass->attributes_array_ptr = attributes_array_ptr;
+    parsed_class->magic = signature;
+    parsed_class->minor_version = minor_version;
+    parsed_class->major_version = major_version;
+    parsed_class->constant_pool_count = constant_pool_count;
+    parsed_class->cp_array_ptr = constant_pool_array_ptr;
+    parsed_class->access_flags = access_flags;
+    parsed_class->this_class = this_class;
+    parsed_class->super_class = super_class;
+    parsed_class->interfaces_count = interface_count;
+    parsed_class->interface_array_ptr = interface_array_ptr;
+    parsed_class->fields_count = fields_count;
+    parsed_class->fields_array_ptr = fields_array_ptr;
+    parsed_class->methods_count = method_count;
+    parsed_class->methods_array_ptr = methods_array_ptr;
+    parsed_class->attributes_count = attributes_count;
+    parsed_class->attributes_array_ptr = attributes_array_ptr;
 
-    return parsedClass;
+    return parsed_class;
 }
 
-int loadClass(FILE *r, struct Context *context){
-    ClassFile *parsedClass;
+int loadClass(FILE *bytecode_file, struct Context *context){
+    ClassFile *parsed_class;
 
-    parsedClass = parseClass(r);
+    parsed_class = parseClass(bytecode_file);
 
-    int ma = createMethodArea(parsedClass);
+    int method_area = createMethodArea(parsed_class);
 
-    ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[parsedClass->cp_array_ptr]  ;
-    char *className = (char*)&heap[cp[cp[parsedClass->this_class].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr];
-    insert(ma_hashmap, className, ma);
+    ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[parsed_class->cp_array_ptr]  ;
+    char *className = (char*)&heap[cp[cp[parsed_class->this_class].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr];
+    insert(method_area_hashmap, className, method_area);
 
-    free(parsedClass);
+    free(parsed_class);
 
-    excuteClinit(ma, context);
-    return ma;
+    excuteClinit(method_area, context);
+    return method_area;
 }

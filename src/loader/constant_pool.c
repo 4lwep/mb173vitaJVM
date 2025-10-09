@@ -1,75 +1,75 @@
 #include<stdio.h>
 #include<constant_pool.h>
 
-int parseConstantPool(FILE *r, uint16_t entries){
-  int constantPoolPtr = heapAlloc(sizeof(ConstantPoolEntry) * entries);
-  ConstantPoolEntry *constantPool = (ConstantPoolEntry*)&heap[constantPoolPtr];
+int parseConstantPool(FILE *bytecode_file, uint16_t entries){
+  int constant_pool_ptr = heapAlloc(sizeof(ConstantPoolEntry) * entries);
+  ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[constant_pool_ptr];
 
   for (int i = 0; i < entries; i++){
     if(!i) continue;
-    constantPool[i].tag = loadU8(r);
+    constant_pool[i].tag = loadU8(bytecode_file);
 
-    switch(constantPool[i].tag){
+    switch(constant_pool[i].tag){
       case 7:{ //class
-        constantPool[i].info.CONSTANT_class.name_index = loadU16(r);
+        constant_pool[i].info.CONSTANT_class.name_index = loadU16(bytecode_file);
         break;
       }
       case 9:{ //fieldref
-        constantPool[i].info.CONSTANT_fieldref.class_index = loadU16(r);
-        constantPool[i].info.CONSTANT_fieldref.name_and_type_index = loadU16(r);
+        constant_pool[i].info.CONSTANT_fieldref.class_index = loadU16(bytecode_file);
+        constant_pool[i].info.CONSTANT_fieldref.name_and_type_index = loadU16(bytecode_file);
         break;
       }
       case 10:{ //methodref
-        constantPool[i].info.CONSTANT_methodref.class_index = loadU16(r);
-        constantPool[i].info.CONSTANT_methodref.name_and_type_index = loadU16(r);
+        constant_pool[i].info.CONSTANT_methodref.class_index = loadU16(bytecode_file);
+        constant_pool[i].info.CONSTANT_methodref.name_and_type_index = loadU16(bytecode_file);
         break;
       }
       case 11:{ //interfaceMethodref
-        constantPool[i].info.CONSTANT_interfaceMethodref.class_index = loadU16(r);
-        constantPool[i].info.CONSTANT_interfaceMethodref.name_and_type_index = loadU16(r);
+        constant_pool[i].info.CONSTANT_interfaceMethodref.class_index = loadU16(bytecode_file);
+        constant_pool[i].info.CONSTANT_interfaceMethodref.name_and_type_index = loadU16(bytecode_file);
         break;
       }
       case 8:{ //string
-        constantPool[i].info.CONSTANT_string.string_index = loadU16(r);
+        constant_pool[i].info.CONSTANT_string.string_index = loadU16(bytecode_file);
         break;
       }
       case 3:{ //integer
-        constantPool[i].info.CONSTANT_integer.bytes = loadU32(r);
+        constant_pool[i].info.CONSTANT_integer.bytes = loadU32(bytecode_file);
         break;
       }
       case 4:{ //float --- Hay que hacer algunas cosas aún
-        constantPool[i].info.CONSTANT_float.bytes = loadU32(r);
+        constant_pool[i].info.CONSTANT_float.bytes = loadU32(bytecode_file);
         break;
       }
       case 5:{ //long
-        constantPool[i].info.CONSTANT_long.high_bytes = loadU32(r);
-        constantPool[i].info.CONSTANT_long.low_bytes = loadU32(r);
+        constant_pool[i].info.CONSTANT_long.high_bytes = loadU32(bytecode_file);
+        constant_pool[i].info.CONSTANT_long.low_bytes = loadU32(bytecode_file);
         i++;
-        constantPool[i].tag = 0; //
+        constant_pool[i].tag = 0; //
         break;
       }
       case 6:{ //double --- Falta especificar algunos casos como con los float
-        constantPool[i].info.CONSTANT_double.high_bytes = loadU32(r);
-        constantPool[i].info.CONSTANT_double.low_bytes = loadU32(r);
+        constant_pool[i].info.CONSTANT_double.high_bytes = loadU32(bytecode_file);
+        constant_pool[i].info.CONSTANT_double.low_bytes = loadU32(bytecode_file);
         i++;
-        constantPool[i].tag = 0; //
+        constant_pool[i].tag = 0; //
         break;
       }
       case 12:{ //nameAndType
-        constantPool[i].info.CONSTANT_nameAndType.name_index = loadU16(r);
-        constantPool[i].info.CONSTANT_nameAndType.descriptor_index = loadU16(r);
+        constant_pool[i].info.CONSTANT_nameAndType.name_index = loadU16(bytecode_file);
+        constant_pool[i].info.CONSTANT_nameAndType.descriptor_index = loadU16(bytecode_file);
         break;
       }
       case 1: { //utf8
-        constantPool[i].info.CONSTANT_utf8.length = loadU16(r);
+        constant_pool[i].info.CONSTANT_utf8.length = loadU16(bytecode_file);
 
-        constantPool[i].info.CONSTANT_utf8.text_ptr = heapAlloc(constantPool[i].info.CONSTANT_utf8.length + 1);
-        uint8_t *text = (uint8_t*)&heap[constantPool[i].info.CONSTANT_utf8.text_ptr];
+        constant_pool[i].info.CONSTANT_utf8.text_ptr = heapAlloc(constant_pool[i].info.CONSTANT_utf8.length + 1);
+        uint8_t *text = (uint8_t*)&heap[constant_pool[i].info.CONSTANT_utf8.text_ptr];
 
-        for (int j = 0; j<constantPool[i].info.CONSTANT_utf8.length; j++){
-          text[j] = loadU8(r);
+        for (int j = 0; j<constant_pool[i].info.CONSTANT_utf8.length; j++){
+          text[j] = loadU8(bytecode_file);
         }
-        text[constantPool[i].info.CONSTANT_utf8.length] = '\0';
+        text[constant_pool[i].info.CONSTANT_utf8.length] = '\0';
         break;
       }
       default:{
@@ -78,5 +78,5 @@ int parseConstantPool(FILE *r, uint16_t entries){
       } 
     }
   }
-  return constantPoolPtr;
+  return constant_pool_ptr;
 }
