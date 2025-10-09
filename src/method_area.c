@@ -92,5 +92,5 @@ int get(MaHashMap* map, char* key) {
         current = current->next;
     }
     // Si no se encuentra
-    return -1; // O algún valor que indique "no encontrado"
+    return NOT_FOUND; // O algún valor que indique "no encontrado"
 }

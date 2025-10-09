@@ -24,7 +24,7 @@ void executeNative(struct Context *context){
         entry.long_value = JNICurrentTimeMilis();
         popFrame(context->jvmStack, &context->curr_frame);
         curr_frame_data = &context->jvmStack[context->curr_frame];
-        stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
+        stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, curr_frame_data->max_stack);
         return;
     } else {
         fprintf(log_file, "Atención: %s no está definido\n", methodName);
@@ -56,13 +56,12 @@ void execute(struct Context *context){
         
         switch(*opcode){
             case 1:{
-
-                if (curr_frame_data->current_operand_stack_entry < curr_frame_data->max_stack){ //Temporal para no asignar más valores de los permitidos
+                if (curr_frame_data->current_operand_stack_entry < curr_frame_data->max_stack){ //Temporal para no asignar más valores de los permitidos (sigue haciendo falta?)
                 Slot entry;
                 entry.type = VALUE_REF;
-                entry.ref_value = -1;
+                entry.ref_value = NULL_PTR;
 
-                stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
+                stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, curr_frame_data->max_stack);
                 }
                 curr_frame_data->curr_pc_context += 1;
                 *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
@@ -73,7 +72,7 @@ void execute(struct Context *context){
                 entry.type = VALUE_LONG;
                 entry.long_value = 0;
 
-                stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
+                stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, curr_frame_data->max_stack);
                 curr_frame_data->curr_pc_context += 1;
                 *curr_frame_data->pc_ptr = curr_frame_data->curr_pc_context;
 
@@ -93,10 +92,10 @@ void execute(struct Context *context){
 
                 if (slot1.long_value < slot2.long_value) {
                     entry.int_value = 1;
-                    stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
+                    stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, curr_frame_data->max_stack);
                 } else {
                     entry.int_value = 0;
-                    stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
+                    stackPush(entry, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, curr_frame_data->max_stack);
                 }
 
                 curr_frame_data->curr_pc_context += 1;
@@ -131,7 +130,7 @@ void execute(struct Context *context){
                 popFrame(context->jvmStack, &context->curr_frame);
                 curr_frame_data = &context->jvmStack[context->curr_frame]; //Podría asignar esto al hacer pop para no hacerlo en cada iteración innecesariamente
 
-                stackPush(ret, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, &curr_frame_data->max_stack);
+                stackPush(ret, curr_frame_data->operand_stack, &curr_frame_data->current_operand_stack_entry, curr_frame_data->max_stack);
                 break;
             }
             case 177: {
@@ -161,7 +160,7 @@ void execute(struct Context *context){
                 int class_name_ptr = cp[cp[cp[args].info.CONSTANT_fieldref.class_index].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr;
                 char *class_name = (char*)&heap[class_name_ptr];
 
-                if (get(ma_hashmap, class_name) == -1){
+                if (get(ma_hashmap, class_name) == NOT_FOUND){
                     char *classQualifiedName = strconcat("ux0:data/", strconcat(class_name, ".class"));
                     FILE *newClass = fopen(classQualifiedName, "rb");
                     loadClass(newClass, context);
@@ -220,7 +219,7 @@ void execute(struct Context *context){
                 char *methodName = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.name_and_type_index].info.CONSTANT_nameAndType.name_index].info.CONSTANT_utf8.text_ptr];
                 char *methodClassName = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.class_index].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr];
 
-                if (get(ma_hashmap, methodClassName) == -1){
+                if (get(ma_hashmap, methodClassName) == NOT_FOUND){
                     char *classQualifiedName = strconcat("ux0:/data/", strconcat(methodClassName, ".class"));
                     FILE *newClass = fopen(classQualifiedName, "rb");
                     loadClass(newClass, context);

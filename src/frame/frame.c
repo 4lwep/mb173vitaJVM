@@ -9,17 +9,17 @@ void initFrame(int ma, int method, struct Context *context){
     Frame frame;
 
     if (methodData->access_flags & 0x0100){
-        frame.local_stack = createStack(1);
-        frame.current_local_stack_entry = -1;
-        frame.curr_pc_context = -1;
-        frame.operand_stack = createStack(1);
-        frame.current_operand_stack_entry = -1;
+        frame.local_stack = createStack(STACK_DEFAULT_SIZE);
+        frame.current_local_stack_entry = NULL_PTR;
+        frame.curr_pc_context = NULL_PTR;
+        frame.operand_stack = createStack(STACK_DEFAULT_SIZE);
+        frame.current_operand_stack_entry = NULL_PTR;
         frame.pc_ptr = &context->pc;
         frame.method_ptr = method;
         frame.method_area_pointer = ma;
-        frame.isNative = 1;
-        frame.max_locals = 1;
-        frame.max_stack = 1;
+        frame.isNative = TRUE;
+        frame.max_locals = STACK_DEFAULT_SIZE;
+        frame.max_stack = STACK_DEFAULT_SIZE;
 
         *frame.pc_ptr = frame.curr_pc_context;
         goto finish;
@@ -36,14 +36,14 @@ void initFrame(int ma, int method, struct Context *context){
             fprintf(log_file, "\n");
 
             frame.local_stack = createStack(exCode[i].max_locals);
-            frame.current_local_stack_entry = -1;
+            frame.current_local_stack_entry = NULL_PTR;
             frame.curr_pc_context = exCode[i].code_array_ptr;
             frame.operand_stack = createStack(exCode[i].max_stack);
-            frame.current_operand_stack_entry = -1;
+            frame.current_operand_stack_entry = NULL_PTR;
             frame.pc_ptr = &context->pc;
             frame.method_ptr = method;
             frame.method_area_pointer = ma;
-            frame.isNative = 0;
+            frame.isNative = FALSE;
             frame.max_locals = exCode[i].max_locals;
             frame.max_stack = exCode[i].max_stack;
 
@@ -54,11 +54,6 @@ void initFrame(int ma, int method, struct Context *context){
     }
 
     finish:
-        /*fprintf(log_file, "max locals: %d\n", frame.max_locals);
-        fprintf(log_file, "max stack: %d\n", frame.max_stack);
-        ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[ma_data->constant_pool_ptr];
-        char *desc = (char*)&heap[cp[methodData->descriptor_index].info.CONSTANT_utf8.text_ptr];
-        fprintf(log_file, "method descriptor: %s\n", desc);*/
         pushFrame(frame, context->jvmStack, &context->curr_frame);
 }
 

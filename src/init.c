@@ -8,8 +8,8 @@ int initJVM(char* path){
     initHeap();
     ma_hashmap = calloc(1, sizeof(MaHashMap));
     struct Context *context = malloc(sizeof(struct Context));
-    context->curr_frame = -1;
-    context->pc = -1;
+    context->curr_frame = NULL_PTR;
+    context->pc = NULL_PTR;
     context->jvmStack = malloc(sizeof(Frame) * MAX_JVM_STACK);
 
     FILE *r = fopen(path, "rb");

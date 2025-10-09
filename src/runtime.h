@@ -6,7 +6,7 @@
 struct Context{
     int curr_frame;
     int pc; 
-    Frame *jvmStack;
+    Frame *jvmStack; //Podría colocar el method area ya que lo uso tanto
 };
 
 void execute(struct Context *context);

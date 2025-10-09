@@ -6,6 +6,9 @@
 #include<string.h>
 #include<malloc.h>
 
+#define NOT_FOUND -1
+#define NEW_LINE "\n"
+
 uint8_t loadU8(FILE *r);
 uint16_t loadU16(FILE *r);
 uint32_t loadU32(FILE *r);

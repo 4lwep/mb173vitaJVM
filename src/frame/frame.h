@@ -7,6 +7,10 @@
 
 #define MAX_JVM_STACK 256
 
+#define STACK_DEFAULT_SIZE 1
+#define TRUE 1
+#define FALSE 0
+
 typedef struct{
     Slot *local_stack;
     Slot *operand_stack;
@@ -28,7 +32,5 @@ void excuteClinit(int ma, struct Context *context);
 void initFirstFrame(int ma, struct Context *context);
 void pushFrame(Frame frame, Frame *stack, int *curr_frame);
 void popFrame(Frame* stack, int *curr_frame);
-
-//extern int curr_frame;
 
 #endif

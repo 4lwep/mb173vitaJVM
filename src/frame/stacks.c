@@ -8,7 +8,7 @@ Slot *createStack(int maxSize){
     return stack;
 }
 
-int compareSlots(Slot *slot1, Slot *slot2){
+int compareSlots(Slot *slot1, Slot *slot2){ //Principalmente para verificar que dos slots coinciden al meter uno nuevo y verificar que la operación es exitosa
     if (slot1->type == slot2->type && 
         slot1->double_value == slot2->double_value &&
         slot1->float_value == slot2->float_value &&
@@ -19,20 +19,20 @@ int compareSlots(Slot *slot1, Slot *slot2){
 
 }
 
-int stackPush(Slot newEntry, Slot *stack, int *current_stack_entry, int *maxStack){
-    if (*current_stack_entry + 1 < *maxStack){
+int stackPush(Slot newEntry, Slot *stack, int *current_stack_entry, int maxStack){
+    if (*current_stack_entry + 1 < maxStack){
         *current_stack_entry += 1;
         stack[*current_stack_entry] = newEntry;
 
         Slot *newValue = &stack[*current_stack_entry];
 
-        return compareSlots(&newEntry, newValue);
+        return compareSlots(&newEntry, newValue); // Estoy comparando la dirección de newEntry con newValue justo después de asignarlo, siempre va a dar bien. El argumento newEntry tal vez debería ser un puntero 
     }
-    return -1;
+    return NULL_PTR;
 }
 
 Slot stackPop(Slot *stack, int *current_stack_entry){
-    if (*current_stack_entry > -1) {
+    if (*current_stack_entry > NULL_PTR) {
         Slot popValue = stack[*current_stack_entry];
         *current_stack_entry -= 1;
         return popValue;

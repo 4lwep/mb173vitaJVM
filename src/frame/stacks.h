@@ -17,14 +17,14 @@ typedef struct {
     union {
         int int_value;
         float float_value;
-        int ref_value;     // Índice dentro del heap
+        int ref_value;     // Índice dentro del heap de la JVM
         double double_value;
         long long_value;
     };
 } Slot;
 
 Slot *createStack(int maxSize);
-int stackPush(Slot newEntry, Slot *stack, int *current_operand_stack_entry, int *maxStack);
+int stackPush(Slot newEntry, Slot *stack, int *current_operand_stack_entry, int maxStack);
 Slot stackPop(Slot *stack, int *current_operand_stack_entry);
 
 #endif
