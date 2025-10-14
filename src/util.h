@@ -8,6 +8,8 @@
 
 #define NOT_FOUND -1
 #define NEW_LINE "\n"
+#define TRUE 1
+#define FALSE 0
 
 uint8_t loadU8(FILE *r);
 uint16_t loadU16(FILE *r);

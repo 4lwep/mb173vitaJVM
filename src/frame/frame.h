@@ -8,8 +8,6 @@
 #define MAX_JVM_STACK 256
 
 #define STACK_DEFAULT_SIZE 1
-#define TRUE 1
-#define FALSE 0
 
 typedef struct{
     Slot *local_stack;
