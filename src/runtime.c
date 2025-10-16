@@ -90,7 +90,7 @@ void ldc(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
         Slot slot;
         slot.type = VALUE_REF;
         slot.ref_value = frame_constant_pool[index].info.CONSTANT_string.string_index;
-        fprintf(log_file, "String index: %d", slot.ref_value);
+        fprintf(log_file, "String index: %d\n", slot.ref_value);
 
         stackPush(slot, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
     } else if (tag == 7){ //Class
