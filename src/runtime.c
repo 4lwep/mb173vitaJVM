@@ -21,6 +21,7 @@ void executeNative(struct Context *context){
     ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[method_area->constant_pool_ptr];
     method_info *method = (method_info*)&heap[current_frame_data->method_ptr];
     char *methodName = (char*)&heap[constant_pool[method->name_index].info.CONSTANT_utf8.text_ptr];
+    
     if (!strcmp(methodName, "registerNatives")){
 
     } else if (!strcmp(methodName, "currentTimeMillis")){
@@ -62,6 +63,15 @@ void lconst_0(Frame *current_frame_data, struct Context *context, uint8_t *opcod
     nextOpCode(current_frame_data, 1);
 }
 
+void lconst_1(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
+    Slot entry;
+    entry.type = VALUE_LONG;
+    entry.long_value = 1;
+
+    stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
+
+    nextOpCode(current_frame_data, 1);
+}
 
 void lcmp(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
     Slot entry;
@@ -69,6 +79,7 @@ void lcmp(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
 
     Slot slot1 = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
     fprintf(log_file, "Valor primero %d\n", slot1.long_value);
+    
     Slot slot2 = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
     fprintf(log_file, "Valor segundo %d\n", slot2.long_value);
 
@@ -227,6 +238,7 @@ void execute(struct Context *context){
     opcodes[0] = &nop;
     opcodes[1] = &aconst_null;
     opcodes[9] = &lconst_0;
+    opcodes[10] = &lconst_1;
     opcodes[148] = &lcmp;
     opcodes[158] = &ifle;
     opcodes[176] = &areturn;
