@@ -6,6 +6,11 @@
 
 #include "debugScreen_custom.h"
 
+void nextOpCode(Frame *frame, uint8_t number_of_opcodes){
+    frame->curr_pc_context += number_of_opcodes;
+    *frame->pc_ptr = frame->curr_pc_context;
+}
+
 long JNICurrentTimeMilis(){
     return 1716437;
 }
@@ -33,23 +38,18 @@ void executeNative(struct Context *context){
     popFrame(context->jvm_stack, &context->curr_frame);
 }
 
-/////////////////////////////////////
-
 void nop(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
-    current_frame_data->curr_pc_context += 1;
-    *current_frame_data->pc_ptr = current_frame_data->curr_pc_context;
+    nextOpCode(current_frame_data, 1);
 }
 
 void aconst_null(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
-    if (current_frame_data->current_operand_stack_entry < current_frame_data->max_stack){ //Temporal para no asignar más valores de los permitidos (sigue haciendo falta?)
-        Slot entry;
-        entry.type = VALUE_REF;
-        entry.ref_value = NULL_PTR;
+    Slot entry;
+    entry.type = VALUE_REF;
+    entry.ref_value = NULL_PTR;
 
-        stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
-    }
-    current_frame_data->curr_pc_context += 1;
-    *current_frame_data->pc_ptr = current_frame_data->curr_pc_context;
+    stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
+    
+    nextOpCode(current_frame_data, 1);
 }
 
 void lconst_0(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
@@ -58,8 +58,8 @@ void lconst_0(Frame *current_frame_data, struct Context *context, uint8_t *opcod
     entry.long_value = 0;
 
     stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
-    current_frame_data->curr_pc_context += 1;
-    *current_frame_data->pc_ptr = current_frame_data->curr_pc_context;
+
+    nextOpCode(current_frame_data, 1);
 }
 
 
@@ -80,8 +80,7 @@ void lcmp(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
         stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
     }
 
-    current_frame_data->curr_pc_context += 1;
-    *current_frame_data->pc_ptr = current_frame_data->curr_pc_context;
+    nextOpCode(current_frame_data, 1);
 }
 
 void ifle(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
@@ -90,12 +89,10 @@ void ifle(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
     Slot slot1 = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
 
     if (slot1.int_value <= 0){
-        current_frame_data->curr_pc_context += offset;
+        nextOpCode(current_frame_data, offset);
     } else {
-        current_frame_data->curr_pc_context += 3;
+        nextOpCode(current_frame_data, 3);
     }
-
-    *current_frame_data->pc_ptr = current_frame_data->curr_pc_context;
 }
 
 void areturn(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
@@ -178,13 +175,11 @@ void getstatic(Frame *current_frame_data, struct Context *context, uint8_t *opco
     ++current_frame_data->current_operand_stack_entry;
     current_frame_data->operand_stack[current_frame_data->current_operand_stack_entry] = entry ;
 
-    current_frame_data->curr_pc_context += 1;
-    *current_frame_data->pc_ptr = current_frame_data->curr_pc_context;
+    nextOpCode(current_frame_data, 1);
 }
 
 void putstatic(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
-    current_frame_data->curr_pc_context += 3;
-    *current_frame_data->pc_ptr = current_frame_data->curr_pc_context;
+    nextOpCode(current_frame_data, 3);
 }
 
 void invokestatic(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
@@ -206,8 +201,7 @@ void invokestatic(Frame *current_frame_data, struct Context *context, uint8_t *o
         return;
     }
 
-    current_frame_data->curr_pc_context += 3;
-    *current_frame_data->pc_ptr = current_frame_data->curr_pc_context;
+    nextOpCode(current_frame_data, 3);
 
     for (int i = 0; i<methodArea->methods_count; i++){
     char *fMethodName = (char*)&heap[constantPool[methods[i].name_index].info.CONSTANT_utf8.text_ptr];
@@ -225,8 +219,6 @@ void athrow(Frame *current_frame_data, struct Context *context, uint8_t *opcode)
         popFrame(context->jvm_stack, &context->curr_frame);
     }
 }
-
-/////////////////////////////////////
 
 void execute(struct Context *context){
     uint8_t *opcode;
