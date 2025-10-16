@@ -73,6 +73,33 @@ void lconst_1(Frame *current_frame_data, struct Context *context, uint8_t *opcod
     nextOpCode(current_frame_data, 1);
 }
 
+void ldc(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
+    uint8_t index = ((uint8_t)opcode[1]);
+
+    MethodArea *frame_method_area = (MethodArea*)&heap[current_frame_data->method_area_pointer];
+    ConstantPoolEntry* frame_constant_pool = (ConstantPoolEntry*)&heap[frame_method_area->constant_pool_ptr];
+    uint8_t tag = frame_constant_pool[index].tag;
+
+    fprintf(log_file, "Tag: %d\n", frame_constant_pool[index].tag);
+
+    if(tag == 3){ //Integer
+        
+    } else if(tag == 4){ //Float
+
+    } else if(tag == 8){ //String
+        Slot slot;
+        slot.type = VALUE_REF;
+        slot.ref_value = frame_constant_pool[index].info.CONSTANT_string.string_index;
+        fprintf(log_file, "String index: %d", slot.ref_value);
+
+        stackPush(slot, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
+    } else if (tag == 7){ //Class
+
+    }
+
+    nextOpCode(current_frame_data, 2);
+}
+
 void lcmp(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
     Slot entry;
     entry.type = VALUE_INT;
@@ -114,7 +141,7 @@ void areturn(Frame *current_frame_data, struct Context *context, uint8_t *opcode
     MethodArea *ma = (MethodArea*)&heap[current_frame_data->method_area_pointer];
     ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[ma->constant_pool_ptr];
     char *descriptor = (char*)&heap[cp[method->descriptor_index].info.CONSTANT_utf8.text_ptr];
-    //TODO: Esto es para comparar el retorno de la función con el tipo del descriptor
+    //TODO: Esto es para comparar el retorno del método con el tipo del descriptor del mismo método
 
     Slot ret = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
                 
@@ -240,6 +267,7 @@ void execute(struct Context *context){
     opcodes[1] = &aconst_null;
     opcodes[9] = &lconst_0;
     opcodes[10] = &lconst_1;
+    opcodes[18] = &ldc;
     opcodes[148] = &lcmp;
     opcodes[158] = &ifle;
     opcodes[176] = &areturn;
