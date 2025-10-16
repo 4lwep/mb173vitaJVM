@@ -77,17 +77,20 @@ void lcmp(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
     Slot entry;
     entry.type = VALUE_INT;
 
-    Slot slot1 = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
-    fprintf(log_file, "Valor primero %d\n", slot1.long_value);
-
     Slot slot2 = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
+    Slot slot1 = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
+
+    fprintf(log_file, "Valor primero %d\n", slot1.long_value);
     fprintf(log_file, "Valor segundo %d\n", slot2.long_value);
 
-    if (slot1.long_value < slot2.long_value) { // Esto se supone que está al revés
+    if (slot1.long_value > slot2.long_value) {
         entry.int_value = 1;
         stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
-    } else {
+    } else if (slot1.long_value == slot2.long_value){
         entry.int_value = 0;
+        stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
+    } else {
+        entry.int_value = -1;
         stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
     }
 
@@ -156,8 +159,6 @@ void getstatic(Frame *current_frame_data, struct Context *context, uint8_t *opco
         return;
     }
 
-    current_frame_data->curr_pc_context += 2; //Revisar
-
     int oMaPtr = get(method_area_hashmap, class_name);
     MethodArea *oMaData = (MethodArea*)&heap[oMaPtr];
     ConstantPoolEntry *oConstantPool = (ConstantPoolEntry*)&heap[oMaData->constant_pool_ptr];
@@ -186,7 +187,7 @@ void getstatic(Frame *current_frame_data, struct Context *context, uint8_t *opco
     ++current_frame_data->current_operand_stack_entry;
     current_frame_data->operand_stack[current_frame_data->current_operand_stack_entry] = entry ;
 
-    nextOpCode(current_frame_data, 1);
+    nextOpCode(current_frame_data, 3);
 }
 
 void putstatic(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
