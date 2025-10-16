@@ -9,7 +9,7 @@
 #define MAX_HEAP_ENTRY_SIZE 0x7FFF
 #define ENTRY_MARK_MASK 0x8000
 
-#define NULL_PTR -1
+#define JVM_NULL_PTR -1
 
 typedef struct {
     uint16_t length; //Tamaño real de 15 bits, el primer bit se usa para los flags definidos arriba

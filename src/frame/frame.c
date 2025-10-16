@@ -10,10 +10,10 @@ void initFrame(int frame_method_area, int frame_method, struct Context *frame_co
 
     if (method_data->access_flags & ACC_NATIVE){
         frame.local_stack = createStack(STACK_DEFAULT_SIZE);
-        frame.current_local_stack_entry = NULL_PTR;
-        frame.curr_pc_context = NULL_PTR;
+        frame.current_local_stack_entry = JVM_NULL_PTR;
+        frame.curr_pc_context = JVM_NULL_PTR;
         frame.operand_stack = createStack(STACK_DEFAULT_SIZE);
-        frame.current_operand_stack_entry = NULL_PTR;
+        frame.current_operand_stack_entry = JVM_NULL_PTR;
         frame.pc_ptr = &frame_context->pc;
         frame.method_ptr = frame_method;
         frame.method_area_pointer = frame_method_area;
@@ -36,10 +36,10 @@ void initFrame(int frame_method_area, int frame_method, struct Context *frame_co
             fprintf(log_file, "\n");
 
             frame.local_stack = createStack(executableCode[i].max_locals);
-            frame.current_local_stack_entry = NULL_PTR;
+            frame.current_local_stack_entry = JVM_NULL_PTR;
             frame.curr_pc_context = executableCode[i].code_array_ptr;
             frame.operand_stack = createStack(executableCode[i].max_stack);
-            frame.current_operand_stack_entry = NULL_PTR;
+            frame.current_operand_stack_entry = JVM_NULL_PTR;
             frame.pc_ptr = &frame_context->pc;
             frame.method_ptr = frame_method;
             frame.method_area_pointer = frame_method_area;

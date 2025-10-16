@@ -46,7 +46,7 @@ void nop(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
 void aconst_null(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
     Slot entry;
     entry.type = VALUE_REF;
-    entry.ref_value = NULL_PTR;
+    entry.ref_value = JVM_NULL_PTR;
 
     stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
     
@@ -79,11 +79,11 @@ void lcmp(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
 
     Slot slot1 = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
     fprintf(log_file, "Valor primero %d\n", slot1.long_value);
-    
+
     Slot slot2 = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
     fprintf(log_file, "Valor segundo %d\n", slot2.long_value);
 
-    if (slot1.long_value < slot2.long_value) {
+    if (slot1.long_value < slot2.long_value) { // Esto se supone que está al revés
         entry.int_value = 1;
         stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
     } else {

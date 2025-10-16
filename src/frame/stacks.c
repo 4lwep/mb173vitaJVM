@@ -28,15 +28,15 @@ int stackPush(Slot new_entry, Slot *stack, int *current_stack_entry, int max_sta
 
         return compareSlots(&new_entry, new_value); // Estoy comparando la dirección de newEntry con newValue justo después de asignarlo, siempre va a dar bien. El argumento newEntry tal vez debería ser un puntero 
     }
-    return NULL_PTR;
+    return JVM_NULL_PTR;
 }
 
 Slot stackPop(Slot *stack, int *current_stack_entry){
-    if (*current_stack_entry > NULL_PTR) {
+    Slot pop_value;
+    if (*current_stack_entry > JVM_NULL_PTR) {
         Slot pop_value = stack[*current_stack_entry];
         *current_stack_entry -= 1;
         return pop_value;
-    } 
-    Slot fail;
-    return fail;
+    }
+    return pop_value;
 }
