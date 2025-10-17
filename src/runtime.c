@@ -32,6 +32,14 @@ void executeNative(struct Context *context){
         current_frame_data = &context->jvm_stack[context->curr_frame];
         stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
         return;
+    } else if (!strcmp(methodName, "println")) {
+        Slot text_slot = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
+        
+        MethodArea *frame_method_area = (MethodArea*)&heap[current_frame_data->method_area_pointer];
+        ConstantPoolEntry* frame_constant_pool = (ConstantPoolEntry*)&heap[frame_method_area->constant_pool_ptr];
+        char *text = (char*)&heap[frame_constant_pool[text_slot.ref_value].info.CONSTANT_utf8.text_ptr];
+        fprintf(log_file, "%s\n", text);
+        psvDebugScreenPrintf("%s\n", text);
     } else {
         fprintf(log_file, "Atención: %s no está definido\n", methodName);
     }
@@ -98,6 +106,11 @@ void ldc(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
     }
 
     nextOpCode(current_frame_data, 2);
+}
+
+void dup(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
+    fprintf(log_file, "hola\n");
+    nextOpCode(current_frame_data, 1);
 }
 
 void lcmp(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
@@ -221,6 +234,45 @@ void putstatic(Frame *current_frame_data, struct Context *context, uint8_t *opco
     nextOpCode(current_frame_data, 3);
 }
 
+void invokevirtual(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
+    uint16_t args = ((uint16_t)opcode[1] << 8) | ((uint16_t)opcode[2]);
+
+    MethodArea *methodArea = (MethodArea*)&heap[current_frame_data->method_area_pointer];
+    ConstantPoolEntry *constantPool = (ConstantPoolEntry*)&heap[methodArea->constant_pool_ptr];
+
+    method_info *methods = (method_info*)&heap[methodArea->methods_ptr];
+
+    char *methodName = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.name_and_type_index].info.CONSTANT_nameAndType.name_index].info.CONSTANT_utf8.text_ptr];
+    char *methodDescriptor = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.name_and_type_index].info.CONSTANT_nameAndType.descriptor_index].info.CONSTANT_utf8.text_ptr];
+    char *methodClassName = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.class_index].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr];
+
+    if (get(method_area_hashmap, methodClassName) == NOT_FOUND){
+        fprintf(log_file, "La clase no está\n");
+        char *classQualifiedName = strconcat("ux0:/data/", strconcat(methodClassName, ".class"));
+        FILE *newClass = fopen(classQualifiedName, "rb");
+        loadClass(newClass, context);
+        fclose(newClass);
+        return;
+    }
+
+    nextOpCode(current_frame_data, 3);
+
+    int oMaPtr = get(method_area_hashmap, methodClassName);
+    MethodArea *oMethodArea = (MethodArea*)&heap[oMaPtr];
+    ConstantPoolEntry *oConstantPool = (ConstantPoolEntry*)&heap[oMethodArea->constant_pool_ptr];
+    method_info *oMethods = (method_info*)&heap[oMethodArea->methods_ptr];
+
+    for (int i = 0; i<oMethodArea->methods_count; i++){ //Además del nombre necesito comparar los argumentos para manejar las sobrecargas
+        char *fMethodName = (char*)&heap[oConstantPool[oMethods[i].name_index].info.CONSTANT_utf8.text_ptr];
+        char *fMethodDescriptor = (char*)&heap[oConstantPool[oMethods[i].descriptor_index].info.CONSTANT_utf8.text_ptr];
+
+        if (!strcmp(methodName, fMethodName) && !strcmp(methodDescriptor, fMethodDescriptor)){
+            initFrame(get(method_area_hashmap, methodClassName), (oMethodArea->methods_ptr + (sizeof(method_info) * i)), context);
+            return;
+        }
+    }
+}
+
 void invokestatic(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
     uint16_t args = ((uint16_t)opcode[1] << 8) | ((uint16_t)opcode[2]);
 
@@ -268,12 +320,14 @@ void execute(struct Context *context){
     opcodes[9] = &lconst_0;
     opcodes[10] = &lconst_1;
     opcodes[18] = &ldc;
+    opcodes[89] = &dup;
     opcodes[148] = &lcmp;
     opcodes[158] = &ifle;
     opcodes[176] = &areturn;
     opcodes[177] = &op_return;
     opcodes[178] = &getstatic;
     opcodes[179] = &putstatic;
+    opcodes[182] = &invokevirtual;
     opcodes[184] = &invokestatic;
     opcodes[191] = &athrow;
 
@@ -295,10 +349,11 @@ void execute(struct Context *context){
         fprintf(log_file, "op code %d\n", *opcode);
 
         if ((void (*)())opcodes[*opcode]){
+            fprintf(log_file, "Op code encontrado\n");
             ((void (*)())opcodes[*opcode])(current_frame_data, context, opcode);
         } else {
-            current_frame_data->curr_pc_context += 1;
-            *current_frame_data->pc_ptr = current_frame_data->curr_pc_context;
+            fprintf(log_file, "Op code no encontrado con éxito\n");
+            nextOpCode(current_frame_data, 1);
         }
     }
 
