@@ -247,7 +247,6 @@ void invokevirtual(Frame *current_frame_data, struct Context *context, uint8_t *
     char *methodClassName = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.class_index].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr];
 
     if (get(method_area_hashmap, methodClassName) == NOT_FOUND){
-        fprintf(log_file, "La clase no está\n");
         char *classQualifiedName = strconcat("ux0:/data/", strconcat(methodClassName, ".class"));
         FILE *newClass = fopen(classQualifiedName, "rb");
         loadClass(newClass, context);
@@ -314,7 +313,7 @@ void athrow(Frame *current_frame_data, struct Context *context, uint8_t *opcode)
 void execute(struct Context *context){
     uint8_t *opcode;
 
-    void **opcodes = malloc(255); // Para colocar las funciones de los opcodes aquí
+    void **opcodes = malloc(255 * sizeof(void *)); // Para colocar las funciones de los opcodes aquí
     opcodes[0] = &nop;
     opcodes[1] = &aconst_null;
     opcodes[9] = &lconst_0;
