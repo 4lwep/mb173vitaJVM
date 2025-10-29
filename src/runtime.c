@@ -98,7 +98,6 @@ void ldc(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
         Slot slot;
         slot.type = VALUE_REF;
         slot.ref_value = frame_constant_pool[index].info.CONSTANT_string.string_index;
-        fprintf(log_file, "String index: %d\n", slot.ref_value);
 
         stackPush(slot, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
     } else if (tag == 7){ //Class
@@ -109,7 +108,6 @@ void ldc(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
 }
 
 void dup(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
-    fprintf(log_file, "hola\n");
     nextOpCode(current_frame_data, 1);
 }
 
@@ -278,7 +276,7 @@ void invokestatic(Frame *current_frame_data, struct Context *context, uint8_t *o
     MethodArea *methodArea = (MethodArea*)&heap[current_frame_data->method_area_pointer];
     ConstantPoolEntry *constantPool = (ConstantPoolEntry*)&heap[methodArea->constant_pool_ptr];
 
-    method_info *methods = (method_info*)&heap[methodArea->methods_ptr];
+    method_info *methods = (method_info*)&heap[methodArea->methods_ptr]; //Esto da información del método pero no el método, gracias a esto se puede buscar pero esto no debe usarse porque puede que el método se encuentre en otra clase, es decir, otro method area
 
     char *methodName = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.name_and_type_index].info.CONSTANT_nameAndType.name_index].info.CONSTANT_utf8.text_ptr];
     char *methodClassName = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.class_index].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr];
@@ -289,7 +287,7 @@ void invokestatic(Frame *current_frame_data, struct Context *context, uint8_t *o
         loadClass(newClass, context);
         fclose(newClass);
         return;
-    }
+    } //En el hello world parecen estar los métodos dentro de las mismas clases, pero esto en teoría no puede resolver métodos de otras clases (comprobar)
 
     nextOpCode(current_frame_data, 3);
 
