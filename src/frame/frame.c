@@ -30,10 +30,11 @@ void initFrame(int frame_method_area, int frame_method, struct Context *frame_co
     for (int i = 0; i<method_area_data->methods_count; i++){
         if (executableCode[i].method_ptr == frame_method){
             uint8_t *c = (uint8_t*)&heap[executableCode[i].code_array_ptr];
+            fprintf(log_file, "Nuevo método iniciado -> ");
             for (int j = 0; j < executableCode[i].length; j++){
                 fprintf(log_file, "%d ", c[j]);
             }
-            fprintf(log_file, "\n");
+            fprintf(log_file, "| Iniciado frame %d\n", frame_context->curr_frame + 1);
 
             frame.local_stack = createStack(executableCode[i].max_locals);
             frame.current_local_stack_entry = JVM_NULL_PTR;

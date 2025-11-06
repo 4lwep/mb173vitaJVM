@@ -88,7 +88,7 @@ void ldc(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
     ConstantPoolEntry* frame_constant_pool = (ConstantPoolEntry*)&heap[frame_method_area->constant_pool_ptr];
     uint8_t tag = frame_constant_pool[index].tag;
 
-    fprintf(log_file, "Tag: %d\n", frame_constant_pool[index].tag);
+    //fprintf(log_file, "Tag: %d\n", frame_constant_pool[index].tag);
 
     if(tag == 3){ //Integer
         
@@ -118,8 +118,8 @@ void lcmp(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
     Slot slot2 = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
     Slot slot1 = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
 
-    fprintf(log_file, "Valor primero %d\n", slot1.long_value);
-    fprintf(log_file, "Valor segundo %d\n", slot2.long_value);
+    /*fprintf(log_file, "Valor primero %d\n", slot1.long_value);
+    fprintf(log_file, "Valor segundo %d\n", slot2.long_value);*/
 
     if (slot1.long_value > slot2.long_value) {
         entry.int_value = 1;
@@ -252,6 +252,8 @@ void invokevirtual(Frame *current_frame_data, struct Context *context, uint8_t *
         return;
     }
 
+    //Si no es polymorphic es cuando se hace lo de abajo
+
     nextOpCode(current_frame_data, 3);
 
     int oMaPtr = get(method_area_hashmap, methodClassName);
@@ -329,8 +331,6 @@ void execute(struct Context *context){
     opcodes[191] = &athrow;
 
     while(!context->exit){
-        fprintf(log_file, "cur frame: %d\n", context->curr_frame);
-
         Frame *current_frame_data = &context->jvm_stack[context->curr_frame];
 
         *current_frame_data->pc_ptr = current_frame_data->curr_pc_context;
@@ -342,14 +342,12 @@ void execute(struct Context *context){
         }
         
         opcode = (uint8_t*)&heap[*current_frame_data->pc_ptr];
-        
-        fprintf(log_file, "op code %d\n", *opcode);
 
         if ((void (*)())opcodes[*opcode]){
-            fprintf(log_file, "Op code encontrado\n");
+            fprintf(log_file, "Op code implementado           op code %d  frame %d\n", *opcode, context->curr_frame);
             ((void (*)())opcodes[*opcode])(current_frame_data, context, opcode);
         } else {
-            fprintf(log_file, "Op code no encontrado con éxito\n");
+            fprintf(log_file, "Op code no implementado        op code %d  frame %d\n", *opcode, context->curr_frame);
             nextOpCode(current_frame_data, 1);
         }
     }

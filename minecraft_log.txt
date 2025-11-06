@@ -1,0 +1,80 @@
+Nuevo método iniciado -> 178 0 7 18 13 182 0 15 177 | Iniciado frame 0
+Op code implementado           op code 178  frame 0
+Nuevo método iniciado -> 184 1 73 184 1 75 179 1 36 184 1 77 179 1 38 184 1 77 179 1 37 1 179 1 39 1 179 1 35 177 | Iniciado frame 1
+Op code implementado           op code 184  frame 1
+Nativo
+Op code implementado           op code 184  frame 1
+Nuevo método iniciado -> 184 1 71 9 148 158 0 5 1 176 187 0 153 89 183 1 49 191 | Iniciado frame 2
+Op code implementado           op code 184  frame 2
+Nativo
+Op code implementado           op code 9  frame 2
+Op code implementado           op code 148  frame 2
+Op code implementado           op code 158  frame 2
+Op code implementado           op code 1  frame 2
+Op code implementado           op code 176  frame 2
+Op code implementado           op code 179  frame 1
+Op code implementado           op code 184  frame 1
+Nuevo método iniciado -> 184 1 71 9 148 158 0 5 1 176 187 0 153 89 183 1 49 191 | Iniciado frame 2
+Op code implementado           op code 184  frame 2
+Nativo
+Op code implementado           op code 9  frame 2
+Op code implementado           op code 148  frame 2
+Op code implementado           op code 158  frame 2
+Op code implementado           op code 1  frame 2
+Op code implementado           op code 176  frame 2
+Op code implementado           op code 179  frame 1
+Op code implementado           op code 184  frame 1
+Nuevo método iniciado -> 184 1 71 9 148 158 0 5 1 176 187 0 153 89 183 1 49 191 | Iniciado frame 2
+Op code implementado           op code 184  frame 2
+Nativo
+Op code implementado           op code 9  frame 2
+Op code implementado           op code 148  frame 2
+Op code implementado           op code 158  frame 2
+Op code implementado           op code 1  frame 2
+Op code implementado           op code 176  frame 2
+Op code implementado           op code 179  frame 1
+Op code implementado           op code 1  frame 1
+Op code implementado           op code 179  frame 1
+Op code implementado           op code 1  frame 1
+Op code implementado           op code 179  frame 1
+Op code implementado           op code 177  frame 1
+Op code implementado           op code 178  frame 0
+Op code implementado           op code 18  frame 0
+Op code implementado           op code 182  frame 0
+Op code implementado           op code 182  frame 0
+Nuevo método iniciado -> 42 89 77 194 42 43 182 0 225 42 183 0 211 44 195 167 0 8 78 44 195 45 191 177 | Iniciado frame 1
+Op code no implementado        op code 42  frame 1
+Op code implementado           op code 89  frame 1
+Op code no implementado        op code 77  frame 1
+Op code no implementado        op code 194  frame 1
+Op code no implementado        op code 42  frame 1
+Op code no implementado        op code 43  frame 1
+Op code implementado           op code 182  frame 1
+Nuevo método iniciado -> 43 199 0 6 18 4 76 42 43 183 0 226 177 | Iniciado frame 2
+Op code no implementado        op code 43  frame 2
+Op code no implementado        op code 199  frame 2
+Op code implementado           op code 0  frame 2
+Op code no implementado        op code 6  frame 2
+Op code implementado           op code 18  frame 2
+Op code no implementado        op code 76  frame 2
+Op code no implementado        op code 42  frame 2
+Op code no implementado        op code 43  frame 2
+Op code no implementado        op code 183  frame 2
+Op code implementado           op code 0  frame 2
+Op code no implementado        op code 226  frame 2
+Op code implementado           op code 177  frame 2
+Op code no implementado        op code 42  frame 1
+Op code no implementado        op code 183  frame 1
+Op code implementado           op code 0  frame 1
+Op code no implementado        op code 211  frame 1
+Op code no implementado        op code 44  frame 1
+Op code no implementado        op code 195  frame 1
+Op code no implementado        op code 167  frame 1
+Op code implementado           op code 0  frame 1
+Op code no implementado        op code 8  frame 1
+Op code no implementado        op code 78  frame 1
+Op code no implementado        op code 44  frame 1
+Op code no implementado        op code 195  frame 1
+Op code no implementado        op code 45  frame 1
+Op code implementado           op code 191  frame 1
+Op code implementado           op code 177  frame 0
