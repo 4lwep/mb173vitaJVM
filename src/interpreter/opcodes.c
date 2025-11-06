@@ -2,16 +2,11 @@
 #include<runtime.h>
 #include<init.h>
 
-void nextOpCode(Frame *frame, uint8_t number_of_opcodes){
-    frame->curr_pc_context += number_of_opcodes;
-    *frame->pc_ptr = frame->curr_pc_context;
-}
-
 long JNICurrentTimeMilis(){
     return 1716437;
 }
 
-void executeNative(struct Context *context){
+void executeNative(struct Context *context){ //Temporal
     Frame *current_frame_data = &context->jvm_stack[context->curr_frame];
     MethodArea *method_area = (MethodArea*)&heap[current_frame_data->method_area_pointer];
     ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[method_area->constant_pool_ptr];
