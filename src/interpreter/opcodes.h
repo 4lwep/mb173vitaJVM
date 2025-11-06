@@ -1,5 +1,9 @@
 #include<frame.h>
 
+void nextOpCode(Frame *frame, uint8_t number_of_opcodes);
+
+
+
 void nop(Frame *current_frame_data, struct Context *context, uint8_t *opcode);
 
 void aconst_null(Frame *current_frame_data, struct Context *context, uint8_t *opcode);
