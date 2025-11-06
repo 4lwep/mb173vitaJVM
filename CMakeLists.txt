@@ -38,6 +38,7 @@ add_executable(${PROJECT_NAME}
   src/frame/frame.c
   src/frame/stacks.c
   src/interpreter/runtime.c
+  src/interpreter/opcodes.c
   src/loader/attributes.c
   src/loader/constant_pool.c
   src/loader/fields.c

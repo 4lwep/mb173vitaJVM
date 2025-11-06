@@ -1,7 +1,7 @@
 #ifndef RUNTIME_H
 #define RUNTIME_H
 
-#include<frame.h>
+#include<opcodes.h>
 
 struct Context{
     int curr_frame;
