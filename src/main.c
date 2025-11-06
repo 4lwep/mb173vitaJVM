@@ -18,7 +18,7 @@ int main(){
     int a = 50 * 1024 *1024;
     psvDebugScreenPrintf("Tamanyo de heap ocupado %d/%d\n", heapAlloc(200), a);
 
-    sceKernelDelayThread(10*1000000);
+    sceKernelDelayThread(5*1000000);
 
     return 0;
 }
