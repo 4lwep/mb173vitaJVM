@@ -1,4 +1,7 @@
-#include<opcodes_utils.h>
+#ifndef OPCODES_H
+#define OPCODES_H
+
+#include<frame.h>
 
 void nop(Frame *current_frame_data, struct Context *context, uint8_t *opcode);
 
@@ -29,3 +32,5 @@ void invokevirtual(Frame *current_frame_data, struct Context *context, uint8_t *
 void invokestatic(Frame *current_frame_data, struct Context *context, uint8_t *opcode);
 
 void athrow(Frame *current_frame_data, struct Context *context, uint8_t *opcode);
+
+#endif

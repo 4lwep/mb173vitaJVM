@@ -1,6 +1,7 @@
 #include<opcodes.h>
 #include<runtime.h>
 #include<init.h>
+#include<opcodes_utils.h>
 
 long JNICurrentTimeMilis(){
     return 1716437;
@@ -39,37 +40,31 @@ void executeNative(struct Context *context){ //Temporal
 }
 
 void nop(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
-    nextOpCode(current_frame_data, 1);
+    nextOpCode(current_frame_data);
 }
 
 void aconst_null(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
-    Slot entry;
-    entry.type = VALUE_REF;
-    entry.ref_value = JVM_NULL_PTR;
+    Slot entry = createNewSlot(VALUE_REF, &(uint16_t){JVM_NULL_PTR});
 
     stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
     
-    nextOpCode(current_frame_data, 1);
+    nextOpCode(current_frame_data);
 }
 
 void lconst_0(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
-    Slot entry;
-    entry.type = VALUE_LONG;
-    entry.long_value = 0;
+    Slot entry = createNewSlot(VALUE_LONG, &(long){0});
 
     stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
 
-    nextOpCode(current_frame_data, 1);
+    nextOpCode(current_frame_data);
 }
 
 void lconst_1(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
-    Slot entry;
-    entry.type = VALUE_LONG;
-    entry.long_value = 1;
+    Slot entry = createNewSlot(VALUE_LONG, &(long){1});
 
     stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
 
-    nextOpCode(current_frame_data, 1);
+    nextOpCode(current_frame_data);
 }
 
 void ldc(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
@@ -86,44 +81,40 @@ void ldc(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
     } else if(tag == 4){ //Float
 
     } else if(tag == 8){ //String
-        Slot slot;
-        slot.type = VALUE_REF;
-        slot.ref_value = frame_constant_pool[index].info.CONSTANT_string.string_index;
+        Slot entry = createNewSlot(VALUE_REF, &(uint16_t){frame_constant_pool[index].info.CONSTANT_string.string_index});
 
-        stackPush(slot, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
+        stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
     } else if (tag == 7){ //Class
 
     }
 
-    nextOpCode(current_frame_data, 2);
+    jumpOpCode(current_frame_data, 2);
 }
 
 void dup(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
-    nextOpCode(current_frame_data, 1);
+    nextOpCode(current_frame_data);
 }
 
 void lcmp(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
     Slot entry;
-    entry.type = VALUE_INT;
+    ValueType type = VALUE_INT;
 
     Slot slot2 = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
     Slot slot1 = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
 
-    /*fprintf(log_file, "Valor primero %d\n", slot1.long_value);
-    fprintf(log_file, "Valor segundo %d\n", slot2.long_value);*/
+    fprintf(log_file, "Valor primero %d\n", slot1.long_value);
+    fprintf(log_file, "Valor segundo %d\n", slot2.long_value);
 
     if (slot1.long_value > slot2.long_value) {
-        entry.int_value = 1;
-        stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
+        entry = createNewSlot(type, &(uint16_t){1});
     } else if (slot1.long_value == slot2.long_value){
-        entry.int_value = 0;
-        stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
+        entry = createNewSlot(type, &(uint16_t){0});
     } else {
-        entry.int_value = -1;
-        stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
+        entry = createNewSlot(type, &(uint16_t){-1});
     }
+    stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
 
-    nextOpCode(current_frame_data, 1);
+    nextOpCode(current_frame_data);
 }
 
 void ifle(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
@@ -132,9 +123,9 @@ void ifle(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
     Slot slot1 = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
 
     if (slot1.int_value <= 0){
-        nextOpCode(current_frame_data, offset);
+        jumpOpCode(current_frame_data, offset);
     } else {
-        nextOpCode(current_frame_data, 3);
+        jumpOpCode(current_frame_data, 3);
     }
 }
 
@@ -180,13 +171,7 @@ void getstatic(Frame *current_frame_data, struct Context *context, uint8_t *opco
     int class_name_ptr = cp[cp[cp[args].info.CONSTANT_fieldref.class_index].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr;
     char *class_name = (char*)&heap[class_name_ptr];
 
-    if (get(method_area_hashmap, class_name) == NOT_FOUND){
-        char *classQualifiedName = strconcat("ux0:data/", strconcat(class_name, ".class"));
-        FILE *newClass = fopen(classQualifiedName, "rb");
-        loadClass(newClass, context);
-        fclose(newClass);
-        return;
-    }
+    initializeIfNot(class_name, context);
 
     int oMaPtr = get(method_area_hashmap, class_name);
     MethodArea *oMaData = (MethodArea*)&heap[oMaPtr];
@@ -216,11 +201,11 @@ void getstatic(Frame *current_frame_data, struct Context *context, uint8_t *opco
     ++current_frame_data->current_operand_stack_entry;
     current_frame_data->operand_stack[current_frame_data->current_operand_stack_entry] = entry ;
 
-    nextOpCode(current_frame_data, 3);
+    jumpOpCode(current_frame_data, 3);
 }
 
 void putstatic(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
-    nextOpCode(current_frame_data, 3);
+    jumpOpCode(current_frame_data, 3);
 }
 
 void invokevirtual(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
@@ -237,19 +222,13 @@ void invokevirtual(Frame *current_frame_data, struct Context *context, uint8_t *
 
     char *methodName = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.name_and_type_index].info.CONSTANT_nameAndType.name_index].info.CONSTANT_utf8.text_ptr];
     char *methodDescriptor = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.name_and_type_index].info.CONSTANT_nameAndType.descriptor_index].info.CONSTANT_utf8.text_ptr];
-    char *methodClassName = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.class_index].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr];
+    char *class_name = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.class_index].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr];
 
-    if (get(method_area_hashmap, methodClassName) == NOT_FOUND){
-        char *classQualifiedName = strconcat("ux0:/data/", strconcat(methodClassName, ".class"));
-        FILE *newClass = fopen(classQualifiedName, "rb");
-        loadClass(newClass, context);
-        fclose(newClass);
-        return;
-    }
+    initializeIfNot(class_name, context);
 
-    nextOpCode(current_frame_data, 3);
+    jumpOpCode(current_frame_data, 3);
 
-    int oMaPtr = get(method_area_hashmap, methodClassName);
+    int oMaPtr = get(method_area_hashmap, class_name);
     MethodArea *oMethodArea = (MethodArea*)&heap[oMaPtr];
     ConstantPoolEntry *oConstantPool = (ConstantPoolEntry*)&heap[oMethodArea->constant_pool_ptr];
     method_info *oMethods = (method_info*)&heap[oMethodArea->methods_ptr];
@@ -260,11 +239,11 @@ void invokevirtual(Frame *current_frame_data, struct Context *context, uint8_t *
 
         if (!strcmp(methodName, fMethodName) && !strcmp(methodDescriptor, fMethodDescriptor)){
             /*if (oMethods[i].access_flags & ACC_PRIVATE){
-                initFrame(get(method_area_hashmap, methodClassName), (oMethodArea->methods_ptr + (sizeof(method_info) * i)), context);
+                initFrame(get(method_area_hashmap, class_name), (oMethodArea->methods_ptr + (sizeof(method_info) * i)), context);
                 return;
             }*/
            
-            initFrame(get(method_area_hashmap, methodClassName), (oMethodArea->methods_ptr + (sizeof(method_info) * i)), context);
+            initFrame(get(method_area_hashmap, class_name), (oMethodArea->methods_ptr + (sizeof(method_info) * i)), context);
             return;
         }
     }
@@ -279,22 +258,18 @@ void invokestatic(Frame *current_frame_data, struct Context *context, uint8_t *o
     method_info *methods = (method_info*)&heap[methodArea->methods_ptr]; //Esto da información del método pero no el método, gracias a esto se puede buscar pero esto no debe usarse porque puede que el método se encuentre en otra clase, es decir, otro method area
 
     char *methodName = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.name_and_type_index].info.CONSTANT_nameAndType.name_index].info.CONSTANT_utf8.text_ptr];
-    char *methodClassName = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.class_index].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr];
+    char *class_name = (char*)&heap[constantPool[constantPool[constantPool[args].info.CONSTANT_methodref.class_index].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr];
 
-    if (get(method_area_hashmap, methodClassName) == NOT_FOUND){
-        char *classQualifiedName = strconcat("ux0:/data/", strconcat(methodClassName, ".class"));
-        FILE *newClass = fopen(classQualifiedName, "rb");
-        loadClass(newClass, context);
-        fclose(newClass);
-        return;
-    } //En el hello world parecen estar los métodos dentro de las mismas clases, pero esto en teoría no puede resolver métodos de otras clases (comprobar)
+    initializeIfNot(class_name, context);
+    
+    //En el hello world parecen estar los métodos dentro de las mismas clases, pero esto en teoría esta función no puede resolver métodos de otras clases y creo que debería poder (comprobar)
 
-    nextOpCode(current_frame_data, 3);
+    jumpOpCode(current_frame_data, 3);
 
     for (int i = 0; i<methodArea->methods_count; i++){
     char *fMethodName = (char*)&heap[constantPool[methods[i].name_index].info.CONSTANT_utf8.text_ptr];
         if (!strcmp(methodName, fMethodName)){
-            initFrame(get(method_area_hashmap, methodClassName), (methodArea->methods_ptr + (sizeof(method_info) * i)), context);
+            initFrame(get(method_area_hashmap, class_name), (methodArea->methods_ptr + (sizeof(method_info) * i)), context);
         }
     }
 }

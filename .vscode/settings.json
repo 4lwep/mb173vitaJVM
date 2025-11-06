@@ -26,6 +26,7 @@
         "runtime.h": "c",
         "bitset": "c",
         "string_view": "c",
-        "atomic": "c"
+        "atomic": "c",
+        "opcodes_utils.h": "c"
     }
 }
