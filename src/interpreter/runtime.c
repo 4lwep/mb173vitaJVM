@@ -1,5 +1,5 @@
-#include<runtime.h>
-#include<init.h>
+#include "runtime.h"
+#include "init.h"
 
 #include <psp2/kernel/threadmgr.h>
 #include <psp2/kernel/processmgr.h>

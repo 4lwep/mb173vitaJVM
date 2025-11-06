@@ -1,4 +1,4 @@
-#include<fields.h>
+#include "fields.h"
 
 int parseFields(FILE *bytecode_file, uint16_t fields_count){
     int fields_ptr = heapAlloc(sizeof(field_info) * fields_count);

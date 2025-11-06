@@ -3,9 +3,10 @@
 
 #include<stdint.h>
 #include<stdio.h>
-#include<util.h>
 #include<malloc.h>
-#include<heap.h>
+
+#include "util.h"
+#include "heap.h"
 
 typedef struct { // Hay varios tipos de atributos predefinidos. Tal vez tenga que implementarlos en algún lado
     uint16_t attribute_name_index;

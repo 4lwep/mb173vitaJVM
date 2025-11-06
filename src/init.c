@@ -1,4 +1,4 @@
-#include<init.h>
+#include "init.h"
 
 //int pc = -1;
 MaHashMap *method_area_hashmap;

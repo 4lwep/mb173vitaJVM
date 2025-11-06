@@ -1,5 +1,6 @@
 #include<stdio.h>
-#include<constant_pool.h>
+
+#include "constant_pool.h"
 
 int parseConstantPool(FILE *bytecode_file, uint16_t entries){
   int constant_pool_ptr = heapAlloc(sizeof(ConstantPoolEntry) * entries);

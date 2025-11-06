@@ -1,4 +1,4 @@
-#include<method.h>
+#include "method.h"
 
 int parseMethods(FILE *bytecode_file, uint16_t method_count){
     int methods_ptr = heapAlloc(sizeof(method_info) * method_count);

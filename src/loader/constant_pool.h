@@ -1,9 +1,10 @@
 #ifndef CONSTANT_POOL_H
 #define CONSTANT_POOL_H
 
-#include<util.h>
 #include<stdint.h>
-#include<heap.h>
+
+#include "util.h"
+#include "heap.h"
 
 typedef struct {
     uint8_t tag;

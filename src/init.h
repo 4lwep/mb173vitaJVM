@@ -1,10 +1,10 @@
 #ifndef INIT_H
 #define INIT_H
 
-#include<heap.h>
-#include<loader.h>
-#include<method_area.h>
-#include<runtime.h>
+#include "heap.h"
+#include "loader.h"
+#include "method_area.h"
+#include "runtime.h"
 
 int initJVM(char* bytecode_path);
 

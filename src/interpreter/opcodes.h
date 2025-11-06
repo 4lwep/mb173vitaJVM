@@ -1,7 +1,7 @@
 #ifndef OPCODES_H
 #define OPCODES_H
 
-#include<frame.h>
+#include "frame.h"
 
 void nop(Frame *current_frame_data, struct Context *context, uint8_t *opcode);
 

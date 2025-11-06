@@ -1,7 +1,9 @@
 #include<stdio.h>
-#include<loader.h>
 #include<string.h>
-#include<init.h>
+
+#include "loader.h"
+#include "init.h"
+
 #include <psp2/kernel/threadmgr.h>
 #include <psp2/kernel/processmgr.h>
 

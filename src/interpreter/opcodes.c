@@ -1,7 +1,7 @@
-#include<opcodes.h>
-#include<runtime.h>
-#include<init.h>
-#include<opcodes_utils.h>
+#include "opcodes.h"
+#include "runtime.h"
+#include "init.h"
+#include "opcodes_utils.h"
 
 long JNICurrentTimeMilis(){
     return 1716437;

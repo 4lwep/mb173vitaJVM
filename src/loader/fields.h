@@ -3,10 +3,11 @@
 
 #include<stdio.h>
 #include<malloc.h>
-#include<util.h>
-#include<attributes.h>
 #include<stdint.h>
-#include<heap.h>
+
+#include "util.h"
+#include "attributes.h"
+#include "heap.h"
 
 typedef struct{
     uint16_t access_flags;

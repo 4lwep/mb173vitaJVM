@@ -1,5 +1,5 @@
-#include<stacks.h>
-#include<heap.h>
+#include "stacks.h"
+#include "heap.h"
 
 Slot *createStack(int max_size){
     if (!max_size) return NULL;

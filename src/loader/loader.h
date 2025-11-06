@@ -2,15 +2,16 @@
 #define LOADER_H
 
 #include<stdio.h>
-#include<constant_pool.h>
-#include<interfaces.h>
-#include<fields.h>
-#include<util.h>
-#include<method.h>
 #include<malloc.h>
-#include<attributes.h>
 #include<stdint.h>
-#include<runtime.h>
+
+#include "constant_pool.h"
+#include "interfaces.h"
+#include "fields.h"
+#include "util.h"
+#include "method.h"
+#include "attributes.h"
+#include "runtime.h"
 
 typedef struct {
     uint32_t magic;

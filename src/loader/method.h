@@ -3,10 +3,11 @@
 
 #include<stdio.h>
 #include<malloc.h>
-#include<util.h>
-#include<attributes.h>
 #include<stdint.h>
-#include<heap.h>
+
+#include "util.h"
+#include "attributes.h"
+#include "heap.h"
 
 #define ACC_PUBLIC 0x0001
 #define ACC_PRIVATE 0x0002
