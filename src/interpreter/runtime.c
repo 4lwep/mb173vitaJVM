@@ -233,6 +233,10 @@ void putstatic(Frame *current_frame_data, struct Context *context, uint8_t *opco
 }
 
 void invokevirtual(Frame *current_frame_data, struct Context *context, uint8_t *opcode){
+    //Obtener la información del método a invocar 
+    //Obtener el objectref del operand stack
+    //obtener la clase de objectref
+    //Obtener las superclases de las clases
     uint16_t args = ((uint16_t)opcode[1] << 8) | ((uint16_t)opcode[2]);
 
     MethodArea *methodArea = (MethodArea*)&heap[current_frame_data->method_area_pointer];
@@ -252,8 +256,6 @@ void invokevirtual(Frame *current_frame_data, struct Context *context, uint8_t *
         return;
     }
 
-    //Si no es polymorphic es cuando se hace lo de abajo
-
     nextOpCode(current_frame_data, 3);
 
     int oMaPtr = get(method_area_hashmap, methodClassName);
@@ -266,6 +268,11 @@ void invokevirtual(Frame *current_frame_data, struct Context *context, uint8_t *
         char *fMethodDescriptor = (char*)&heap[oConstantPool[oMethods[i].descriptor_index].info.CONSTANT_utf8.text_ptr];
 
         if (!strcmp(methodName, fMethodName) && !strcmp(methodDescriptor, fMethodDescriptor)){
+            /*if (oMethods[i].access_flags & ACC_PRIVATE){
+                initFrame(get(method_area_hashmap, methodClassName), (oMethodArea->methods_ptr + (sizeof(method_info) * i)), context);
+                return;
+            }*/
+           
             initFrame(get(method_area_hashmap, methodClassName), (oMethodArea->methods_ptr + (sizeof(method_info) * i)), context);
             return;
         }
