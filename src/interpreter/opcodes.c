@@ -24,14 +24,6 @@ void executeNative(struct Context *context){ //Temporal
         current_frame_data = &context->jvm_stack[context->curr_frame];
         stackPush(entry, current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry, current_frame_data->max_stack);
         return;
-    } else if (!strcmp(methodName, "println")) {
-        Slot text_slot = stackPop(current_frame_data->operand_stack, &current_frame_data->current_operand_stack_entry);
-        
-        MethodArea *frame_method_area = (MethodArea*)&heap[current_frame_data->method_area_pointer];
-        ConstantPoolEntry* frame_constant_pool = (ConstantPoolEntry*)&heap[frame_method_area->constant_pool_ptr];
-        char *text = (char*)&heap[frame_constant_pool[text_slot.ref_value].info.CONSTANT_utf8.text_ptr];
-        fprintf(log_file, "%s\n", text);
-        psvDebugScreenPrintf("%s\n", text);
     } else {
         fprintf(log_file, "Atención: %s no está definido\n", methodName);
     }
