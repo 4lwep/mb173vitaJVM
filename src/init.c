@@ -1,8 +1,6 @@
 #include "init.h"
 
-//int pc = -1;
 MaHashMap *method_area_hashmap;
-//Frame** jvmStack;
 
 int initJVM(char* bytecode_path){
     initHeap();

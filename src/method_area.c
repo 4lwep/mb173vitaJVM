@@ -1,10 +1,8 @@
 #include "method_area.h"
 
-int createMethodArea(ClassFile *class_file){
-    MethodArea *last_ma_data;
-
-    int cur_method_area = heapAlloc(sizeof(MethodArea));
-    MethodArea *curr_ma_data = (MethodArea*)&heap[cur_method_area];
+int getMethodAreaData(ClassFile *class_file){
+    int method_area = heapAlloc(sizeof(MethodArea));
+    MethodArea *curr_ma_data = (MethodArea*)&heap[method_area];
 
     curr_ma_data->constant_pool_ptr = class_file->cp_array_ptr;
     curr_ma_data->constant_pool_count = class_file->constant_pool_count;
@@ -49,7 +47,7 @@ int createMethodArea(ClassFile *class_file){
         }
     }
 
-    return cur_method_area;
+    return method_area;
 }
 
 //Chat gpt de aquí para abajo (Esto debería de ir a util o algo pero no creo que aquí esté bien)

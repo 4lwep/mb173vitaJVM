@@ -22,7 +22,7 @@ void execute(struct Context *context){
     opcodes[177] = &op_return;
     opcodes[178] = &getstatic;
     opcodes[179] = &putstatic;
-    opcodes[182] = &invokevirtual;
+    //opcodes[182] = &invokevirtual;
     opcodes[184] = &invokestatic;
     opcodes[191] = &athrow;
 
