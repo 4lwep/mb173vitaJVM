@@ -1,21 +1,21 @@
 #include "method_area.h"
 
 int getMethodAreaData(ClassFile *class_file){
-    int method_area = heapAlloc(sizeof(MethodArea));
-    MethodArea *curr_ma_data = (MethodArea*)&heap[method_area];
+    int new_method_area_info = heapAlloc(sizeof(MethodAreaData));
+    MethodAreaData *data = (MethodAreaData*)&heap[new_method_area_info];
 
-    curr_ma_data->constant_pool_ptr = class_file->cp_array_ptr;
-    curr_ma_data->constant_pool_count = class_file->constant_pool_count;
-    curr_ma_data->fields_ptr = class_file->fields_array_ptr;
-    curr_ma_data->fields_count = class_file->fields_count;
-    curr_ma_data->methods_count = class_file->methods_count;
-    curr_ma_data->methods_ptr = class_file->methods_array_ptr;
+    data->constant_pool_ptr = class_file->cp_array_ptr;
+    data->constant_pool_count = class_file->constant_pool_count;
+    data->fields_ptr = class_file->fields_array_ptr;
+    data->fields_count = class_file->fields_count;
+    data->methods_count = class_file->methods_count;
+    data->methods_ptr = class_file->methods_array_ptr;
     
     int code = heapAlloc(sizeof(ExecutableCode) * class_file->methods_count);
-    curr_ma_data->code_table_ptr = code;
-    ExecutableCode *exCode = (ExecutableCode*)&heap[curr_ma_data->code_table_ptr];
+    data->code_table_ptr = code;
+    ExecutableCode *exCode = (ExecutableCode*)&heap[data->code_table_ptr];
     method_info *methods = (method_info*)&heap[class_file->methods_array_ptr];
-    ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[curr_ma_data->constant_pool_ptr];
+    ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[data->constant_pool_ptr];
     
     for (int i = 0; i < class_file->methods_count; i++){
         attribute_info *method_attributes = (attribute_info*)&heap[methods[i].attributes_ptr];
@@ -47,7 +47,7 @@ int getMethodAreaData(ClassFile *class_file){
         }
     }
 
-    return method_area;
+    return new_method_area_info;
 }
 
 //Chat gpt de aquí para abajo (Esto debería de ir a util o algo pero no creo que aquí esté bien)

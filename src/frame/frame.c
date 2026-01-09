@@ -3,7 +3,7 @@
 #include<runtime.h>
 
 void initFrame(int frame_method_area, int frame_method, struct Context *frame_context){
-    MethodArea *method_area_data = (MethodArea*)&heap[frame_method_area];
+    MethodAreaData *method_area_data = (MethodAreaData*)&heap[frame_method_area];
     method_info *method_data = (method_info*)&heap[frame_method];
 
     Frame frame;
@@ -59,7 +59,7 @@ void initFrame(int frame_method_area, int frame_method, struct Context *frame_co
 }
 
 void excuteClinit(int method_area, struct Context *context){
-    MethodArea *method_area_data = (MethodArea*)&heap[method_area];
+    MethodAreaData *method_area_data = (MethodAreaData*)&heap[method_area];
     ExecutableCode *exCode = (ExecutableCode*)&heap[method_area_data->code_table_ptr];
     ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[method_area_data->constant_pool_ptr];
 
@@ -75,7 +75,7 @@ void excuteClinit(int method_area, struct Context *context){
 }
 
 void initFirstFrame(int method_area, struct Context *context){
-    MethodArea *method_area_data = (MethodArea*)&heap[method_area];
+    MethodAreaData *method_area_data = (MethodAreaData*)&heap[method_area];
     ExecutableCode *exCode = (ExecutableCode*)&heap[method_area_data->code_table_ptr];
     ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[method_area_data->constant_pool_ptr];
 

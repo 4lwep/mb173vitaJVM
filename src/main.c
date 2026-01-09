@@ -14,7 +14,7 @@ int main(){
 
     int ma = initJVM("app0:/JvmTest.class"); //Estoy usando el primer method area para el nodo raíz pero si implemento gabage collection tal vez no sea la mejor idea
 
-    MethodArea *data = (MethodArea*)&heap[ma];
+    MethodAreaData *data = (MethodAreaData*)&heap[ma];
     ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[data->constant_pool_ptr];
 
     int a = 50 * 1024 *1024;

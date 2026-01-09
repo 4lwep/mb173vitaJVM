@@ -21,7 +21,7 @@ typedef struct{
     int methods_ptr;
     uint16_t methods_count;
     int code_table_ptr;
-} MethodArea;
+} MethodAreaData;
 
 #define TABLE_SIZE 1000
 
