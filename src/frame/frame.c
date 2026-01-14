@@ -25,7 +25,7 @@ void initFrame(int frame_method_area, int frame_method, struct Context *frame_co
         goto finish;
     }
 
-    ExecutableCode *executableCode = (ExecutableCode*)&heap[method_area_data->code_table_ptr];
+    ExecutableCode *executableCode = (ExecutableCode*)&heap[method_area_data->executable_code_ptr];
 
     for (int i = 0; i<method_area_data->methods_count; i++){
         if (executableCode[i].method_ptr == frame_method){
@@ -60,7 +60,7 @@ void initFrame(int frame_method_area, int frame_method, struct Context *frame_co
 
 void excuteClinit(int method_area, struct Context *context){
     MethodAreaData *method_area_data = (MethodAreaData*)&heap[method_area];
-    ExecutableCode *exCode = (ExecutableCode*)&heap[method_area_data->code_table_ptr];
+    ExecutableCode *exCode = (ExecutableCode*)&heap[method_area_data->executable_code_ptr];
     ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[method_area_data->constant_pool_ptr];
 
     for (int i = 0; i<method_area_data->methods_count; i++){
@@ -76,7 +76,7 @@ void excuteClinit(int method_area, struct Context *context){
 
 void initFirstFrame(int method_area, struct Context *context){
     MethodAreaData *method_area_data = (MethodAreaData*)&heap[method_area];
-    ExecutableCode *exCode = (ExecutableCode*)&heap[method_area_data->code_table_ptr];
+    ExecutableCode *exCode = (ExecutableCode*)&heap[method_area_data->executable_code_ptr];
     ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[method_area_data->constant_pool_ptr];
 
     for (int i = 0; i<method_area_data->methods_count; i++){

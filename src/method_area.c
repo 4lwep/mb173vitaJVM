@@ -12,8 +12,8 @@ int getMethodAreaData(ClassFile *class_file){
     data->methods_ptr = class_file->methods_array_ptr;
     
     int code = heapAlloc(sizeof(ExecutableCode) * class_file->methods_count);
-    data->code_table_ptr = code;
-    ExecutableCode *exCode = (ExecutableCode*)&heap[data->code_table_ptr];
+    data->executable_code_ptr = code;
+    ExecutableCode *exCode = (ExecutableCode*)&heap[data->executable_code_ptr];
     method_info *methods = (method_info*)&heap[class_file->methods_array_ptr];
     ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)&heap[data->constant_pool_ptr];
     

@@ -13,14 +13,14 @@ typedef struct{
 } ExecutableCode;
 
 typedef struct{
-    //int class_ptr;
     int constant_pool_ptr;
     uint16_t constant_pool_count;
     int fields_ptr;
     uint16_t fields_count;
     int methods_ptr;
     uint16_t methods_count;
-    int code_table_ptr;
+    int executable_code_ptr;
+    int class_loader_ptr;
 } MethodAreaData;
 
 #define TABLE_SIZE 1000
