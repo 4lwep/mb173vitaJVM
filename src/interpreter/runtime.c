@@ -1,5 +1,6 @@
 #include "runtime.h"
 #include "init.h"
+#include "opcodes_utils.h"
 
 #include <psp2/kernel/threadmgr.h>
 #include <psp2/kernel/processmgr.h>
@@ -44,7 +45,7 @@ void execute(struct Context *context){
             ((void (*)())opcodes[*opcode])(current_frame_data, context, opcode);
         } else {
             fprintf(log_file, "Op code no implementado        op code %d  frame %d\n", *opcode, context->curr_frame);
-            nextOpCode(current_frame_data, 1);
+            nextOpCode(current_frame_data);
         }
     }
 

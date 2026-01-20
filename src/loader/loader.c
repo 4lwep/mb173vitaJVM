@@ -55,14 +55,13 @@ int loadClass(FILE *bytecode_file, struct Context *context){
 
     parsed_class = parseClass(bytecode_file);
 
-    int method_area_data = getMethodAreaData(parsed_class);
+    int new_method_area_entry_ptr = getMethodAreaPtr(parsed_class);
 
     ConstantPoolEntry *cp = (ConstantPoolEntry*)&heap[parsed_class->cp_array_ptr]  ;
     char *className = (char*)&heap[cp[cp[parsed_class->this_class].info.CONSTANT_class.name_index].info.CONSTANT_utf8.text_ptr];
-    insert(method_area_hashmap, className, method_area_data);
-
+    insert(method_area_hashmap, className, new_method_area_entry_ptr);
     free(parsed_class);
 
-    excuteClinit(method_area_data, context);
-    return method_area_data;
+    excuteClinit(new_method_area_entry_ptr, context);
+    return new_method_area_entry_ptr;
 }

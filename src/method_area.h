@@ -35,7 +35,7 @@ typedef struct {
     MaHashMapEntry* buckets[TABLE_SIZE]; // Array de listas
 } MaHashMap;
 
-int getMethodAreaData(ClassFile *class_file);
+int getMethodAreaPtr(ClassFile *class_file);
 unsigned int hash(char* key);
 void insert(MaHashMap* map, char* key, int value);
 int get(MaHashMap* map, char* key);

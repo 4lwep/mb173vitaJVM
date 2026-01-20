@@ -27,6 +27,7 @@ include_directories(src/loader)
 include_directories(src/common)
 include_directories(src/frame)
 include_directories(src/interpreter)
+include_directories(src/jvm_init)
 include_directories(src)
 
 add_executable(${PROJECT_NAME}
@@ -34,7 +35,9 @@ add_executable(${PROJECT_NAME}
   src/util.c
   src/heap.c
   src/method_area.c
-  src/init.c
+  src/jvm_init/init.c
+  src/jvm_init/class_loader.c
+  src/jvm_init/jvm_preparation.c
   src/frame/frame.c
   src/frame/stacks.c
   src/interpreter/runtime.c

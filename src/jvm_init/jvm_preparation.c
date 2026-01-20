@@ -1,8 +1,8 @@
-#include "init.h"
+#include "jvm_preparation.h"
 
 MaHashMap *method_area_hashmap;
 
-int initJVM(char* bytecode_path){
+struct Context* prepareJVMInit(){
     initHeap();
     method_area_hashmap = calloc(1, sizeof(MaHashMap));
     struct Context *context = malloc(sizeof(struct Context)); //Funcion para crear el contexto
@@ -11,10 +11,5 @@ int initJVM(char* bytecode_path){
     context->exit = FALSE;
     context->jvm_stack = malloc(sizeof(Frame) * MAX_JVM_STACK);
 
-    FILE *bytecode_file = fopen(bytecode_path, "rb");
-    int method_area = loadClass(bytecode_file, context);
-
-    initFirstFrame(method_area, context);
-    
-    return method_area;
+    return context;
 }
