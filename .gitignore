@@ -1,5 +1,6 @@
 build
 rt.jar
 lwjgl-2.9.3
+jre-6u33-windows-i586.exe
 src/TODO.md
 claude.md

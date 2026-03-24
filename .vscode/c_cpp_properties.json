@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/src/**",
                 "${workspaceFolder}/src/common/**",
-                "/usr/local/vitasdk/vita-headers/**"
+                "/usr/local/vitasdk/vitasdk-hardfp/vita-headers/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

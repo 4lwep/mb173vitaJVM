@@ -4,8 +4,11 @@ MaHashMap *method_area_hashmap;
 
 struct Context* prepareJVMInit(){
     initHeap();
-    method_area_hashmap = calloc(1, sizeof(MaHashMap));
-    struct Context *context = malloc(sizeof(struct Context)); //Funcion para crear el contexto
+    method_area_hashmap = (MaHashMap*)calloc(1, sizeof(MaHashMap));
+
+    struct Context *context;
+    context = (struct Context*)malloc(sizeof(struct Context)); //Funcion para crear el contexto
+    
     context->curr_frame = JVM_NULL_PTR;
     context->pc = JVM_NULL_PTR;
     context->exit = FALSE;
