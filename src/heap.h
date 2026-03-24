@@ -13,6 +13,7 @@
 
 typedef struct {
     uint16_t length; //Tamaño real de 15 bits, el primer bit se usa para los flags definidos arriba
+    uint16_t padding;
 } HeapEntry;
 
 extern uint8_t heap[HEAPSIZE];
@@ -21,6 +22,7 @@ extern FILE *log_file;
 void initHeap();
 int searchFreeSpaceIndex(int bytes);
 int heapAlloc(int bytes);
+void *getFromHeap(int pointer);
 //int heap_garbage_collect();
 
 #endif

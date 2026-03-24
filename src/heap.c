@@ -44,7 +44,9 @@ int searchFreeSpaceIndex(int bytes){
 }
 
 int heapAlloc(int bytes){
-  if (bytes > MAX_HEAP_ENTRY_SIZE) return -1;
+  bytes = (bytes + 3) & ~3;
+
+  if (bytes > MAX_HEAP_ENTRY_SIZE) return -1;  
 
   HeapEntry *newEntry;
   HeapEntry *newEmptyEntry;
@@ -55,9 +57,13 @@ int heapAlloc(int bytes){
   newEntry = (HeapEntry*)&heap[index];
 
   newEmptyEntry = (HeapEntry*)&heap[index + bytes + sizeof(HeapEntry)];
-  newEmptyEntry->length = ((newEntry->length - bytes) & MAX_HEAP_ENTRY_SIZE) | ENTRY_MARK_MASK;
+  newEmptyEntry->length = ((newEntry->length - bytes - sizeof(HeapEntry)) & MAX_HEAP_ENTRY_SIZE) | ENTRY_MARK_MASK;
 
   newEntry->length = bytes;
 
   return index + sizeof(HeapEntry);
+}
+
+void *getFromHeap(int pointer){
+  return (void*)&heap[pointer];
 }
