@@ -46,10 +46,7 @@ static void getCodeFromMethodAreaMethods(int methods_ptr, int methods_count, Con
     }
 }
 
-int getMethodAreaPtr(ClassFile *class_file){
-    int new_method_area_ptr = heapAlloc(sizeof(MethodAreaData));
-    MethodAreaData *method_area_data = (MethodAreaData*)getFromHeap(new_method_area_ptr);
-
+static void fillMethodAreaData(MethodAreaData *method_area_data, ClassFile *class_file){
     method_area_data->constant_pool_ptr = class_file->cp_array_ptr;
     method_area_data->constant_pool_count = class_file->constant_pool_count;
     method_area_data->fields_ptr = class_file->fields_array_ptr; //En lugar de crear un puntero a los campos de la clase, puedo usar fields_ptr para crear el ClassInstance nada más. esto de todas formas lo podría dejar 
@@ -58,6 +55,12 @@ int getMethodAreaPtr(ClassFile *class_file){
     method_area_data->methods_ptr = class_file->methods_array_ptr;
 
     method_area_data->executable_code_ptr = heapAlloc(sizeof(ExecutableCode) * class_file->methods_count);
+}
+
+int getMethodAreaPtr(ClassFile *class_file){
+    int new_method_area_ptr = heapAlloc(sizeof(MethodAreaData));
+    MethodAreaData *method_area_data = (MethodAreaData*)getFromHeap(new_method_area_ptr);
+    fillMethodAreaData(method_area_data, class_file);
 
     ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)getFromHeap(method_area_data->constant_pool_ptr);
     ExecutableCode *exCode = (ExecutableCode*)getFromHeap(method_area_data->executable_code_ptr);
