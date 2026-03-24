@@ -19,45 +19,30 @@ static void createExecutableCodeEntry(ExecutableCode *executableCodeEntry, uint8
 }
 
 static void getCodeAttribute(method_info method, ConstantPoolEntry *constant_pool, ExecutableCode *executableCodeEntry){
-    fprintf(log_file, "getCodeAttribute\n");
     attribute_info *method_attributes = (attribute_info*)&heap[method.attributes_ptr];
-    fprintf(log_file, "jiji\n");
-    fprintf(log_file, "%d\n", method.attributes_count);
 
     for (int j = 0; j < method.attributes_count; j++){
-        fprintf(log_file, "pre get from heap\n");
         char *attribute_name = (char*)getFromHeap(constant_pool[method_attributes[j].attribute_name_index].info.CONSTANT_utf8.text_ptr);
-        fprintf(log_file, "tras get from heap\n");
 
         if (!strcmp(attribute_name, "Code")){
-            fprintf(log_file, "entra al if\n");
             uint8_t *attribute_info = (uint8_t*)&heap[method_attributes[j].info_ptr];
-            fprintf(log_file, "otra function\n");
             createExecutableCodeEntry(executableCodeEntry, attribute_info);
-            fprintf(log_file, "fin function\n");
             break;
         }
     }
 }
 
 static void getCodeFromMethodAreaMethods(int methods_ptr, int methods_count, ConstantPoolEntry *constant_pool, ExecutableCode *exCode){
-    fprintf(log_file, "getCodeFromMethodAreaMethods\n");
     method_info *methods = (method_info*)getFromHeap(methods_ptr);
-    fprintf(log_file, "get from heap\n");
 
     for (int i = 0; i < methods_count; i++){
         if (methods[i].access_flags & ACC_NATIVE){
             assignMethodToCode(&exCode[i], methods_ptr + (sizeof(method_info) * i));
             continue;
         }
-        
-        fprintf(log_file, "%d\n", (uintptr_t)&methods[i] % sizeof(int));
-        fprintf(log_file, "%d\n", sizeof(int));
-        fprintf(log_file, "%d\n", sizeof(method_info));
+
         getCodeAttribute(methods[i], constant_pool, &exCode[i]);
-        fprintf(log_file, "dos\n");
         assignMethodToCode(&exCode[i], methods_ptr + (sizeof(method_info) * i));
-        fprintf(log_file, "tres\n");
     }
 }
 
@@ -76,9 +61,7 @@ int getMethodAreaPtr(ClassFile *class_file){
 
     ConstantPoolEntry *constant_pool = (ConstantPoolEntry*)getFromHeap(method_area_data->constant_pool_ptr);
     ExecutableCode *exCode = (ExecutableCode*)getFromHeap(method_area_data->executable_code_ptr);
-    fprintf(log_file, "supongo que aquí peta\n");
     getCodeFromMethodAreaMethods(method_area_data->methods_ptr, method_area_data->methods_count, constant_pool, exCode);
-    fprintf(log_file, "supongo que esto no lo veo\n");
     
     return new_method_area_ptr;
 }
